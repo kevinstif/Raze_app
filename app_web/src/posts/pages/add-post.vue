@@ -18,6 +18,7 @@
 
 <script>
 import { v4 as uuidv4 } from 'uuid';
+import PostServices from "@/posts/services/posts.services";
 export default {
   name: "add-post",
   data:()=>({
@@ -35,10 +36,19 @@ export default {
         description:this.description,
         published:true
       }
-      this.$emit('add-post',newPost);
-      this.title='',
-          this.img='',
-          this.description='';
+
+      PostServices.create(newPost)
+          .then(response=>{
+            console.log(response.data)
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+
+      //this.$emit('add-post',newPost);
+      this.title='';
+      this.img='';
+      this.description='';
     }
   }
 }

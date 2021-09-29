@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <AddPost v-on:add-post="addPost"></AddPost>
+    <AddPost></AddPost>
     <PostList v-bind:posts="posts" ></PostList>
   </v-container>
 </template>
@@ -36,16 +36,6 @@ export default {
             console.log(e)
           })
     },
-    addPost(newPost) {
-      PostServices.create(newPost)
-          .then(response=>{
-            newPost.id=response.data.id;
-            console.log(response.data)
-          })
-          .catch(e=>{
-            console.log(e)
-          })
-    }
   },
   mounted() {
     this.retrieveTutorials();

@@ -1,4 +1,5 @@
 import http from '../../core/http-common'
+import axios from "axios";
 
 class PostsService{
     endPoint='/posts';
@@ -11,12 +12,12 @@ class PostsService{
         return http.get(`${this.endPoint}/${id}`);
     }
 
-    create(createTutorialDto){
-        return http.post(this.endPoint, createTutorialDto);
+    create(createPostDto){
+        return axios.post(`http://localhost:3000/api/v1${this.endPoint}`, createPostDto);
     }
 
-    update(id,updateTutorialDto){
-        return http.put(`${this.endPoint}/${id}`, updateTutorialDto);
+    update(id,updatePostDto){
+        return http.put(`${this.endPoint}/${id}`, updatePostDto);
     }
 
     delete(id){
