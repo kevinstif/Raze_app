@@ -17,7 +17,7 @@ class PostsService{
     }
 
     update(id,updatePostDto){
-        return http.put(`${this.endPoint}/${id}`, updatePostDto);
+        return axios.put(`http://localhost:3000/api/v1${this.endPoint}/${id}`, updatePostDto);
     }
 
     delete(id){
