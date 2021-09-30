@@ -16,3 +16,20 @@ export default {
   }
 }
 </script>
+<style scoped>
+  /*Jesus*/
+.login-container button {
+  width: 30%;
+  background-color: #4e37fc;
+  color: white;
+  font-weight: bold;
+  font-size: 18pt;
+  padding: 20px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: #00004040 0px 5px 10px;
+  cursor: pointer;
+}
+/*Jesus*/
+
+</style>
