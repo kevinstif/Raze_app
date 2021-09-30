@@ -17,6 +17,13 @@ export default {
 }
 </script>
 <style scoped>
+/*Leonardo*/
+.login-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+}
+/*Leonardo*/
   /*Jesus*/
 .login-container button {
   width: 30%;
@@ -31,5 +38,10 @@ export default {
   cursor: pointer;
 }
 /*Jesus*/
+/*Leonardo*/
+.login-container button:hover {
+  background-color: #7562ff;
+}
+/*Leonardo*/
 
 </style>

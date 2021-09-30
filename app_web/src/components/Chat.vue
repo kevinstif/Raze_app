@@ -6,7 +6,61 @@
       <button @click="logout">Logout</button>
     </header>
     <!--Jesus-->
+    <!--Leonardo-->
+    <section>
+      <main>
+        <div v-for="(msg, index) in messages" v-bind:key="'index-'+index"
+             :class="['message', sentOrReceived(msg.userUID)]"> <!--Advisor ↔ advised  message → msg-->
+          <img :src="msg.photoURL" :alt="msg.displayName">
+          <p>{{ msg.text }}</p>
+        </div>
+ <!--Leonardo-->
 </template>
+
+
+<script>
+//Leonardo
+import firebase from "firebase/compat";
+export default {
+  mounted() {
+    this.db.collection('messages').orderBy('createdAt')
+        .onSnapshot(querySnap => {
+          this.messages = querySnap.docs.map(doc => doc.data())
+        })
+  },
+  data() {
+    return {
+      user: firebase.auth().currentUser,
+      db: firebase.firestore(),
+      message: '',
+      messages: [],
+    }
+  },
+  methods: {
+    logout() {
+      firebase.auth().signOut()
+    },
+    sentOrReceived(userUID) {
+      return userUID === this.user.uid ? 'sent' : 'received'
+    },
+    
+    async sendMessage() {
+      const messageInfo = {
+        'userUID': this.user.uid,
+        'displayName': this.user.displayName,
+        'photoURL': this.user.photoURL,
+        'text': this.message,
+        'createdAt': Date.now(),
+      }
+      await this.db.collection('messages').add(messageInfo)
+      this.message = ''
+      this.$refs['scrollable'].scrollIntoView({ behavior: 'smooth' })
+    }
+    //Leonardo
+  }
+}
+</script>
+
 
 <style scoped>
 /*Yisus*/
@@ -44,4 +98,49 @@
   padding: 0 10px;
 }
 /*Yisus*/
+.wrapper .message.sent p {
+  color: #fff;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.wrapper .message img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+}
+.wrapper .message p {
+  max-width: 35%;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: #fff;
+  text-align: left;
+  
+}
+/*Leonardo*/
+.wrapper .message.sent p {
+  color: #fff;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.wrapper .message img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+}
+.wrapper .message p {
+  max-width: 35%;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: #fff;
+  text-align: left;
+}
+/*Leonardo*/
 </style>
