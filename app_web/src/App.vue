@@ -21,6 +21,12 @@
         <router-view/>
       </v-container>
     </v-main>
+       <!--Razze chat 
+      <div id="app">
+    <Chat v-if="user"></Chat>
+    <Login v-else></Login>
+  </div>
+  -->
   </v-app>
 </template>
 
