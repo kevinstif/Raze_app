@@ -31,8 +31,19 @@
 </template>
 
 <script>
+import Chat from './components/Chat'
+import Login from './components/Login'
+import firebase from "firebase/compat";
 export default {
-  name: 'App'
+  data() {
+    return {
+      user: firebase.auth().currentUser
+    }
+  },
+  name: 'App',
+  components: {
+    Chat, Login
+  }
 }
 </script>
 
