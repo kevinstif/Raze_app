@@ -14,7 +14,9 @@
       <v-spacer></v-spacer>
       <v-btn plain to="/home" color="white">HOME</v-btn>
       <v-btn plain to="/Posts" color="white">Posts</v-btn>
+      <v-btn plain to="/Chat" color="white">Chat</v-btn>
       <v-btn plain to="/about" color="white">ABOUT</v-btn>
+
     </v-app-bar>
     <v-main>
       <v-container fluid>
@@ -23,16 +25,13 @@
     </v-main>
        <!--Razze chat 
       <div id="app">
-    <Chat v-if="user"></Chat>
-    <Login v-else></Login>
+
   </div>
   -->
   </v-app>
 </template>
 
 <script>
-import Chat from './components/Chat'
-import Login from './components/Login'
 import firebase from "firebase/compat";
 export default {
   data() {
@@ -41,9 +40,6 @@ export default {
     }
   },
   name: 'App',
-  components: {
-    Chat, Login
-  }
 }
 </script>
 

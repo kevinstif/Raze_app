@@ -16,6 +16,11 @@ const routes = [
     component:()=>import('../posts/pages/post-manager.vue')
   },
   {
+    path: '/Chat',
+    name: 'Chat',
+    component:()=>import('../components/Access-chat')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
