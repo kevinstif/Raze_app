@@ -1,18 +1,22 @@
 <template>
   <v-container>
-    <AddPost></AddPost>
+    <div class="search rounded-pill">
+      <input type="text">
+      <v-btn class="button_search" icon>
+        <v-icon>fas fa-search</v-icon>
+      </v-btn>
+    </div>
     <PostList v-bind:posts="posts" ></PostList>
   </v-container>
 </template>
 
 <script>
 import PostServices from '../services/posts.services'
-import AddPost from "./add-post";
 import PostList from "./post-list";
 
 export default {
   name: "post-manager",
-  components: {PostList, AddPost},
+  components: {PostList},
   data:()=>({
     posts:[],
   }),
@@ -44,5 +48,24 @@ export default {
 </script>
 
 <style scoped>
+
+.search{
+  width: 30%;
+  margin: auto;
+  border: 1px solid #000000;
+
+}
+
+.search input{
+  outline: none;
+  padding: 0 20px;
+  width: 90%;
+  color: #000000;
+}
+
+.button_search{
+  height: 20px;
+  width: auto;
+}
 
 </style>
