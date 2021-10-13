@@ -17,20 +17,27 @@ export default {
     posts:[],
   }),
   methods:{
-    getDisplayTutorial(post){
+    compareRates(post1, post2){
+      return post2.rate - post1.rate;
+    },
+    getDisplayPost(post, index){
       return {
         id:post.id,
         title:post.title,
         img:post.img,
         description:post.description,
-        status: post.published
+        status: post.published,
+        rate: post.rate,
+        isMain: (index <= 2)
       }
     },
-    retrieveTutorials(){
+    retrievePosts(){
       PostServices.getAll()
           .then(response=>{
-            this.posts=response.data.map(this.getDisplayTutorial);
-            console.log(response.data)
+            response.data.sort(this.compareRates);
+            this.posts=response.data.map(this.getDisplayPost);
+            console.log(response.data);
+            console.log(this.posts)
           })
           .catch(e=>{
             console.log(e)
@@ -38,7 +45,7 @@ export default {
     },
   },
   mounted() {
-    this.retrieveTutorials();
+    this.retrievePosts();
   }
 }
 </script>

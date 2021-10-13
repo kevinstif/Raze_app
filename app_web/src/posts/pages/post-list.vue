@@ -1,8 +1,12 @@
 <template>
+
   <v-main>
-    <div v-for="post in posts" v-bind:key="post.id">
-      <PostItem v-bind:post="post"></PostItem>
-    </div>
+    <v-row>
+      <v-col class="cardColumn mx-auto" :cols="post.isMain ? '12' : '6'" :md="post.isMain ? '4' : '3'"  v-for="post in posts" v-bind:key="post.id">
+        <PostItem v-bind:post="post"></PostItem>
+      </v-col>
+    </v-row>
+
   </v-main>
 </template>
 
@@ -18,5 +22,9 @@ export default {
 </script>
 
 <style scoped>
-
+@media (max-width: 940px) {
+  v-col{
+    columns: 12;
+  }
+}
 </style>

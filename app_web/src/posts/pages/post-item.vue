@@ -1,63 +1,23 @@
 <template>
   <v-container>
-    <v-card>
-      <v-card-title>{{post.title}}</v-card-title>
-      <!--TODO: the image will be place here-->
-      <v-card-text>{{post.description}}</v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
+    <v-card outlined class="mx-auto card">
+      <v-img :src="post.img" class="cardImage white--text align-start" :height="post.isMain ? '500px' : '300px'">
+        <v-card-title class="white--text title">{{post.title}}</v-card-title>
+      </v-img>
+      <v-card-text class="text--primary black--text">{{post.description}}</v-card-text>
+      <v-card-actions class="pa-3">
 
-        <v-menu left bottom>
-          <template v-slot:activator="{ on1, attrs1 }">
-            <v-btn icon v-bind="attrs1" v-on="on1">
-              <v-icon>mdi-dots-horizontal</v-icon>
-            </v-btn>
-          </template>
+        <v-row>
+          <v-col align-self="auto">
+            <v-icon color="warning" size="150%">mdi-star</v-icon>
 
-          <!-- Edit Post -->
-          <v-dialog v-model="dialogEdit" max-width="500px">
-            <v-card>
-              <v-card-title>Edit Post</v-card-title>
-              <v-card-text>
-                <v-text-field label="Title" v-model="post.title"></v-text-field>
-                <v-text-field label="Description" v-model="post.description"></v-text-field>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" text @click="close">Cancel</v-btn>
-                <v-btn color="primary" @click="updatePost">Save</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+            {{post.rate}}
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col><v-btn class="white--text" rounded width="20%" color="#002C3E" >View</v-btn></v-col>
+        </v-row>
 
-          <!-- Delete Post Confirmation Dialog -->
-          <v-dialog v-model="dialogDelete" max-width="600px">
-            <v-card>
-              <v-card-title>Delete Post</v-card-title>
-              <v-card-text>Are you sure you want to delete this item?</v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" text @click="closeDelete">Cancel</v-btn>
-                <v-btn color="primary" @click="confirmDeletePost">Save</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
 
-          <template v-slot:activator="{ on, attrs }">
-            <v-list>
-              <v-list-item v-bind="attrs" v-on="on" @click="editPost">
-                <v-icon>mdi-pencil</v-icon>
-                <v-list-item-title>Edit post</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item v-bind="attrs" v-on="on" @click="deletePost">
-                <v-icon>mdi-delete</v-icon>
-                <v-list-item-title>Delete post</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </template>
-
-        </v-menu>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -123,5 +83,10 @@ export default {
 </script>
 
 <style scoped>
-
+.title{
+  background-image: linear-gradient(rgba(28, 28, 30, 0.7), rgba(35, 35, 37, 0.7));
+}
+.card:hover{
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+}
 </style>
