@@ -1,9 +1,20 @@
 <template>
   <v-container>
+    <div class="back">
+      <v-btn>
+        <v-icon @click="retrieveTutorials">fas fa-arrow-left</v-icon>
+      </v-btn>
+    </div>
     <div class="search rounded-pill">
-      <input type="text">
-      <v-btn class="button_search" icon>
+      <input type="text" placeholder="search" v-model="title">
+      <v-btn class="button_search" icon @click="searchTitle">
         <v-icon>fas fa-search</v-icon>
+      </v-btn>
+    </div><br>
+
+    <div class="center">
+      <v-btn icon>
+        <v-icon>fas fa-plus-circle</v-icon>
       </v-btn>
     </div>
     <PostList v-bind:posts="posts" ></PostList>
@@ -19,6 +30,7 @@ export default {
   components: {PostList},
   data:()=>({
     posts:[],
+    title:'',
   }),
   methods:{
     getDisplayTutorial(post){
@@ -40,6 +52,17 @@ export default {
             console.log(e)
           })
     },
+    searchTitle(){
+      PostServices.findByTitle(this.title)
+          .then(response=>{
+            this.posts=response.data.map(this.getDisplayTutorial);
+            console.log(response.data)
+          })
+          .catch(e=>{
+            console.log(e)
+          });
+      this.title='';
+    }
   },
   mounted() {
     this.retrieveTutorials();
@@ -50,10 +73,14 @@ export default {
 <style scoped>
 
 .search{
-  width: 30%;
   margin: auto;
+  width: 30%;
   border: 1px solid #000000;
+}
 
+.center{
+  margin: auto;
+  width: 5%;
 }
 
 .search input{
@@ -66,6 +93,10 @@ export default {
 .button_search{
   height: 20px;
   width: auto;
+}
+
+.back{
+  width: 5%;
 }
 
 </style>
