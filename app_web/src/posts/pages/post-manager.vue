@@ -1,18 +1,21 @@
 <template>
   <v-container>
-    <AddPost></AddPost>
+    <div class="center">
+      <v-btn to="/addPost" icon color="black" >
+        <v-icon>fas fa-plus-circle</v-icon>
+      </v-btn>
+    </div>
     <PostList v-bind:posts="posts" ></PostList>
   </v-container>
 </template>
 
 <script>
 import PostServices from '../services/posts.services'
-import AddPost from "./add-post";
 import PostList from "./post-list";
 
 export default {
   name: "post-manager",
-  components: {PostList, AddPost},
+  components: {PostList},
   data:()=>({
     posts:[],
   }),
@@ -44,5 +47,12 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+.center{
+  width: 5%;
+  margin: auto;
+}
 
 </style>

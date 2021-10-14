@@ -21,6 +21,11 @@ const routes = [
     component:()=>import('../components/Access-chat')
   },
   {
+    path: '/addPost',
+    name: '/addPost',
+    component:()=>import('../posts/pages/add-post')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

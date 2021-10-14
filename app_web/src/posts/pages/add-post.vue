@@ -3,9 +3,14 @@
     <v-card>
       <v-card-title>Create Post</v-card-title>
       <v-form @submit="addPost">
+        <div class="img">
+          <img v-if="item.imageUrl" :src="item.imageUrl" height="500px" />
+        </div>
         <v-card-text>
-          <v-text-field label="Title" v-model="title"></v-text-field>
-          <v-text-field label="Description" v-model="description"></v-text-field>
+          <input type="file" accept="image/*" @change="onChange" class="my-10"/>
+          <v-text-field label="Title" placeholder="Title" outlined v-model="title"></v-text-field>
+          <v-textarea outlined name="Description" placeholder="Description" label="Description"
+                      v-model="description"></v-textarea>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -24,7 +29,11 @@ export default {
   data:()=>({
     title:'',
     description:'',
-    img:''
+    img:'',
+    item:{
+      image : null,
+      imageUrl: null
+    }
   }),
   methods:{
     addPost(item){
@@ -49,11 +58,21 @@ export default {
       this.title='';
       this.img='';
       this.description='';
+    },
+    onChange(e) {
+      const file = e.target.files[0]
+      this.image = file
+      this.item.imageUrl = URL.createObjectURL(file)
     }
   }
 }
 </script>
 
 <style scoped>
-
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
 </style>
