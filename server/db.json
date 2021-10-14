@@ -1,0 +1,22 @@
+{
+  "interests": [
+    {
+      "title": "Casual",
+      "description": "Ropa informal",
+      "apiId": "v1",
+      "id": 1
+    },
+    {
+      "title": "Formal",
+      "description": "Ropa formal y elegante",
+      "apiId": "v1",
+      "id": 2
+    },
+    {
+      "title": "Sport",
+      "description": "Ropa deportiva",
+      "apiId": "v1",
+      "id": 3
+    }
+  ]
+}
