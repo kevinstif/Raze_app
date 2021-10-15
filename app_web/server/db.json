@@ -14,5 +14,19 @@
       "description": "the t-shirt black is the best",
       "published": true
     }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "title": "hair style"
+    },
+    {
+      "id": 2,
+      "title": "clothes"
+    },
+    {
+      "id": "950b7b3c-f8c7-432c-82c6-41969c3e0f60",
+      "title": "colors"
+    }
   ]
 }

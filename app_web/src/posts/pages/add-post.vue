@@ -12,7 +12,6 @@
               <v-col>
                 <input type="file" accept="image/*" @change="onChange" class="my-10"/>
               </v-col>
-              <v-spacer></v-spacer>
               <v-col>
                 <TagsManager></TagsManager>
               </v-col>
