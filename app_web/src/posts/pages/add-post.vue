@@ -7,7 +7,17 @@
           <img v-if="item.imageUrl" :src="item.imageUrl" height="500px" />
         </div>
         <v-card-text>
-          <input type="file" accept="image/*" @change="onChange" class="my-10"/>
+          <v-container>
+            <v-row>
+              <v-col>
+                <input type="file" accept="image/*" @change="onChange" class="my-10"/>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-col>
+                <TagsManager></TagsManager>
+              </v-col>
+            </v-row>
+          </v-container>
           <v-text-field label="Title" placeholder="Title" outlined v-model="title"></v-text-field>
           <v-textarea outlined name="Description" placeholder="Description" label="Description"
                       v-model="description"></v-textarea>
@@ -24,8 +34,10 @@
 <script>
 import { v4 as uuidv4 } from 'uuid';
 import PostServices from "@/posts/services/posts.services";
+import TagsManager from "../../tags/pages/tags-manager";
 export default {
   name: "add-post",
+  components: {TagsManager},
   data:()=>({
     title:'',
     description:'',
@@ -33,7 +45,12 @@ export default {
     item:{
       image : null,
       imageUrl: null
-    }
+    },
+    /*tags:[
+        't-shirt',
+        'jeans',
+        'shorts',
+    ]*/
   }),
   methods:{
     addPost(item){
@@ -74,5 +91,10 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+}
+
+.center{
+  margin: auto;
+  width: 5%;
 }
 </style>
