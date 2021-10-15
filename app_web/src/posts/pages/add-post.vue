@@ -4,7 +4,7 @@
       <v-card-title>Create Post</v-card-title>
       <v-form @submit="addPost">
         <div class="img">
-          <img v-if="item.imageUrl" :src="item.imageUrl" height="500px" />
+          <img v-if="item.imageUrl" :src="item.imageUrl" height="500px"/>
         </div>
         <v-card-text>
           <v-container>
@@ -13,7 +13,7 @@
                 <input type="file" accept="image/*" @change="onChange" class="my-10"/>
               </v-col>
               <v-col>
-                <TagsManager></TagsManager>
+                <TagsManager v-on:save-tag="getTagId"></TagsManager>
               </v-col>
             </v-row>
           </v-container>
@@ -23,7 +23,12 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" class="my-4 mx-4" type="submit">Publish</v-btn>
+          <v-btn  rounded  color="red"
+                  class="my-4 mx-4" type="cancel">Cancel
+          </v-btn>
+          <v-btn :disabled="!enabledPublish" rounded  color="green"
+                 class="my-4 mx-4" type="submit">Publish
+          </v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -41,15 +46,12 @@ export default {
     title:'',
     description:'',
     img:'',
+    tagId:0,
+    enabledPublish:false,
     item:{
       image : null,
       imageUrl: null
-    },
-    /*tags:[
-        't-shirt',
-        'jeans',
-        'shorts',
-    ]*/
+    }
   }),
   methods:{
     addPost(item){
@@ -59,7 +61,8 @@ export default {
         title:this.title,
         img:this.img,
         description:this.description,
-        published:true
+        published:true,
+        tagId:this.tagId
       }
 
       PostServices.create(newPost)
@@ -70,15 +73,19 @@ export default {
             console.log(e)
           })
 
-      //this.$emit('add-post',newPost);
       this.title='';
       this.img='';
       this.description='';
+      this.tagId=0;
     },
     onChange(e) {
       const file = e.target.files[0]
       this.image = file
       this.item.imageUrl = URL.createObjectURL(file)
+    },
+    getTagId(tagId){
+      this.enabledPublish=true;
+      this.tagId=tagId;
     }
   }
 }
