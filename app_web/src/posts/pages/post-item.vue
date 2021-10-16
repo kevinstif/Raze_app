@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>{{post.title}}</v-card-title>
-      <!--TODO: the image will be place here-->
+      <v-img :src="post.img" width="500px" height="auto"></v-img>
       <v-card-text>{{post.description}}</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
