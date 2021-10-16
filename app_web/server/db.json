@@ -1,4 +1,18 @@
 {
+  "tags": [
+    {
+      "id": 1,
+      "title": "hair style"
+    },
+    {
+      "id": 2,
+      "title": "clothes"
+    },
+    {
+      "id": "950b7b3c-f8c7-432c-82c6-41969c3e0f60",
+      "title": "colors"
+    }
+  ],
   "posts": [
     {
       "id": 1,
@@ -23,20 +37,22 @@
       "description": "prueba de enlace de etiquetas",
       "published": true,
       "tagId": 1
-    }
-  ],
-  "tags": [
-    {
-      "id": 1,
-      "title": "hair style"
     },
     {
-      "id": 2,
-      "title": "clothes"
+      "id": "45402588-3bed-4646-b573-3d69e0e377fe",
+      "title": "tag de clothes",
+      "img": "",
+      "description": "",
+      "published": true
     },
     {
-      "id": "950b7b3c-f8c7-432c-82c6-41969c3e0f60",
-      "title": "colors"
+      "id": "ebd4565d-120e-43c2-9d3a-13e6c6c00247",
+      "title": "",
+      "img": "",
+      "description": "",
+      "published": true,
+      "tagId": 0
     }
   ]
+
 }

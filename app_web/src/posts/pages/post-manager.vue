@@ -1,13 +1,13 @@
 <template>
   <v-container>
     <div class="back">
-      <v-btn>
-        <v-icon @click="retrieveTutorials">fas fa-arrow-left</v-icon>
+      <v-btn icon color="black">
+        <v-icon  @click="retrieveTutorials">fas fa-arrow-left</v-icon>
       </v-btn>
     </div>
     <div class="search rounded-pill">
       <input type="text" placeholder="search" v-model="title">
-      <v-btn class="button_search" icon @click="searchTitle">
+      <v-btn class="button_search" icon @click="searchTag">
         <v-icon>fas fa-search</v-icon>
       </v-btn>
     </div><br>
@@ -23,6 +23,7 @@
 
 <script>
 import PostServices from '../services/posts.services'
+import TagsServices from "../../tags/services/tags.sevices";
 import PostList from "./post-list";
 
 export default {
@@ -31,6 +32,10 @@ export default {
   data:()=>({
     posts:[],
     title:'',
+    tag:{
+      id:0,
+      title:'',
+    }
   }),
   methods:{
     getDisplayTutorial(post){
@@ -40,6 +45,12 @@ export default {
         img:post.img,
         description:post.description,
         status: post.published
+      }
+    },
+    getDisplayTag(tag){
+      return {
+        id:tag.id,
+        title:tag.title
       }
     },
     retrieveTutorials(){
@@ -61,6 +72,28 @@ export default {
           .catch(e=>{
             console.log(e)
           });
+      this.title='';
+    },
+    getTag(){
+      TagsServices.findByTitle(this.title)
+          .then(response=>{
+            this.tag=response.data.map(this.getDisplayTag);
+            console.log(response.data)
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+    },
+    searchTag(){
+      this.getTag()
+      PostServices.findByTag(this.tag[0].id)
+        .then(response=>{
+          this.posts=response.data.map(this.getDisplayTutorial);
+          console.log(response.data)
+        })
+        .catch(e=>{
+          console.log(e)
+        });
       this.title='';
     }
   },

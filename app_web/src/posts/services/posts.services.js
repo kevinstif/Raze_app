@@ -27,6 +27,10 @@ class PostsService{
     findByTitle(title){
         return http.get(`${this.endPoint}?title=${title}`);
     }
+
+    findByTag(tagId){
+        return http.get(`${this.endPoint}?tagId=${tagId}`);
+    }
 }
 
 export default new PostsService();
