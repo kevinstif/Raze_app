@@ -14,5 +14,17 @@
       "description": "the t-shirt black is the best",
       "published": true
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email":"jesu0902@gmail.com",
+      "password":"goku123"
+    },
+    {
+      "id": 2,
+      "email":"zara1909@gmail.com",
+      "password":"hellokitty21"
+    }
   ]
 }
