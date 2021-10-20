@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app color="primary">
       <v-app-bar-title>
-        <v-img :src="require('./img/Logo.png')"/>
+        <v-img :src="require('../img/Logo.png')"/>
       </v-app-bar-title>
       <v-spacer></v-spacer>
       <h3 >User Name</h3>

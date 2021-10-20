@@ -1,10 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Register from "@/login/pages/Register";
+import Web from "@/views/Web";
+
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/Web/:idUser',
+    name: 'Web',
+    component: Web
+  },
   {
     path: '/Register',
     name: 'Register',

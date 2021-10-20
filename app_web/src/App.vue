@@ -3,6 +3,7 @@
 <register></register>
   </div>
 </template>
+
 <script>
 
 import Register from "@/login/pages/Register";

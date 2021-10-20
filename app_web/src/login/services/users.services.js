@@ -14,7 +14,7 @@ class  UsersService{
         return http.delete(`${this.endpoint}/${id}`)
     }
     findBy(email){
-        return http.get(`${this.endpoint}?title=${email}`);
+        return http.get(`${this.endpoint}?email=${email}`);
     }
 }
 export default new UsersService();

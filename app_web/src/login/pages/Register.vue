@@ -143,8 +143,12 @@ import UsersService from '../services/users.services'
 export default {
   name:'register',
   data: () => ({
+    userRetrieved:{},
     step: 1,
     signEmail:'',
+    idResponse:'',
+    emailResponse:' ',
+    passwordResponse:' ',
     signPassword:'',
     createName:'',
     createEmail:' ',
@@ -154,11 +158,25 @@ export default {
     source: String
   },
   methods:{
+    getDisplayUser(user){
+      return{
+        id:user.id,
+        email:user.email,
+        password:user.password
+      };
+    },
     validateData(){
+      console.log("Ya entro")
       UsersService.findBy(this.signEmail)
+          .then(response=>{
+            this.userRetrieved=response.data[0]
+            this.idResponse=this.userRetrieved.id
+             this.signToApp(this.idResponse)
+      })
     },
     signToApp(){
-
+      console.log(this.idResponse)
+      this.$router.push(`web/${this.idResponse}`);
     }
   }
 };
