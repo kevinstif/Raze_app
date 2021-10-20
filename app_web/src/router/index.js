@@ -8,9 +8,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/Web/:idUser',
-    name: 'Web',
-    component: Web
+    path: '/',
+    name: 'Register',
+    component: Register,
   },
   {
     path: '/Register',
@@ -18,23 +18,30 @@ const routes = [
     component: Register
   },
   {
-    path: '/Posts',
-    name: 'Posts',
-    component:()=>import('../posts/pages/post-manager.vue')
+    path: '/Web/:idUser?',
+    name: 'Web',
+    component: Web,
+    children:[
+      {
+        path: '/Posts',
+        name: 'Posts',
+        component:()=>import('../posts/pages/post-manager.vue')
+      },
+      {
+        path: '/Chat',
+        name: 'Chat',
+        component:()=>import('../components/Access-chat')
+      },
+      {
+        path: '/about',
+        name: 'About',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      }
+    ]
   },
-  {
-    path: '/Chat',
-    name: 'Chat',
-    component:()=>import('../components/Access-chat')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
 ]
 
 const router = new VueRouter({

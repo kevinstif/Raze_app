@@ -1,16 +1,14 @@
 <template>
   <div>
-<register></register>
+<router-view></router-view>
   </div>
 </template>
 
 <script>
 
-import Register from "@/login/pages/Register";
 export default {
 
   name: 'App',
-  components: {Register},
 }
 </script>
 
