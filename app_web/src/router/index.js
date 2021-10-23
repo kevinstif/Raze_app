@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import PostManager from '../posts/pages/post-manager'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Posts',
-    component:()=>import('../posts/pages/post-manager.vue')
+    path: '/posts',
+    name: 'Post',
+    component: PostManager
+  },
+  {
+    path:'/',
+    name:'Home',
+    component: PostManager
   },
   {
     path: '/Chat',

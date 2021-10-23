@@ -96,6 +96,7 @@ export default {
         title:this.title,
         img:this.img,
         description:this.description,
+        rate:0,
         published:true,
         tagId:this.tagId
       }
@@ -130,6 +131,7 @@ export default {
       console.log(this.image)
       this.enableSave=true
     },
+    
     //carga de imagen al storage
     uploadImage(){
       const refImg=ref.child('images/'+ this.image.name)
