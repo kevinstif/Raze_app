@@ -16,6 +16,9 @@ export default {
   data:()=>({
     posts:[],
   }),
+  mounted() {
+    this.retrievePosts();
+  },
   methods:{
     compareRates(post1, post2){
       return post2.rate - post1.rate;
@@ -44,9 +47,7 @@ export default {
           })
     },
   },
-  mounted() {
-    this.retrievePosts();
-  }
+
 }
 </script>
 
