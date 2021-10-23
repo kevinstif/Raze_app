@@ -1,4 +1,5 @@
 <template>
+  <div><br>
   <v-row align="center" class="list px-3 mx-auto">
 
     <v-col cols="12" md="8" class="mt-10">
@@ -6,7 +7,7 @@
     </v-col>
 
     <v-col cols="12" md="4" class="mt-10">
-      <v-btn color="#F7444E" small @click="searchTitle">Search</v-btn>
+      <v-btn class="white--text" rounded width="30%" color="#002C3E" @click="searchTitle">Search</v-btn>
     </v-col>
 
     <v-col cols="12" sm="12">
@@ -29,6 +30,7 @@
       </v-card>
     </v-col>
   </v-row>
+  </div>
 </template>
 
 <script>

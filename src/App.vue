@@ -1,16 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="#f7855f">
-      <div class="d-flex align-center mr-2">
-        Raze
-      </div>
-      <!--
-      <v-btn to="/interests" text>
-        Interests
-      </v-btn> -->
-
-    </v-app-bar>
-    <v-main>
+    <v-main class="bc">
       <router-view />
     </v-main>
   </v-app>
@@ -21,3 +11,9 @@ export default {
   name: "app",
 };
 </script>
+
+<style>
+.bc{
+  background-color: #F7F8F3;
+}
+</style>

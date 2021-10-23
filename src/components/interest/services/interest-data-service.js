@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../../../core/http-common";
 import axios from "axios";
 
 class interestDataService {

@@ -10,17 +10,17 @@ export default new Router({
             path: "/",
             alias: "/interests",
             name: "interests",
-            component: () => import("./components/interests-list")
+            component: () => import("../components/interest/pages/interests-list")
         },
         {
             path: "/interests/:id",
             name: "interest-details",
-            component: () => import("./components/interest")
+            component: () => import("../components/interest/pages/interest")
         },
         {
             path: "/add",
             name: "add",
-            component: () => import("./components/add-interest")
+            component: () => import("../components/interest/pages/add-interest")
         }
     ]
 });

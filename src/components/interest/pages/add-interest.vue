@@ -18,15 +18,15 @@
             required></v-text-field>
       </v-form>
 
-      <v-btn color="#F7444E" class="mt-5 s-class" @click="saveInterest">Submit</v-btn>
+      <v-btn class="white--text s-class" rounded width="30%" color="#002C3E" @click="saveInterest">Submit</v-btn>
     </div>
 
     <div v-else>
       <v-card class="mc">
         <v-card-title>
-          Your interest was submitted successfully!
+          Your interest was submitted successfully
         </v-card-title>
-        <v-btn color="#F7444E" class="validation-class" to="/interests" text>Continue</v-btn>
+        <v-btn color="secondary" class="validation-class" to="/interests" text>Continue</v-btn>
       </v-card>
     </div>
   </div>

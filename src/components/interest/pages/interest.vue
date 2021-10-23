@@ -1,6 +1,10 @@
 <template>
+  <div>
+    <br>
+    <v-btn class="float-left" to="/interests" text>Back ←</v-btn>
   <div v-if="currentInterest" class="edit-form py-3">
-    <p class="headline">Edit interest</p>
+    <br>
+    <p class="headline text-center">Edit interest</p>
 
     <v-form ref="form" lazy-validation>
       <v-text-field
@@ -22,26 +26,26 @@
 
       <v-btn v-if="currentInterest.published"
              @click="updatePublished(false)"
-             color="primary" small class="mr-2">UnPublish</v-btn>
+             class="white--text" rounded width="30%" color="#002C3E">UnPublish</v-btn>
 
       <v-btn v-else
              @click="updatePublished(true)"
-             color="primary" small class="mr-2">Publish</v-btn>
+             class="white--text ml-15" rounded width="20%" color="#002C3E">Publish</v-btn>
 
-      <v-btn color="error" small class="mr-2" @click="deleteInterest">
+      <v-btn class="white--text ml-10" rounded width="20%" color="#002C3E" @click="deleteInterest">
         Delete
       </v-btn>
 
-      <v-btn color="success" small @click="updateInterest">
+      <v-btn class="white--text ml-10" rounded width="20%" color="#002C3E" @click="updateInterest">
         Update
       </v-btn>
     </v-form>
 
-    <p class="mt-3">{{ message }}</p>
   </div>
 
-  <div v-else>
-    <p>click on a interest</p>
+    <div v-else>
+     <p>click on a interest</p>
+    </div>
   </div>
 </template>
 
@@ -90,7 +94,7 @@ export default {
       interestDataService.update(this.currentInterest.id, this.currentInterest)
           .then((response) => {
             console.log(response.data);
-            this.message = "The interest was updated successfully";
+            alert (this.message = "The interest was updated successfully");
           })
           .catch((e) => {
             console.log(e);
@@ -117,7 +121,7 @@ export default {
 
 <style>
 .edit-form {
-  max-width: 300px;
+  max-width: 600px;
   margin: auto;
 }
 </style>
