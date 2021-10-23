@@ -6,7 +6,8 @@
       "img": "https://i.pinimg.com/originals/ae/da/1e/aeda1ee09ea72c3e9c1b0cd552bd82ed.jpg",
       "description": "the best colors for the summer",
       "rate": 5,
-      "published": true
+      "published": true,
+      "tagId": 2
     },
     {
       "id": 2,
@@ -62,7 +63,112 @@
       "img": "https://i.pinimg.com/originals/4d/d6/d6/4dd6d64b467fabfa2574a09a808e8853.jpg",
       "description": "the t-shirt black is the best",
       "rate": 4.8,
-      "published": true
+      "published": true,
+      "tagId": 2
+    },
+    {
+      "id": "ab902ae2-30c4-4fb8-abe2-74b38bdefc39",
+      "title": "hola",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimages.jpg?alt=media&token=9d535d16-a1cd-4db8-9c8c-481201864af3",
+      "description": "que hace",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 1
+    },
+    {
+      "id": "48241141-c7e9-42c1-bf2b-72a2ae3f2b03",
+      "title": "55",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimages.jpg?alt=media&token=9d535d16-a1cd-4db8-9c8c-481201864af3",
+      "description": "53",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 1
+    },
+    {
+      "id": "0194575d-a97f-44da-82b9-d56df64575b0",
+      "title": "hola denuevo",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimagen_2.jpg?alt=media&token=945a8f0e-e728-4ef1-ad3b-b5267e8dfad4",
+      "description": "XD",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 1
+    },
+    {
+      "id": "41a01c4e-fe33-4485-87de-d24becc136fc",
+      "title": "this is clothes",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimg.jpg?alt=media&token=44806756-979d-4b7d-bb96-9c5bb9af09d6",
+      "description": "hello",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 2
+    },
+    {
+      "id": "5a79cc4c-3003-44ac-840a-333b35e0661f",
+      "title": "ultimo intento",
+      "img": "",
+      "description": "confirmar estilos",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 2
+    },
+    {
+      "id": "4890b48a-9e68-4ab2-aa1e-2cf06f4e71ff",
+      "title": "ultimo",
+      "img": "",
+      "description": "cualquier cosa",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 2
+    },
+    {
+      "id": "85d37ac6-e7ff-4ebb-83c1-593feacaa386",
+      "title": "123",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fmas.png?alt=media&token=ce7326f5-a1f0-430a-b4d8-232f479ba1e5",
+      "description": "123",
+      "rate": 2.7,
+      "published": true,
+      "tagId": "950b7b3c-f8c7-432c-82c6-41969c3e0f60"
+    },
+    {
+      "id": "4ce25838-f93f-40c1-998a-505edc675927",
+      "title": "prueba 5",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2FoufitCard2_1.jpg?alt=media&token=b4d79b64-0bdf-4f4a-81f4-176e97934afc",
+      "description": "prueba 5",
+      "rate": 2.7,
+      "published": true,
+      "tagId": 1
+    },
+    {
+      "id": "c98096f8-69dd-4b5c-982b-9a05335a4850",
+      "title": "prueba 6",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2FoufitCar2_2.jpg?alt=media&token=dd9325eb-c16d-4524-9314-d9afa8e33ef5",
+      "description": "prueba 6",
+      "rate": 0,
+      "published": true,
+      "tagId": 2
+    },
+    {
+      "id": "3cd1e40d-8d2f-408b-b8b1-16e47010d5f5",
+      "title": "prueba 7",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=611e43a9-8233-4824-8a50-fdc687e7036a",
+      "description": "hola",
+      "rate": 0,
+      "published": true,
+      "tagId": 2
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "title": "hair style"
+    },
+    {
+      "id": 2,
+      "title": "clothes"
+    },
+    {
+      "id": "950b7b3c-f8c7-432c-82c6-41969c3e0f60",
+      "title": "colors"
     }
   ]
 }

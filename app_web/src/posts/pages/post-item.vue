@@ -6,11 +6,10 @@
       </v-img>
       <v-card-text class="text--primary black--text">{{post.description}}</v-card-text>
       <v-card-actions class="pa-3">
-
+        <v-spacer></v-spacer>
         <v-row>
           <v-col align-self="auto">
             <v-icon color="warning" size="150%">mdi-star</v-icon>
-
             {{post.rate}}
           </v-col>
           <v-spacer></v-spacer>

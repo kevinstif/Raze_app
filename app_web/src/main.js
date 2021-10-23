@@ -17,10 +17,16 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+const storage=firebase.storage();
+
 firebase.auth().onAuthStateChanged(() => new Vue({
   vuetify,
   router,
   render: h => h(App)
 }).$mount('#app'))
+
+export {
+  storage
+}
 
 
