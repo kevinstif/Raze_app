@@ -28,26 +28,13 @@
           <v-btn  rounded  color="red"
                   class="my-4 mx-4" type="cancel">Cancel
           </v-btn>
-          <v-btn :disabled="!enableSave" color="yellow" rounded @click="uploadImage">Save Image</v-btn>
+          <v-btn :disabled="!enableSave" color="yellow" rounded @click="managerImage">Save Image</v-btn>
           <v-btn :disabled="!enabledPublish" rounded  color="green"
-                 class="my-4 mx-4" @click="downloadImage">Publish
+                 class="my-4 mx-4" @click="addPost">Publish
           </v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
-    <v-dialog v-model="enabledConfirm" max-width="500px">
-      <v-card>
-        <v-card-title>Confirm</v-card-title>
-        <v-card-text>
-          <p>are you sure?</p>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="red" rounded @click="setConfirm">Cancel</v-btn>
-          <v-btn color="green" rounded @click="addPost">Publish</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
     <v-dialog v-model="enableMessage" max-width="500px">
       <v-card>
         <v-card-text>
@@ -131,7 +118,10 @@ export default {
       console.log(this.image)
       this.enableSave=true
     },
-    
+    managerImage(){
+      this.uploadImage();
+      this.downloadImage();
+    },
     //carga de imagen al storage
     uploadImage(){
       const refImg=ref.child('images/'+ this.image.name)
