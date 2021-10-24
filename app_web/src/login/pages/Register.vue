@@ -190,9 +190,9 @@ backface-visibility: unset;
 .letter{
   text-align: center;
   width: auto;
-  color: #78BCC4;
+  color: #F7444E;
 }
 .colum{
-  background-color: #78BCC4;
+  background-color: #F7444E;
 }
 </style>
