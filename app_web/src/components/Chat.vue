@@ -1,9 +1,8 @@
 <template>
-     <!--Jesus-->
+  <!--Jesus-->
   <div class="wrapper">
     <header>
-      <h1>Raze Chat</h1>
-      <button @click="logout">Logout</button>
+      <button class="logout-btn" @click="logout">Logout</button>
     </header>
     <!--Jesus-->
     <!--Leonardo-->
@@ -14,7 +13,7 @@
           <img :src="msg.photoURL" :alt="msg.displayName">
           <p>{{ msg.text }}</p>
         </div>
-    <!--Leonardo-->
+        <!--Leonardo-->
         <div ref="scrollable"></div>
       </main>
 
@@ -52,7 +51,7 @@ export default {
     sentOrReceived(userUID) {
       return userUID === this.user.uid ? 'sent' : 'received'
     },
-    
+
     async sendMessage() {
       const messageInfo = {
         'userUID': this.user.uid,
@@ -82,22 +81,6 @@ body {
   text-align: center;
   margin: 0 auto;
 }
-.wrapper header {
-  background-color: #78BCC4;
-  height: 10vh;
-  min-height: 50px;
-  color: white;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 99;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 2px solid grey;
-}
 .wrapper section {
   display: flex;
   flex-direction: column;
@@ -117,9 +100,6 @@ body {
 .wrapper section main::-webkit-scrollbar {
   width: 0.25rem;
 }
-.wrapper section main::-webkit-scrollbar-track {
-  background: #1e1e24;
-}
 .wrapper section main::-webkit-scrollbar-thumb {
   background: #6649b8;
 }
@@ -132,6 +112,7 @@ body {
   display: flex;
   font-size: 1.5rem;
   border: 2px solid grey;
+  margin-left: -13px;
 }
 .wrapper section form button {
   width: 20%;
@@ -152,7 +133,7 @@ body {
   background-color: #002C3E;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 5px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -213,4 +194,7 @@ body {
   text-align: left;
 }
 /*Leonardo*/
+.logout-btn {
+  margin-left: 93%;
+}
 </style>
