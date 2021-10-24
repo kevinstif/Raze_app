@@ -56,5 +56,25 @@
       "id": "950b7b3c-f8c7-432c-82c6-41969c3e0f60",
       "title": "colors"
     }
+  ],
+  "interests": [
+    {
+      "id": 1,
+      "title": "Casual",
+      "description": "Ropa informal",
+      "published": true
+    },
+    {
+      "id": 2,
+      "title": "Formal",
+      "description": "Ropa formal y elegante",
+      "published": true
+    },
+    {
+      "id": 3,
+      "title": "Sport",
+      "description": "Sport Clothes",
+      "published": false
+    }
   ]
 }

@@ -24,6 +24,21 @@ const routes = [
     path: '/addPost',
     name: '/addPost',
     component:()=>import('../posts/pages/add-post')
+  },
+  {
+    path: "/interests",
+    name: "interests",
+    component: () => import("../components/interest/pages/interests-list")
+  },
+  {
+    path: "/interests/:id",
+    name: "interest-details",
+    component: () => import("../components/interest/pages/interest")
+  },
+  {
+    path: "/add",
+    name: "add",
+    component: () => import("../components/interest/pages/add-interest")
   }
 ]
 
