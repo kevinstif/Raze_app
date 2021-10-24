@@ -26,7 +26,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn  rounded  color="red"
-                  class="my-4 mx-4" type="cancel">Cancel
+                  class="my-4 mx-4" type="cancel" to="/web/posts">Cancel
           </v-btn>
           <v-btn :disabled="!enableSave" color="yellow" rounded @click="managerImage">Save Image</v-btn>
           <v-btn :disabled="!enabledPublish" rounded  color="green"

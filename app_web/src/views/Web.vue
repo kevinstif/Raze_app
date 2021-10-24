@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <nav>
+    <nav class="nav-bar">
       <img src="../img/Logo.png" alt="RazeApp Logo">
       <div class="nav-links" id="navLinks">
         <ul>
@@ -51,6 +51,7 @@ export default {
 <style lang="css">
 .main {
   background-color: #F7F8F3;
+  margin-top: 50px;
 }
 .container{
   width: 100%;
@@ -105,5 +106,12 @@ nav img{
 }
 body {
   background-color: #F7F8F3;
+}
+
+.nav-bar{
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  box-shadow:  0 10px 10px  rgba(0, 0, 0, 0.2);
 }
 </style>
