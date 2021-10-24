@@ -5,6 +5,12 @@
       <img src="./img/Logo.png" alt="RazeApp Logo">
       <div class="nav-links" id="navLinks">
         <ul>
+          <li>
+            <v-btn class="white--text transparent" to="/">
+              <v-icon>mdi-home</v-icon>
+            </v-btn>
+          </li>
+          <li><v-btn class="white--text" text to="/interests">Interest</v-btn></li>
           <li><h3 class="white--text">User Name</h3></li>
           <li><v-btn icon>
             <img class="profile" src="./img/img.png">
