@@ -5,7 +5,7 @@
       <img src="./img/Logo.png" alt="RazeApp Logo">
       <div class="nav-links" id="navLinks">
         <ul>
-          <li><h3 class="white--text">User Name</h3></li>
+          <li><h3 class="white--text"></h3></li>
           <li><v-btn icon>
             <img class="profile" src="./img/img.png">
           </v-btn></li>
@@ -19,20 +19,16 @@
         <router-view/>
       </v-container>
     </v-main>
-    <!--Razze chat
-   <div id="app">
-
-</div>
--->
   </v-app>
 </template>
 
 <script>
 import firebase from "firebase/compat";
 export default {
+
   data() {
     return {
-      user: firebase.auth().currentUser
+      user: firebase.auth().currentUser,
     }
   },
   name: 'App',

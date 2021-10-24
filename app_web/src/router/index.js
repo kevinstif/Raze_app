@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PostManager from '../posts/pages/post-manager'
+import PostDetail from '../posts/pages/post-detail'
 
 Vue.use(VueRouter)
 
@@ -11,9 +12,14 @@ const routes = [
     component: PostManager
   },
   {
-    path:'/',
-    name:'Home',
+    path: '/',
+    name: 'Home',
     component: PostManager
+  },
+  {
+    path: '/main/:userId/post-detail/:postId',
+    name: 'PostDetail',
+    component: PostDetail
   },
   {
     path: '/Chat',
