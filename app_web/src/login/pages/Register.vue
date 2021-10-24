@@ -53,7 +53,7 @@
                         <h3 class="text-center mt-4">Forgot your password ?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn @click="validateData" rounded color="teal accent-3" dark>SIGN IN</v-btn>
+                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark >SIGN IN</v-btn>
                       </div>
                     </v-col>
                     <v-col cols="12" md="4" class="colum">
@@ -123,7 +123,7 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5">
-                        <v-btn rounded color="teal accent-3" dark>SIGN UP</v-btn>
+                        <v-btn rounded color="teal accent-3" dark to="/Web/Posts">SIGN UP</v-btn>
                       </div>
                     </v-col>
                   </v-row>
