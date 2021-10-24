@@ -65,7 +65,7 @@ export default {
     searchTitle(){
       PostServices.findByTitle(this.title)
           .then(response=>{
-            this.posts=response.data.map(this.getDisplayPost());
+            this.posts=response.data.map(this.getDisplayPost);
             console.log(response.data)
           })
           .catch(e=>{
