@@ -67,7 +67,7 @@ export default {
   },
   methods:{
     onBack(){
-      this.$router.push('/posts');
+      this.$router.push('/web/posts');
     },
     retrieveCurrentUser(){
       UsersService.getById(this.$route.params.userId)
@@ -116,7 +116,7 @@ export default {
           .catch(e => {
             console.log(e);
           });
-      this.$router.push('/posts');
+      this.$router.push('/web/posts');
     }
   }
 }

@@ -139,7 +139,7 @@
 
 
 <script>
-import UsersService from '../services/users.services'
+import UsersService from '../../users/services/users.services'
 export default {
   name:'register',
   data: () => ({
