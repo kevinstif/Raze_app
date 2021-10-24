@@ -1,44 +1,57 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PostManager from '../posts/pages/post-manager'
+import Register from "@/login/pages/Register";
+import Web from "@/views/Web";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/posts',
-    name: 'Post',
-    component: PostManager
+    path: '/',
+    name: 'Register',
+    component: Register,
   },
   {
-    path:'/',
-    name:'Home',
-    component: PostManager
+    path: '/Register',
+    name: 'Register',
+    component: Register
   },
   {
-    path: '/Chat',
-    name: 'Chat',
-    component:()=>import('../components/Access-chat')
-  },
-  {
-    path: '/addPost',
-    name: '/addPost',
-    component:()=>import('../posts/pages/add-post')
-  },
-  {
-    path: "/interests",
-    name: "interests",
-    component: () => import("../components/interest/pages/interests-list")
-  },
-  {
-    path: "/interests/:id",
-    name: "interest-details",
-    component: () => import("../components/interest/pages/interest")
-  },
-  {
-    path: "/add",
-    name: "add",
-    component: () => import("../components/interest/pages/add-interest")
+    path: '/Web/:idUser?',
+    name: 'Web',
+    component: Web,
+    children:[
+      {
+        path: '/web/Posts',
+        name: 'Posts',
+        component:()=>import('../posts/pages/post-manager.vue')
+      },
+      {
+        path: '/Chat',
+        name: 'Chat',
+        component:()=>import('../components/Access-chat')
+      },
+      {
+        path: '/addPost',
+        name: '/addPost',
+        component:()=>import('../posts/pages/add-post')
+      },
+      {
+        path: "/interests",
+        name: "interests",
+        component: () => import("../components/interest/pages/interests-list")
+      },
+      {
+        path: "/interests/:id",
+        name: "interest-details",
+        component: () => import("../components/interest/pages/interest")
+      },
+      {
+        path: "/add",
+        name: "add",
+        component: () => import("../components/interest/pages/add-interest")
+      }
+    ]
   }
 ]
 
