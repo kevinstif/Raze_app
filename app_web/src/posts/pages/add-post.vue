@@ -41,7 +41,7 @@
           Your post was created successfully!
         </v-card-text>
         <v-card-actions>
-          <v-btn icon color="green" to="/Posts">
+          <v-btn icon color="green" to="/web/Posts">
             <v-icon>fas fa-check-circle</v-icon>
           </v-btn>
         </v-card-actions>

@@ -33,6 +33,15 @@
       "rate": 4.8,
       "published": true,
       "tagId": 2
+    },
+    {
+      "id": "25d9ad60-ad5f-4aa2-b3ef-0e16e4821c8f",
+      "title": "the best outfit",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fpost.jpg?alt=media&token=5aa07022-d24e-48e1-98b0-9090fbb375fc",
+      "description": "black jeans",
+      "rate": 0,
+      "published": true,
+      "tagId": 2
     }
   ],
   "tags": [
@@ -72,13 +81,13 @@
   "users": [
     {
       "id": 1,
-      "email":"jesu0902@gmail.com",
-      "password":"goku123"
+      "email": "jesu0902@gmail.com",
+      "password": "goku123"
     },
     {
       "id": 2,
-      "email":"zara1909@gmail.com",
-      "password":"hellokitty21"
+      "email": "zara1909@gmail.com",
+      "password": "hellokitty21"
     }
   ]
 }
