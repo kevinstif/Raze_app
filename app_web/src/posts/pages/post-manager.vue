@@ -28,9 +28,11 @@ import PostList from "./post-list";
 export default {
   name: "post-manager",
   components: {PostList},
+
   data:()=>({
     posts:[],
     title:'',
+
   }),
   mounted() {
     this.retrievePosts();
@@ -62,6 +64,7 @@ export default {
             console.log(e)
           })
     },
+
     searchTitle(){
       PostServices.findByTitle(this.title)
           .then(response=>{

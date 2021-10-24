@@ -5,17 +5,20 @@
       "title": "colors of summer",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2FoufitCar2_2.jpg?alt=media&token=dd9325eb-c16d-4524-9314-d9afa8e33ef5",
       "description": "the best colors for the summer",
-      "rate": 5,
-      "published": true,
-      "tagId": 2
+      "tagId": 2,
+      "userId": 2,
+      "rateNumber": 2,
+      "rate": "3.5"
     },
     {
       "id": 2,
       "title": "the best t-shirt",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimagen_2.jpg?alt=media&token=945a8f0e-e728-4ef1-ad3b-b5267e8dfad4",
       "description": "the t-shirt black is the best",
-      "rate": 2.7,
-      "published": true
+      "rate": 3.7,
+      "rateNumber": 1,
+      "published": true,
+      "userId": 3
     },
     {
       "id": 3,
@@ -23,7 +26,9 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimg.jpg?alt=media&token=44806756-979d-4b7d-bb96-9c5bb9af09d6",
       "description": "the t-shirt black is the best",
       "rate": 4.1,
-      "published": true
+      "rateNumber": 1,
+      "published": true,
+      "userId": 3
     },
     {
       "id": 4,
@@ -31,8 +36,10 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=611e43a9-8233-4824-8a50-fdc687e7036a",
       "description": "the t-shirt black is the best",
       "rate": 4.8,
+      "rateNumber": 1,
       "published": true,
-      "tagId": 2
+      "tagId": 2,
+      "userId": 1
     },
     {
       "id": "25d9ad60-ad5f-4aa2-b3ef-0e16e4821c8f",
@@ -81,13 +88,21 @@
   "users": [
     {
       "id": 1,
+      "name": "Edward Ticlavilca",
+      "imgProfile": "",
+      "age": 19,
       "email": "jesu0902@gmail.com",
-      "password": "goku123"
+      "password": "goku123",
+      "userType": "Advisor"
     },
     {
       "id": 2,
+      "name": "Miguel Flores",
+      "imgProfile": "",
+      "age": 21,
       "email": "zara1909@gmail.com",
-      "password": "hellokitty21"
+      "password": "hellokitty21",
+      "userType": "Advisor"
     }
   ]
 }

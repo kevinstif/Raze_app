@@ -13,7 +13,11 @@
             {{post.rate}}
           </v-col>
           <v-spacer></v-spacer>
-          <v-col><v-btn class="white--text" rounded width="20%" color="#002C3E" >View</v-btn></v-col>
+          <v-col>
+            <router-link :to="{name: 'PostDetail', params: {userId: currentUser.id, postId: post.id}}">
+              <v-btn class="white--text" rounded width="20%" color="#002C3E" >View</v-btn>
+            </router-link>
+          </v-col>
         </v-row>
 
 
@@ -24,6 +28,7 @@
 
 <script>
 import PostServices from '../services/posts.services'
+import UsersService from '../../users/services/users.services'
 
 export default {
   name: "post-item",
@@ -33,9 +38,22 @@ export default {
   data: () => ({
     dialogEdit: false,
     dialogDelete: false,
+    currentUser: {},
   }),
-
+  mounted(){
+    this.retrieveCurrentUser();
+  },
   methods: {
+    retrieveCurrentUser(){
+      UsersService.getById(1)
+          .then(response=>{
+            this.currentUser=response.data;
+            console.log(response.data);
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+    },
     editPost() {
       this.dialogEdit = true;
     },
