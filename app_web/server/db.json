@@ -49,6 +49,16 @@
       "rate": 0,
       "published": true,
       "tagId": 2
+    },
+    {
+      "Title": "",
+      "Image": "",
+      "Description": "",
+      "Rate": 0,
+      "NumberOfRates": 0,
+      "UserId": 5,
+      "InterestId": 500,
+      "TagId": 0
     }
   ],
   "tags": [

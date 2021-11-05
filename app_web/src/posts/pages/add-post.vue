@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from 'uuid';
 import PostServices from "@/posts/services/posts.services";
 import TagsManager from "../../tags/pages/tags-manager";
 import {storage} from "../../main";
@@ -61,10 +60,10 @@ export default {
   name: "add-post",
   components: {TagsManager},
   data:()=>({
-    title:'',
-    description:'',
-    img:'',
-    tagId:0,
+    Title:'',
+    Description:'',
+    Image:'',
+    TagId:0,
     enabledPublish:false,
     enabledConfirm:false,
     enableSelect:true,
@@ -79,13 +78,14 @@ export default {
     addPost(item){
       item.preventDefault();
       const newPost={
-        id:uuidv4(),
-        title:this.title,
-        img:this.img,
-        description:this.description,
-        rate:0,
-        published:true,
-        tagId:this.tagId
+        Title:this.Title,
+        Image:this.Image,
+        Description:this.Description,
+        Rate:0,
+        NumberOfRates: 0,
+        UserId: 5,
+        InterestId: 500,
+        TagId:this.TagId
       }
 
       PostServices.create(newPost)
