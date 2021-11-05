@@ -25,14 +25,13 @@
   "posts": [
     {
       "id": 1,
-      "title": "colors of summer",
+      "title": "Colors of summer",
       "img": "https://i.pinimg.com/originals/ae/da/1e/aeda1ee09ea72c3e9c1b0cd552bd82ed.jpg",
       "description": "the best colors for the summer",
-      "rate": 5,
-      "rateNumber": 1,
-      "published": true,
       "tagId": 2,
-      "userId": 2
+      "userId": 2,
+      "rateNumber": 2,
+      "rate": "3.0"
     },
     {
       "id": 2,
@@ -97,11 +96,10 @@
       "title": "The best t-shirt",
       "img": "https://i.pinimg.com/originals/4d/d6/d6/4dd6d64b467fabfa2574a09a808e8853.jpg",
       "description": "the t-shirt black is the best",
-      "rate": 4.8,
-      "rateNumber": 1,
-      "published": true,
       "tagId": 2,
-      "userId": 1
+      "userId": 1,
+      "rateNumber": 2,
+      "rate": "4.9"
     },
     {
       "id": "ab902ae2-30c4-4fb8-abe2-74b38bdefc39",
@@ -234,6 +232,29 @@
       "published": true,
       "tagId": 1,
       "userId": 3
+    },
+    {
+      "id": "924bd9bc-cd56-4d7c-ab2e-cb6ed4a613e0",
+      "title": "",
+      "img": "",
+      "description": "",
+      "rate": 0,
+      "published": true,
+      "tagId": 0
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "text": "Looks great",
+      "postId": 1,
+      "userName": "David"
+    },
+    {
+      "id": 2,
+      "text": "Awesome",
+      "postId": 1,
+      "userName": "Pedro"
     }
   ],
   "tags": [

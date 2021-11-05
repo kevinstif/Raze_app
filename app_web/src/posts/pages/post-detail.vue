@@ -45,6 +45,7 @@
           </v-row>
         </v-card-actions>
       </v-card>
+      <CommentList v-bind:postId="currentPost.id"></CommentList>
     </div>
   </v-container>
 </template>
@@ -52,9 +53,11 @@
 <script>
 import PostServices from '../services/posts.services'
 import UsersService from '../../users/services/users.services'
+import CommentList from "../../comments/pages/comment-list";
 
 export default {
   name: "post-detail",
+  components: {CommentList},
   data: () => ({
     currentUser: {},
     currentPost: {},

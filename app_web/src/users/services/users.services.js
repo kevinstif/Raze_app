@@ -2,10 +2,10 @@ import http from '../../core/http-common'
 //import axios from "axios";
 
 class UsersService{
-    endPoint='/users';
+    endPoint='/posts';
 
-    getAll(){
-        return http.get(this.endPoint);
+    getAll(id){
+        return http.get(`${this.endPoint}/${id}/comments`);
     }
 
     getById(id){

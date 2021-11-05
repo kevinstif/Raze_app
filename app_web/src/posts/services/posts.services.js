@@ -4,6 +4,10 @@ import axios from "axios";
 class PostsService{
     endPoint='/posts';
 
+    getComments(id){
+        return http.get(`${this.endPoint}/${id}/comments`);
+    }
+
     getAll(){
         return http.get(this.endPoint);
     }
