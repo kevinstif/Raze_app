@@ -14,7 +14,7 @@
       "id": 2,
       "title": "the best t-shirt",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimagen_2.jpg?alt=media&token=945a8f0e-e728-4ef1-ad3b-b5267e8dfad4",
-      "description": "the t-shirt black is the best",
+      "description": "the t-shirt black is the best.",
       "rate": 3.7,
       "rateNumber": 1,
       "published": true,
@@ -103,6 +103,26 @@
       "email": "zara1909@gmail.com",
       "password": "hellokitty21",
       "userType": "Advisor"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "text": "Nice",
+      "userId": 1,
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "text": "Looks awesome",
+      "userId": 1,
+      "postId": 1
+    },
+    {
+      "id": 3,
+      "text": "Great",
+      "userId": 2,
+      "postId": 4
     }
   ]
 }

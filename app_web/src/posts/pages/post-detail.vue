@@ -45,6 +45,16 @@
           </v-row>
         </v-card-actions>
       </v-card>
+      <div v-for="comment in comments" v-bind:key="comment.id" class="wrap_text">
+        <v-card outlined class="mx-auto comment" color="#adadad">
+          <div v-for="user in users" v-bind:key="user.id">
+            <div v-if="user.id === comment.userId">
+              <v-card-title class="white--text justify-lg-start">{{user.name}}</v-card-title>
+            </div>
+          </div>
+          <p class="text">{{comment.text}}</p>
+        </v-card>
+      </div>
     </div>
   </v-container>
 </template>
@@ -52,6 +62,7 @@
 <script>
 import PostServices from '../services/posts.services'
 import UsersService from '../../users/services/users.services'
+import CommentService from '../../comments/services/comments.services'
 
 export default {
   name: "post-detail",
@@ -59,15 +70,28 @@ export default {
     currentUser: {},
     currentPost: {},
     postOwner: {},
+    comments: [],
+    users: [],
     rated: 0
   }),
   mounted(){
     this.retrieveCurrentUser();
     this.retrieveCurrentPost();
+    this.retrieveUsers();
   },
   methods:{
     onBack(){
       this.$router.push('/web/posts');
+    },
+    retrieveUsers(){
+      UsersService.getAll()
+      .then(response => {
+        this.users = response.data;
+        console.log(this.users);
+      })
+      .catch(e=>{
+        console.log(e);
+      })
     },
     retrieveCurrentUser(){
       UsersService.getById(this.$route.params.userId)
@@ -92,6 +116,14 @@ export default {
                 .catch(e=>{
                   console.log(e)
                 })
+            CommentService.getAll(this.$route.params.postId)
+            .then(response => {
+              this.comments = response.data;
+              console.log(response.data);
+            })
+            .catch(e=>{
+              console.log(e);
+            })
           })
           .catch(e=>{
             console.log(e)
@@ -124,6 +156,10 @@ export default {
 </script>
 
 <style scoped>
+.text{
+  margin: 2px 10px 10px 30px;
+  color: #fbfbfb;
+}
 .userLink:hover{
   color: #78BCC4;
   cursor: pointer;
@@ -146,5 +182,9 @@ export default {
 .center {
   width: 90%;
   margin: auto;
+}
+.comment{
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 </style>
