@@ -17,6 +17,9 @@
               <v-col>
                 <TagsManager v-on:save-tag="getTagId"></TagsManager>
               </v-col>
+              <v-col>
+                <InterestManager v-on:save-interest="getInterestId"></InterestManager>
+              </v-col>
             </v-row>
           </v-container>
           <v-text-field label="Title" placeholder="Title" outlined v-model="Title"></v-text-field>
@@ -53,11 +56,12 @@
 import PostServices from "@/posts/services/posts.services";
 import TagsManager from "../../tags/pages/tags-manager";
 import {storage} from "../../main";
+import InterestManager from "../../components/interest/pages/interest-manager";
 const ref=storage.ref()
 
 export default {
   name: "add-post",
-  components: {TagsManager},
+  components: {InterestManager, TagsManager},
   data:()=>({
     Title:'',
     Description:'',
@@ -83,7 +87,7 @@ export default {
         rate:0,
         rateNumber: 0,
         userId: 5,
-        //interestId: this.interestId,
+        interestId: this.interestId,
         tagId:this.TagId,
         //tagId:this.Tag.id
       }
@@ -106,9 +110,9 @@ export default {
       this.enabledPublish=true;
       this.TagId=Tag.id;
     },
-    getInterestId(interestId){
+    getInterestId(Interest){
       this.enabledPublish=true;
-      this.interestId=interestId;
+      this.interestId=Interest.id;
     },
 
     onChange(e) {

@@ -46,39 +46,9 @@
       "title": "the best outfit",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fpost.jpg?alt=media&token=5aa07022-d24e-48e1-98b0-9090fbb375fc",
       "description": "black jeans",
-      "rate": 0,
-      "published": true,
-      "tagId": 2
-    },
-    {
-      "title": "nuevo",
-      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=52c715d3-05b4-4727-8340-444d92ecdf30",
-      "description": "descr nuevo",
-      "rate": 0,
-      "rateNumber": 0,
-      "userId": 5,
-      "tagId": 0,
-      "id": 5
-    },
-    {
-      "title": "new post",
-      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=91f2132a-34be-43ff-b456-5f9dde82740e",
-      "description": "new post description",
-      "rate": 0,
-      "rateNumber": 0,
-      "userId": 5,
-      "tagId": "950b7b3c-f8c7-432c-82c6-41969c3e0f60",
-      "id": 6
-    },
-    {
-      "title": "Prueba",
-      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fdescargar.png?alt=media&token=86f1493b-d409-4d89-97cf-67d7c43659b1",
-      "description": "Nuevo post de prueba",
-      "rate": 0,
-      "rateNumber": 0,
-      "userId": 5,
-      "tagId": 1,
-      "id": 7
+      "tagId": 2,
+      "rateNumber": 1,
+      "rate": "1.0"
     }
   ],
   "tags": [

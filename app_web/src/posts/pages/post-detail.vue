@@ -105,6 +105,7 @@ export default {
         description: this.currentPost.description,
         published: this.currentPost.status,
         tagId: this.currentPost.tagId,
+        interestId: this.currentPost.interestId,
         userId: this.currentPost.userId,
         rateNumber: this.currentPost.rateNumber + 1,
         rate: (((this.currentPost.rate * this.currentPost.rateNumber) + this.rated)/(this.currentPost.rateNumber + 1)).toFixed(1)

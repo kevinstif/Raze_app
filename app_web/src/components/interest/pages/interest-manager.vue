@@ -2,10 +2,7 @@
   <v-container>
     <div class="max_width">
       <v-combobox :items="interests" v-model="select" item-text="title" item-value="id" return-object
-                  label="What is your post about" chips class="d-inline-block"></v-combobox>
-      <v-btn icon color="green" @click="selectInterest">
-        <v-icon>fas fa-check-circle</v-icon>
-      </v-btn>
+                  label="What is your post about" chips class="d-inline-block" @change="$emit('save-interest',select)"></v-combobox>
     </div>
   </v-container>
 </template>
@@ -35,10 +32,6 @@ export default {
           .catch(e=>{
             console.log(e)
           })
-    },
-    selectInterest(){
-      const interestId=this.select.id
-      this.$emit('save-interest',interestId);
     }
   },
   mounted() {
@@ -48,5 +41,7 @@ export default {
 </script>
 
 <style scoped>
-
+.max_width{
+  max-width: 100%;
+}
 </style>
