@@ -2,12 +2,9 @@
   <v-container>
     <div class="max_width">
       <v-combobox :items="tags" v-model="select" item-text="title" item-value="id" return-object
-                  label="Tags" chips class="d-inline-block"></v-combobox>
+                  label="Tags" chips class="d-inline-block" @change="$emit('save-tag',select)"></v-combobox>
       <v-btn icon color="black" @click="addTags">
         <v-icon>fas fa-plus-circle</v-icon>
-      </v-btn>
-      <v-btn icon color="green" @click="selectTag">
-        <v-icon>fas fa-check-circle</v-icon>
       </v-btn>
     </div>
     <v-dialog v-model="dialogAdd" max-width="500px">
