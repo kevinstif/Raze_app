@@ -55,6 +55,23 @@
           <p class="text">{{comment.text}}</p>
         </v-card>
       </div>
+      <v-card outlined class="mx-auto comment" color="#adadad">
+        <v-card-title class="white--text justify-end">What do you think about the post</v-card-title>
+        <v-container fluid>
+          <v-textarea
+              name="input-7-1"
+              filled
+              label="Write a comment here..."
+              auto-grow
+              background-color="white"
+              clearable
+              v-model="comment"
+          ></v-textarea>
+          <v-col class="mx-auto justify-end">
+            <v-btn @click="AddComment" class="white--text" rounded width="10%" color="#002C3E" >Comment</v-btn>
+          </v-col>
+        </v-container>
+      </v-card>
     </div>
   </v-container>
 </template>
@@ -72,7 +89,8 @@ export default {
     postOwner: {},
     comments: [],
     users: [],
-    rated: 0
+    rated: 0,
+    comment: '',
   }),
   mounted(){
     this.retrieveCurrentUser();
@@ -82,6 +100,22 @@ export default {
   methods:{
     onBack(){
       this.$router.push('/web/posts');
+    },
+    AddComment(){
+      const newComment={
+        "text": this.comment,
+        "userId": this.currentUser.id,
+        "postId": this.currentPost.id,
+      }
+      CommentService.create(newComment)
+      .then(response => {
+        console.log(response);
+        this.comment = '';
+        this.$router.go(0);
+      })
+      .catch(e => {
+        console.log(e);
+      })
     },
     retrieveUsers(){
       UsersService.getAll()
@@ -156,6 +190,9 @@ export default {
 </script>
 
 <style scoped>
+.actions{
+  padding: 0;
+}
 .text{
   margin: 2px 10px 10px 30px;
   color: #fbfbfb;

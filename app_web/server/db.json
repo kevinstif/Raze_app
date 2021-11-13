@@ -123,6 +123,12 @@
       "text": "Great",
       "userId": 2,
       "postId": 4
+    },
+    {
+      "text": "A new comment",
+      "userId": 1,
+      "postId": 1,
+      "id": 4
     }
   ]
 }
