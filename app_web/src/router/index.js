@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Register from "@/login/pages/Register";
 import Web from "@/views/Web";
 import PostDetail from '../posts/pages/post-detail'
+import Introduction from "@/introduction/Pages/Introduction";
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,12 @@ const routes = [
     name: 'Register',
     component: Register
   },
+  {
+    path: '/Introduction',
+    name: 'Introduction',
+    component: Introduction
+  },
+
   {
     path: '/Web/:idUser?',
     name: 'Web',
