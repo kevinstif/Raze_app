@@ -30,7 +30,7 @@ const routes = [
       {
         path: '/Chat',
         name: 'Chat',
-        component: () => import('../components/Access-chat')
+        component: () => import('../components/chat/access-chat')
       },
       {
         path: '/addPost',
@@ -51,6 +51,26 @@ const routes = [
         path: "/add",
         name: "add",
         component: () => import("../components/interest/pages/add-interest")
+      },
+      {
+        path: "/professions",
+        name: "professions",
+        component: () => import("../components/profession/pages/professions-list")
+      },
+      {
+        path: "/professions/:id",
+        name: "profession-details",
+        component: () => import("../components/profession/pages/profession")
+      },
+      {
+        path: "/addProfession",
+        name: "addProfession",
+        component: () => import("../components/profession/pages/add-profession")
+      },
+      {
+        path: "/profile",
+        name: "profile",
+        component: () => import("../components/profile/profile-manager")
       },
       {
         path: '/main/:userId/post-detail/:postId',

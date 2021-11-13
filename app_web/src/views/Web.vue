@@ -15,6 +15,7 @@
             </v-btn>
           </li>
           <li><v-btn class="white--text" text to="/interests">Interest</v-btn></li>
+          <li><v-btn class="white--text" text to="/profile">My Profile</v-btn></li>
           <li><v-btn icon>
             <img class="profile" src="../img/img.png">
           </v-btn></li>

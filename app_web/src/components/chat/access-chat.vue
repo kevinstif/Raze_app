@@ -9,8 +9,8 @@
 <script>
 
 import firebase from "firebase/compat";
-import Chat from "@/components/Chat";
-import Login from "@/components/Login";
+import Chat from "@/components/chat/chat";
+import Login from "@/components/chat/login";
 
 export default {
   name: "Access-chat",
