@@ -8,9 +8,9 @@
     </div>
     <button v-if='authorized' @click="getData">Get Data</button>
 
-    <div class="item-container" v-if="existingEvents">
+    <!--div class="item-container" v-if="existingEvents">
       <pre>{{values.items}}</pre>
-    </div>
+    </div-->
 
     <div id="app">
       <v-app id="inspire">
@@ -61,7 +61,7 @@
                   <v-container>
                     <v-form @submit.prevent="addEvent">
                       <v-text-field type="text" label="Name" v-model="name"></v-text-field>
-                      <v-text-field type="text" label="Details" v-model="details"></v-text-field>
+                      <v-text-field type="text" label="Details" v-model="description"></v-text-field>
                       <v-text-field type="date" label="Date-Start" v-model="start"></v-text-field>
                       <v-text-field type="date" label="Date-End" v-model="end"></v-text-field>
                       <v-text-field type="color" label="Color" v-model="color"></v-text-field>
@@ -86,7 +86,7 @@
                     </v-btn>
                   </v-toolbar>
                   <v-card-text>
-                    <span v-html="selectedEvent.details"></span>
+                    <span v-html="selectedEvent.description"></span>
                   </v-card-text>
                   <v-card-actions>
                     <v-btn text color="secondary" @click="selectedOpen = false">
@@ -113,7 +113,7 @@
 const CLIENT_ID= '334358607918-s4bbscpvaf7s6gea3tpm09mqq49ou8kt.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyB2TV-pyudWz5ieUvYaHYDeBitPpSnnVzw';
 const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
-const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
 export default {
   name: "access-calendar",
@@ -141,6 +141,7 @@ export default {
     currentlyEditing: null,
     name:'',
     details:'',
+    description:'',
     color: "#FFFFFF",
     start:null,
     end:null,
@@ -197,6 +198,7 @@ export default {
         name:item.summary,
         start:timeStart,
         end:timeEnd,
+        description:item.description,
         details:item.hangoutLink,
         color:'indigo'
       }
@@ -261,15 +263,42 @@ export default {
       var calendarFormat=date+' '+hour;
       return calendarFormat ;
     },
-    loadFakeData(){
-      var event={
-        name:"name",
-        details:"details",
-        start:"2021-11-13 09:00",
-        end:"2021-11-13 10:00",
-        color:"indigo"
-      }
-      this.events.push(event)
+    addEvent(){
+      var event = {
+        'summary': this.name,
+        'location': '',
+        'description': this.description,
+        'start': {
+          'dateTime': '2021-11-13T09:00:00-07:00',
+          'timeZone': 'America/Los_Angeles'
+        },
+        'end': {
+          'dateTime': '2021-11-13T17:00:00-07:00',
+          'timeZone': 'America/Los_Angeles'
+        },
+        'recurrence': [
+          //'RRULE:FREQ=DAILY;COUNT=2'
+        ],
+        'attendees': [
+            //invited counts
+        ],
+        'reminders': {
+          'useDefault': false,
+          'overrides': [
+            {'method': 'email', 'minutes': 24 * 60},
+            {'method': 'popup', 'minutes': 10}
+          ]
+        }
+      };
+
+      var request = this.values.api.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': event
+      });
+
+      request.execute(function(event) {
+        console.log('Event created: ' + event.htmlLink)
+      });
     }
   }
 }
