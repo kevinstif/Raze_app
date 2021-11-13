@@ -1,11 +1,12 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <v-app id="inspire">
       <v-row class="fill-height">
         <v-col>
           <v-sheet height="64">
-            <v-toolbar flat>
-              <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">Today</v-btn>
+            <v-toolbar flat color="#92B4A7">
+              <v-btn color="#002C3E" dark class="mr-4" @click="dialog=true">Add</v-btn>
+              <v-btn class="mr-4" dark color="#002C3E" @click="setToday">Today</v-btn>
               <v-btn fab text small color="grey darken-2" @click="prev">
                 <v-icon small>mdi-chevron-left</v-icon>
               </v-btn>
@@ -20,6 +21,8 @@
                     <span>{{ typeToLabel[type] }}</span>
                     <v-icon right>mdi-menu-down</v-icon>
                   </v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn dark color="#002C3E" @click="getData">Update Data</v-btn>
                 </template>
                 <v-list>
                   <v-list-item @click="type = 'day'">
@@ -40,29 +43,42 @@
           </v-sheet>
           <v-sheet height="600">
             <v-calendar ref="calendar" v-model="focus" color="primary" :events="events"
-                :event-color="getEventColor" :type="type" @click:event="showEvent" @click:more="viewDay"
-                @click:date="viewDay" @change="updateRange"></v-calendar>
+                        :event-color="getEventColor" :type="type" @click:event="showEvent" @click:more="viewDay"
+                        @click:date="viewDay" @change="getData"></v-calendar>
+            <v-dialog v-model="dialog" max-width="30%">
+              <v-card>
+                <v-card-title>
+                  <h3>Create Meeting</h3>
+                </v-card-title>
+                <v-container>
+                  <v-form @submit.prevent="addEvent">
+                    <v-text-field type="text" label="Name" v-model="name"></v-text-field>
+                    <v-text-field type="text" label="Details" v-model="description"></v-text-field>
+                    <v-text-field type="datetime-local" label="Date-Start" v-model="start"></v-text-field>
+                    <v-text-field type="datetime-local" label="Date-End" v-model="end"></v-text-field>
+                    <v-btn type="submit" dark color="#002C3E" @click.stop="dialog=false">ADD</v-btn>
+                  </v-form>
+                </v-container>
+                <div class="item-container">
+                  <pre>{{start}}</pre>
+                </div>
+              </v-card>
+            </v-dialog>
             <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
               <v-card color="grey lighten-4" min-width="350px" flat>
                 <v-toolbar :color="selectedEvent.color" dark>
-                  <v-btn icon>
-                    <v-icon>mdi-pencil</v-icon>
-                  </v-btn>
                   <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
-                  <v-spacer></v-spacer>
-                  <v-btn icon>
-                    <v-icon>mdi-heart</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>mdi-dots-vertical</v-icon>
-                  </v-btn>
                 </v-toolbar>
                 <v-card-text>
-                  <span v-html="selectedEvent.details"></span>
+                  <span v-html="selectedEvent.description"></span>
                 </v-card-text>
                 <v-card-actions>
                   <v-btn text color="secondary" @click="selectedOpen = false">
                     Cancel
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn v-if="selectedEvent.details" text color="primary" :href="selectedEvent.details">
+                    Meet
                   </v-btn>
                 </v-card-actions>
               </v-card>
@@ -89,16 +105,16 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
-    events: [],
     start:null,
     end:null,
     name:'',
     details:'',
     dialog:false,
     currentlyEditing: null,
-    colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-    names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
   }),
+  props:[
+      "events"
+  ],
   mounted () {
     this.$refs.calendar.checkChange()
   },
@@ -138,35 +154,43 @@ export default {
     rnd (a, b) {
       return Math.floor((b - a + 1) * Math.random()) + a
     },
-
-    updateRange ({ start, end }) {
-      const events = []
-
-      const min = new Date(`${start.date}T00:00:00`)
-      const max = new Date(`${end.date}T23:59:59`)
-      const days = (max.getTime() - min.getTime()) / 86400000
-      const eventCount = this.rnd(days, days + 20)
-
-      for (let i = 0; i < eventCount; i++) {
-        const allDay = this.rnd(0, 3) === 0
-        const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-        const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-        const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-        const second = new Date(first.getTime() + secondTimestamp)
-
-        events.push({
-          name: this.names[this.rnd(0, this.names.length - 1)],
-          start: first,
-          end: second,
-          color: this.colors[this.rnd(0, this.colors.length - 1)],
-          timed: !allDay,
-        })
-      }
-
-      this.events = events
-      console.log(events)
+    //######################
+    getData(){
+      this.$emit('get-data');
     },
-
+    addEvent(){
+      var event = {
+        'summary': this.name,
+        'location': '',
+        'description': this.description,
+        'start': {
+          'dateTime': this.start+":00-05:00",
+          'timeZone': 'America/Lima'
+        },
+        'end': {
+          'dateTime': this.end+":00-05:00",
+          'timeZone': 'America/Lima'
+        },
+        'recurrence': [],
+        'attendees': [
+          //TODO: invited counts will be place here
+        ],
+        conferenceData: {
+          createRequest: {
+            requestId: "hangoutsMeet",
+          },
+          reminders: {
+            useDefault: false,
+            overrides: [
+              { method: "email", minutes: 24 * 60 },
+              { method: "popup", minutes: 10 },
+            ],
+          },
+          sendNotifications: true,
+        }
+      };
+      this.$emit('add-event',event)
+    }
   }
 }
 </script>
