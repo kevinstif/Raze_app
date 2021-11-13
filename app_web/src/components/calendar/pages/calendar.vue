@@ -90,6 +90,12 @@ export default {
     selectedElement: null,
     selectedOpen: false,
     events: [],
+    start:null,
+    end:null,
+    name:'',
+    details:'',
+    dialog:false,
+    currentlyEditing: null,
     colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
     names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
   }),
@@ -129,6 +135,10 @@ export default {
 
       nativeEvent.stopPropagation()
     },
+    rnd (a, b) {
+      return Math.floor((b - a + 1) * Math.random()) + a
+    },
+
     updateRange ({ start, end }) {
       const events = []
 
@@ -154,10 +164,9 @@ export default {
       }
 
       this.events = events
+      console.log(events)
     },
-    rnd (a, b) {
-      return Math.floor((b - a + 1) * Math.random()) + a
-    },
+
   }
 }
 </script>
