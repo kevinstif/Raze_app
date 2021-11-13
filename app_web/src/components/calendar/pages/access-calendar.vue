@@ -1,25 +1,19 @@
 <template>
   <div>
     <div>
-      <h2>VueJS + Google Calendar Example</h2>
-      <h3>Authentication</h3>
-      <button v-if="!authorized" @click="handleAuthClick">Sign In</button>
-      <button v-if="authorized" @click="handleSignoutClick">Sign Out</button>
+      <v-btn v-if="!authorized" color="#002C3E" @click="handleAuthClick">
+        <v-icon color="#FFFF">fas fa-calendar-alt</v-icon>
+      </v-btn>
+      <v-btn v-if="authorized" dark color="#002C3E" @click="handleSignoutClick">Sign Out</v-btn>
     </div>
-    <button v-if='authorized' @click="getData">Get Data</button>
-
-    <!--div class="item-container" v-if="existingEvents">
-      <pre>{{values.items}}</pre>
-    </div-->
-
-    <div id="app">
+    <div id="app" >
       <v-app id="inspire">
         <v-row class="fill-height">
           <v-col>
             <v-sheet height="64">
-              <v-toolbar flat>
-                <v-btn color="primary" dark class="mr-4" @click="dialog=true">Add</v-btn>
-                <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">Today</v-btn>
+              <v-toolbar flat color="#92B4A7">
+                <v-btn color="#002C3E" dark class="mr-4" @click="dialog=true">Add</v-btn>
+                <v-btn class="mr-4" dark color="#002C3E" @click="setToday">Today</v-btn>
                 <v-btn fab text small color="grey darken-2" @click="prev">
                   <v-icon small>mdi-chevron-left</v-icon>
                 </v-btn>
@@ -34,6 +28,8 @@
                       <span>{{ typeToLabel[type] }}</span>
                       <v-icon right>mdi-menu-down</v-icon>
                     </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn dark color="#002C3E" @click="getData">Update Data</v-btn>
                   </template>
                   <v-list>
                     <v-list-item @click="type = 'day'">
@@ -56,18 +52,23 @@
               <v-calendar ref="calendar" v-model="focus" color="primary" :events="events"
                           :event-color="getEventColor" :type="type" @click:event="showEvent" @click:more="viewDay"
                           @click:date="viewDay" @change="getData"></v-calendar>
-              <v-dialog v-model="dialog">
+              <v-dialog v-model="dialog" max-width="30%">
                 <v-card>
+                  <v-card-title>
+                    <h3>Create Meeting</h3>
+                  </v-card-title>
                   <v-container>
                     <v-form @submit.prevent="addEvent">
                       <v-text-field type="text" label="Name" v-model="name"></v-text-field>
                       <v-text-field type="text" label="Details" v-model="description"></v-text-field>
-                      <v-text-field type="date" label="Date-Start" v-model="start"></v-text-field>
-                      <v-text-field type="date" label="Date-End" v-model="end"></v-text-field>
-                      <v-text-field type="color" label="Color" v-model="color"></v-text-field>
-                      <v-btn type="submit" color="primary" @click.stop="dialog=false">ADD</v-btn>
+                      <v-text-field type="datetime-local" label="Date-Start" v-model="start"></v-text-field>
+                      <v-text-field type="datetime-local" label="Date-End" v-model="end"></v-text-field>
+                      <v-btn type="submit" dark color="#002C3E" @click.stop="dialog=false">ADD</v-btn>
                     </v-form>
                   </v-container>
+                  <div class="item-container">
+                    <pre>{{start}}</pre>
+                  </div>
                 </v-card>
               </v-dialog>
               <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
@@ -142,7 +143,6 @@ export default {
     name:'',
     details:'',
     description:'',
-    color: "#FFFFFF",
     start:null,
     end:null,
     names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
@@ -269,12 +269,12 @@ export default {
         'location': '',
         'description': this.description,
         'start': {
-          'dateTime': '2021-11-13T09:00:00-07:00',
-          'timeZone': 'America/Los_Angeles'
+          'dateTime': this.start+":00-05:00",
+          'timeZone': 'America/Lima'
         },
         'end': {
-          'dateTime': '2021-11-13T17:00:00-07:00',
-          'timeZone': 'America/Los_Angeles'
+          'dateTime': this.end+":00-05:00",
+          'timeZone': 'America/Lima'
         },
         'recurrence': [
           //'RRULE:FREQ=DAILY;COUNT=2'
@@ -282,18 +282,25 @@ export default {
         'attendees': [
             //invited counts
         ],
-        'reminders': {
-          'useDefault': false,
-          'overrides': [
-            {'method': 'email', 'minutes': 24 * 60},
-            {'method': 'popup', 'minutes': 10}
-          ]
+        conferenceData: {
+          createRequest: {
+            requestId: "hangoutsMeet",
+          },
+          reminders: {
+            useDefault: false,
+            overrides: [
+              { method: "email", minutes: 24 * 60 },
+              { method: "popup", minutes: 10 },
+            ],
+          },
+          sendNotifications: true,
         }
       };
 
       var request = this.values.api.client.calendar.events.insert({
         'calendarId': 'primary',
-        'resource': event
+        'resource': event,
+        'conferenceDataVersion': 1
       });
 
       request.execute(function(event) {
