@@ -54,8 +54,38 @@
 </template>
 
 <script>
+import interestDataService from "@/components/interest/services/interest-data-service";
+
 export default {
-  name: "Introduction"
+  name: "Introduction",
+  data() {
+    return {
+      interests: [],
+    };
+  },
+  methods:{
+    retrieveInterests() {
+      interestDataService.getAll()
+          .then((response) => {
+            this.interests = response.data.map(this.getDisplayInterest);
+            console.log(response.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    },
+    getDisplayInterest(interest) {
+      return {
+        id: interest.id,
+        title: interest.title.length > 30 ? interest.title.substr(0, 30) + "..." : interest.title,
+        description: interest.description.length > 30 ? interest.description.substr(0, 30) + "..." : interest.description,
+        status: interest.published ? "Published" : "Pending",
+      };
+    },
+  },
+  mounted() {
+    this.retrieveInterests();
+  },
 }
 </script>
 
