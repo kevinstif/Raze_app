@@ -123,7 +123,7 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5">
-                        <v-btn rounded color="teal accent-3" dark to="/Web/Posts">SIGN UP</v-btn>
+                        <v-btn rounded color="teal accent-3" dark to="/Introduction">SIGN UP</v-btn>
                       </div>
                     </v-col>
                   </v-row>
