@@ -18,6 +18,16 @@ const routes = [
     component: Register
   },
   {
+    path: '/calendar',
+    name: 'Calendar',
+    component: ()=>import('../components/calendar/pages/access-calendar')
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: ()=>import('../components/calendar/pages/calendar')
+  },
+  {
     path: '/Web/:idUser?',
     name: 'Web',
     component: Web,
