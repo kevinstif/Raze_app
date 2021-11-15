@@ -1,17 +1,10 @@
 <template>
   <div class="relative inline-block overflow-hidden">
-    <input
-        type="file"
-        accept="image/*"
-        class="hidden"
-        ref="file"
-        @change="change"
-    />
-    <img :src="src" alt="MyProfile" class="my-avatar" />
+    <input type="file" accept="image/*" class="hidden" ref="file"/>
+    <img :src="currentUser.imgProfile" alt="MyProfile" class="my-avatar" />
     <div>
       <button
           type="button"
-          @click="browse()"
           class="rounded-full">
         <icon name="camera" class="s_camera"></icon>
       </button>
@@ -26,14 +19,19 @@
 
 import Icon from "./icon";
 import AccessCalendar from "../calendar/pages/access-calendar";
+import UsersService from "../../users/services/users.services";
 
 export default {
+  components: {
+    AccessCalendar,
+    Icon,
+  },
   name:'myProfile',
   props: {
     value: File,
     defaultSrc: String,
   },
-  watch: {
+  /*watch: {
     value(file) {
       if (!file) {
         this.src = this.defaultSrc;
@@ -46,14 +44,37 @@ export default {
         };
       }
     },
-  },
+  },*/
   data() {
     return {
-      src: this.defaultSrc,
+      currentUser:{}
     };
   },
+  mounted() {
+    this.retrieveCurrentUser()
+  },
   methods: {
-    browse() {
+    getDisplayUser(user){
+      return{
+        id: user.id,
+        name: user.name,
+        imgProfile: user.imgProfile,
+        age: user.age,
+        email: user.email,
+        userType: user.userType
+      }
+    },
+    retrieveCurrentUser(){
+      UsersService.getById(this.$route.params.id)
+          .then(response=>{
+            console.log((this.$route.params.id))
+            this.currentUser=response.data.map(this.getDisplayUser)
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+    },
+    /*browse() {
       this.$refs.file.click();
     },
     remove() {
@@ -61,11 +82,7 @@ export default {
     },
     change(e) {
       this.$emit("input", e.target.files[0]);
-    },
-  },
-  components: {
-    AccessCalendar,
-    Icon,
+    },*/
   },
 };
 </script>
