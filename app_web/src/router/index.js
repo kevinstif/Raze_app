@@ -20,7 +20,7 @@ const routes = [
     component: Register
   },
   {
-    path: '/Introduction',
+    path: '/Introduction/:id',
     name: 'Introduction',
     component: Introduction
   },
@@ -31,7 +31,7 @@ const routes = [
     component: Web,
     children: [
       {
-        path: '/web/Posts',
+        path: '/web/Posts/:id',
         name: 'Posts',
         component: () => import('../posts/pages/post-manager.vue')
       },

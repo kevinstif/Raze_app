@@ -6,6 +6,42 @@
             <v-card class="elevation-12">
               <v-window v-model="step">
                 <v-window-item :value="1">
+                  <v-row class="fill-height">
+                    <v-col cols="12" md="4" class="mold">
+                      <v-img src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png">
+                      </v-img>
+                      <v-btn class="mold">Upload photo</v-btn>
+                    </v-col>
+
+                    <v-col cols="12" md="8">
+                      <v-card-text class="mt-12">
+                        <h1 class="letter">Let's complete your profile</h1>
+
+                        <h4 class="text-center mt-4">Ensure your email for registration</h4>
+                        <v-form>
+                          <v-text-field
+                              label="Username"
+                              name="UserName"
+                              prepend-icon="person"
+                              type="text"
+                              color="teal accent-3"
+                          />
+                          <v-text-field
+                              label="Age"
+                              name="Age"
+                              prepend-icon="house"
+                              type="text"
+                              color="teal accent-3"
+                          />
+                        </v-form>
+                      </v-card-text>
+                      <div class="text-center mt-n5">
+                        <v-btn rounded color="teal accent-3"  @click="step++">Next</v-btn>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </v-window-item>
+                <v-window-item :value="2">
                   <v-row>
                     <v-col cols="12" md="4" class="colum">
                       <iframe class="mold"
@@ -34,6 +70,7 @@
                               <v-btn
                                   class="btn_select"
                                   elevation="2"
+                                  @click="selectInterest(interest.id)"
                               >
                                 Select
                               </v-btn>
@@ -43,11 +80,12 @@
                         <h3 class="text-center mt-4">Are you ready?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark >GO</v-btn>
+                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark @click="singToApp">GO</v-btn>
                       </div>
                     </v-col>
                   </v-row>
                 </v-window-item>
+
               </v-window>
             </v-card>
           </v-col>
@@ -58,12 +96,16 @@
 
 <script>
 import interestDataService from "@/components/interest/services/interest-data-service";
+import UsersService from "@/users/services/users.services";
 
 export default {
   name: "Introduction",
   data() {
     return {
+      step:1,
       interests: [],
+      interestSelect:-1,
+      User:null
     };
   },
   methods:{
@@ -77,6 +119,41 @@ export default {
             console.log(e);
           });
     },
+    selectInterest(idInterest){
+       this.selectInterest =idInterest;
+    },
+    getDisplayUser(user){
+      return{
+        id:user.id,
+        email:user.email,
+        password:user.password,
+        imgProfile: user.imgProfile(),
+        age: user.age,
+        InterestId:user.InterestId,
+      };
+    },
+    getUser(){
+       UsersService.getById(this.userId)
+           .then(response=>{
+             this.user=response.data.map(this.getDisplayUser());
+             console.log(response.data)
+           })
+           .catch(e=>{
+             console.log(e)
+           });
+     },
+    changeInterestOfUser(){
+      this.user.InterestId=this.interestSelect
+    },
+    updateInterestUser() {
+      this.getUser();
+      this.changeInterestOfUser();
+    },
+    singToApp(){
+      this.updateInterestUser();
+      this.$router.push(`Web/posts${this.userId}`);
+    },
+
     getDisplayInterest(interest) {
       return {
         id: interest.id,
@@ -89,6 +166,7 @@ export default {
   },
   mounted() {
     this.retrieveInterests();
+    this.userId= this.$route.params.id;
   },
 }
 </script>

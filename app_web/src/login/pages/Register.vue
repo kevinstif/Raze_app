@@ -96,6 +96,7 @@
                         <h4 class="text-center mt-4">Ensure your email for registration</h4>
                         <v-form>
                           <v-text-field
+                              v-model="createName"
                               label="Name"
                               name="Name"
                               prepend-icon="person"
@@ -103,6 +104,7 @@
                               color="teal accent-3"
                           />
                           <v-text-field
+                              v-model="createEmail"
                               label="Email"
                               name="Email"
                               prepend-icon="email"
@@ -111,6 +113,7 @@
                           />
 
                           <v-text-field
+                              v-model="createPassword"
                               id="password"
                               label="Password"
                               name="password"
@@ -121,7 +124,7 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5">
-                        <v-btn rounded color="teal accent-3" dark to="/Introduction">SIGN UP</v-btn>
+                        <v-btn rounded color="teal accent-3" dark @click="addUser">SIGN UP</v-btn>
                       </div>
                     </v-col>
                   </v-row>
@@ -147,21 +150,24 @@ export default {
     emailResponse:' ',
     passwordResponse:' ',
     signPassword:'',
+
+
+    //
     createName:'',
     createEmail:' ',
-    createPassword:' '
+    createPassword:' ',
   }),
   props: {
     source: String
   },
   methods:{
-    getDisplayUser(user){
-      return{
-        id:user.id,
-        email:user.email,
-        password:user.password
-      };
-    },
+      getDisplayUser(user){
+        return{
+          id:user.id,
+          email:user.email,
+          password:user.password
+        };
+      },
     validateData(){
       console.log("Ya entro")
       UsersService.findBy(this.signEmail)
@@ -174,6 +180,34 @@ export default {
     signToApp(){
       console.log(this.idResponse)
       this.$router.push(`web/${this.idResponse}`);
+    },
+    signToIntroduction(id){
+      console.log(this.idResponse)
+      this.$router.push(`introduction/${id}`);
+    },
+
+
+
+    //register
+    addUser(){
+      const newUser={
+        name:this.createName,
+        email:this.createEmail,
+        password:this.createPassword,
+        imgProfile:"",
+        age: 1,
+        userType: "Advisor"
+      }
+
+     UsersService.create(newUser)
+          .then(response=>{
+            console.log(response.data)
+            console.log(newUser)
+            this.signToIntroduction(response.data.id)
+          })
+          .catch(e=>{
+            console.log(e)
+          })
     }
   }
 };
