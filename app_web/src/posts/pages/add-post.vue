@@ -5,7 +5,7 @@
       <v-form @submit="addPost">
         <div>
           <div class="img">
-            <img v-if="item.imageUrl" :src="item.imageUrl" height="500px"/>
+            <img v-if="item.imageUrl" :src="item.imageUrl" :alt="item.title" height="500px"/>
           </div>
         </div>
         <v-card-text>
@@ -17,20 +17,22 @@
               <v-col>
                 <TagsManager v-on:save-tag="getTagId"></TagsManager>
               </v-col>
+              <v-col>
+                <InterestManager v-on:save-interest="getInterestId"></InterestManager>
+              </v-col>
             </v-row>
           </v-container>
-          <v-text-field label="Title" placeholder="Title" outlined v-model="title"></v-text-field>
+          <v-text-field label="Title" placeholder="Title" outlined v-model="Title"></v-text-field>
           <v-textarea outlined name="Description" placeholder="Description" label="Description"
-                      v-model="description"></v-textarea>
+                      v-model="Description"></v-textarea>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn  rounded  color="red"
                   class="my-4 mx-4" type="cancel" to="/web/posts">Cancel
           </v-btn>
-          <v-btn :disabled="!enableSave" color="yellow" rounded @click="managerImage">Save Image</v-btn>
-          <v-btn :disabled="!enabledPublish" rounded  color="green"
-                 class="my-4 mx-4" @click="addPost">Publish
+          <v-btn rounded  color="green"
+                 class="my-4 mx-4" @click="managerImage">Publish
           </v-btn>
         </v-card-actions>
       </v-form>
@@ -54,15 +56,17 @@
 import PostServices from "@/posts/services/posts.services";
 import TagsManager from "../../tags/pages/tags-manager";
 import {storage} from "../../main";
+import InterestManager from "../../components/interest/pages/interest-manager";
 const ref=storage.ref()
 
 export default {
   name: "add-post",
-  components: {TagsManager},
+  components: {InterestManager, TagsManager},
   data:()=>({
     Title:'',
     Description:'',
     Image:'',
+    interestId: 0,
     TagId:0,
     enabledPublish:false,
     enabledConfirm:false,
@@ -75,19 +79,18 @@ export default {
     }
   }),
   methods:{
-    addPost(item){
-      item.preventDefault();
+    async addPost(){
       const newPost={
-        Title:this.Title,
-        Image:this.Image,
-        Description:this.Description,
-        Rate:0,
-        NumberOfRates: 0,
-        UserId: 5,
-        InterestId: 500,
-        TagId:this.TagId
+        title:this.Title,
+        img:this.Image,
+        description:this.Description,
+        rate:0,
+        rateNumber: 0,
+        userId: 5,
+        interestId: this.interestId,
+        tagId:this.TagId,
+        //tagId:this.Tag.id
       }
-
       PostServices.create(newPost)
           .then(response=>{
             console.log(response.data)
@@ -96,21 +99,22 @@ export default {
             console.log(e)
           })
 
-      this.title='';
+      this.Title='';
       this.img='';
-      this.description='';
+      this.Description='';
       this.tagId=0;
       this.enableMessage=true;
     },
 
-    getTagId(tagId){
+    getTagId(Tag){
       this.enabledPublish=true;
-      this.tagId=tagId;
+      this.TagId=Tag.id;
     },
-    setConfirm(){
-      this.enabledConfirm=false;
+    getInterestId(Interest){
+      this.enabledPublish=true;
+      this.interestId=Interest.id;
     },
-    //carga y vista previa de imgagen
+
     onChange(e) {
       const file = e.target.files[0]
       this.image = file
@@ -118,29 +122,29 @@ export default {
       console.log(this.image)
       this.enableSave=true
     },
-    managerImage(){
-      this.uploadImage();
-      this.downloadImage();
+    async managerImage(item){
+      item.preventDefault();
+      await this.uploadImage();
     },
-    //carga de imagen al storage
-    uploadImage(){
+    async uploadImage(){
       const refImg=ref.child('images/'+ this.image.name)
       const metadata={contentType:'img/*'}
       refImg.put(this.image,metadata)
         .then(response=>{
-          console.log(response)
+          console.log("upload: " + response);
+          this.downloadImage();
         })
         .catch(e=>{
           console.log(e)
         })
       this.enableSelect=false;
     },
-    //recupera el url de la imagen cargada
-    downloadImage(){
+    async downloadImage(){
       ref.child(`images/${this.image.name}`).getDownloadURL()
       .then(response=>{
-        this.img=response
-        console.log(response)
+        this.Image=response
+        console.log("download: " + response);
+        this.addPost();
       })
       this.enabledConfirm=true;
     }

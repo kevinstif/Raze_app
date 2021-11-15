@@ -6,7 +6,7 @@ class  UsersService{
         return http.get( `${this.endpoint}/${id}`);
     }
     getAll(){
-        return http.get(this.endPoint);
+        return http.get(this.endpoint);
     }
     create(data){
         return http.post(this.endpoint,data);
