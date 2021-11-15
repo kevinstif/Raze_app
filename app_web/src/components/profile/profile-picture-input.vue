@@ -31,20 +31,6 @@ export default {
     value: File,
     defaultSrc: String,
   },
-  /*watch: {
-    value(file) {
-      if (!file) {
-        this.src = this.defaultSrc;
-        this.$refs.file.value = "";
-      } else {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (e) => {
-          this.src = e.target.result;
-        };
-      }
-    },
-  },*/
   data() {
     return {
       currentUser:{}
@@ -54,35 +40,17 @@ export default {
     this.retrieveCurrentUser()
   },
   methods: {
-    getDisplayUser(user){
-      return{
-        id: user.id,
-        name: user.name,
-        imgProfile: user.imgProfile,
-        age: user.age,
-        email: user.email,
-        userType: user.userType
-      }
-    },
+
     retrieveCurrentUser(){
       UsersService.getById(this.$route.params.id)
           .then(response=>{
             console.log((this.$route.params.id))
-            this.currentUser=response.data.map(this.getDisplayUser)
+            this.currentUser=response.data
           })
           .catch(e=>{
             console.log(e)
           })
     },
-    /*browse() {
-      this.$refs.file.click();
-    },
-    remove() {
-      this.$emit("input", null);
-    },
-    change(e) {
-      this.$emit("input", e.target.files[0]);
-    },*/
   },
 };
 </script>
