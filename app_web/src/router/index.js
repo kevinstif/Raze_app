@@ -18,16 +18,6 @@ const routes = [
     component: Register
   },
   {
-    path: '/calendar',
-    name: 'Calendar',
-    component: ()=>import('../components/calendar/pages/access-calendar')
-  },
-  {
-    path: '/test',
-    name: 'Test',
-    component: ()=>import('../components/calendar/pages/calendar')
-  },
-  {
     path: '/Web/:idUser?',
     name: 'Web',
     component: Web,
@@ -78,7 +68,7 @@ const routes = [
         component: () => import("../components/profession/pages/add-profession")
       },
       {
-        path: "/profile",
+        path: "/web/:id/profile",
         name: "profile",
         component: () => import("../components/profile/profile-manager")
       },

@@ -1,17 +1,10 @@
 <template>
   <div class="relative inline-block overflow-hidden">
-    <input
-        type="file"
-        accept="image/*"
-        class="hidden"
-        ref="file"
-        @change="change"
-    />
-    <img :src="src" alt="MyProfile" class="my-avatar" />
+    <input type="file" accept="image/*" class="hidden" ref="file"/>
+    <img :src="currentUser.imgProfile" alt="MyProfile" class="my-avatar" />
     <div>
       <button
           type="button"
-          @click="browse()"
           class="rounded-full">
         <icon name="camera" class="s_camera"></icon>
       </button>
@@ -26,46 +19,38 @@
 
 import Icon from "./icon";
 import AccessCalendar from "../calendar/pages/access-calendar";
+import UsersService from "../../users/services/users.services";
 
 export default {
+  components: {
+    AccessCalendar,
+    Icon,
+  },
   name:'myProfile',
   props: {
     value: File,
     defaultSrc: String,
   },
-  watch: {
-    value(file) {
-      if (!file) {
-        this.src = this.defaultSrc;
-        this.$refs.file.value = "";
-      } else {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (e) => {
-          this.src = e.target.result;
-        };
-      }
-    },
-  },
   data() {
     return {
-      src: this.defaultSrc,
+      currentUser:{}
     };
   },
-  methods: {
-    browse() {
-      this.$refs.file.click();
-    },
-    remove() {
-      this.$emit("input", null);
-    },
-    change(e) {
-      this.$emit("input", e.target.files[0]);
-    },
+  mounted() {
+    this.retrieveCurrentUser()
   },
-  components: {
-    AccessCalendar,
-    Icon,
+  methods: {
+
+    retrieveCurrentUser(){
+      UsersService.getById(this.$route.params.id)
+          .then(response=>{
+            console.log((this.$route.params.id))
+            this.currentUser=response.data
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+    },
   },
 };
 </script>
