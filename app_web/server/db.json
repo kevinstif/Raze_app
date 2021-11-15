@@ -79,18 +79,21 @@
     {
       "id": 1,
       "title": "Casual",
+      "img": "https://wallpaperdig.com/wp-content/uploads/2021/08/mens-clothing-casual-dress.jpg",
       "description": "Ropa informal",
       "published": true
     },
     {
       "id": 2,
       "title": "Formal",
+      "img": "https://www.myoutfie.com/historias/wp-content/uploads/2019/02/outfits-casual-elegante-5-683x1024.jpg",
       "description": "Ropa formal y elegante",
       "published": true
     },
     {
       "id": 3,
       "title": "Sport",
+      "img": "https://comoorganizarlacasa.com/wp-content/uploads/2021/04/outfits-domingueros-estilo-sport-1.jpg",
       "description": "Sport Clothes",
       "published": false
     }
