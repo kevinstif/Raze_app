@@ -95,6 +95,20 @@
       "published": false
     }
   ],
+  "professions": [
+    {
+      "id": 1,
+      "name": "Fashion consultant"
+    },
+    {
+      "id": 2,
+      "name": "Designer"
+    },
+    {
+      "name": "New profession",
+      "id": 3
+    }
+  ],
   "users": [
     {
       "id": 1,
