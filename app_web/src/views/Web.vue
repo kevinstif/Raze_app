@@ -15,8 +15,8 @@
             </v-btn>
           </li>
           <li><v-btn class="white--text" text to="/interests">Interest</v-btn></li>
-          <li><v-btn class="white--text" text to="/profile">My Profile</v-btn></li>
-          <li><v-btn icon>
+          <!--li><v-btn class="white--text" text to="/profile">My Profile</v-btn></li-->
+          <li><v-btn icon to="/profile">
             <img class="profile" src="../img/img.png">
           </v-btn></li>
           <li>
@@ -40,12 +40,12 @@
 <script>
 import firebase from "firebase/compat";
 export default {
+  name: 'Web',
   data() {
     return {
       user: firebase.auth().currentUser
     }
   },
-  name: 'Web',
 }
 </script>
 

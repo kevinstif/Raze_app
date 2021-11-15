@@ -16,12 +16,16 @@
         <icon name="camera" class="s_camera"></icon>
       </button>
     </div>
+    <div>
+      <AccessCalendar></AccessCalendar>
+    </div>
   </div>
 </template>
 
 <script>
 
 import Icon from "./icon";
+import AccessCalendar from "../calendar/pages/access-calendar";
 
 export default {
   name:'myProfile',
@@ -60,6 +64,7 @@ export default {
     },
   },
   components: {
+    AccessCalendar,
     Icon,
   },
 };
