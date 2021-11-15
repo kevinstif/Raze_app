@@ -53,7 +53,7 @@
                         <h3 class="text-center mt-4">Forgot your password ?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark >SIGN IN</v-btn>
+                        <v-btn @click="validateData" rounded color="teal accent-3" dark >SIGN IN</v-btn>
                       </div>
                     </v-col>
                     <v-col cols="12" md="4" class="colum">
@@ -169,14 +169,20 @@ export default {
       console.log("Ya entro")
       UsersService.findBy(this.signEmail)
           .then(response=>{
-            this.userRetrieved=response.data[0]
-            this.idResponse=this.userRetrieved.id
-             this.signToApp(this.idResponse)
-      })
+            if(response.data != null){
+              console.log('User: ' + response.data);
+              this.userRetrieved=response.data[0]
+              this.idResponse=this.userRetrieved.id
+              this.signToApp(this.idResponse)
+            }
+          })
+          .catch(e => {
+            console.log(e);
+          })
     },
     signToApp(){
       console.log(this.idResponse)
-      this.$router.push(`web/${this.idResponse}`);
+      this.$router.push(`web/${this.idResponse}/Posts`);
     }
   }
 };

@@ -24,6 +24,7 @@
 <script>
 import PostServices from '../services/posts.services'
 import PostList from "./post-list";
+import UsersService from "../../users/services/users.services";
 
 export default {
   name: "post-manager",
@@ -32,12 +33,24 @@ export default {
   data:()=>({
     posts:[],
     title:'',
-
+    currentUser: {}
   }),
   mounted() {
     this.retrievePosts();
+    this.retrieveCurrentUser();
   },
   methods:{
+    retrieveCurrentUser(){
+      UsersService.getById(this.$route.params.id)
+          .then(response=>{
+            console.log('Current id user: ' + this.$route.params.id);
+            this.currentUser=response.data;
+            console.log('Current user: ' + response.data.name);
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+    },
     compareRates(post1, post2){
       return post2.rate - post1.rate;
     },
