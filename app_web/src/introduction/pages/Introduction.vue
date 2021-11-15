@@ -9,7 +9,7 @@
                   <v-row>
                     <v-col cols="12" md="4" class="colum">
                       <iframe class="mold"
-                              src="https://www.youtube.com/embed/fIX_Pu2Gw78?start=30&autoplay=1&controls=0&disablekb=1&modestbranding=1&start:1"
+                              src="https://www.youtube.com/embed/fIX_Pu2Gw78?start=30&autoplay=1&controls=0&disablekb=1&modestbranding=1&start:1&mute=1&loop=1"
                               title="YouTube video player" frameborder="0"
                               allow="accelerometer; autoplay; clipboard-write;
                                 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -20,7 +20,7 @@
                             class="letter"
                         >Welcome To Raze</h1>
                         <h4 class="text-center mt-4">
-                          Please select one or more of your interests to help us guide you.
+                          Please select your interest to help us guide you.
                         </h4>
                         <v-form>
                           <div class="mold_interest">
