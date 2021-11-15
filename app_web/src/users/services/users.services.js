@@ -1,4 +1,4 @@
-import http from '@/core/http-common'
+import http from '../../core/http-common'
 
 class  UsersService{
     endpoint='http://localhost:3000/api/v1/users';
@@ -6,13 +6,14 @@ class  UsersService{
         return http.get( `${this.endpoint}/${id}`);
     }
     getAll(){
-        return http.get(this.endPoint);
+        return http.get(this.endpoint);
     }
     create(data){
         return http.post(this.endpoint,data);
     }
-    update(id,data){
-        return http.put(`${this.endpoint}/${id}`,data);
+    update(id,updateUserDto){
+        console.log(updateUserDto);
+        return http.put(`http://localhost:3000/api/v1/users/${id}`,updateUserDto);
     }
     delete(id){
         return http.delete(`${this.endpoint}/${id}`)
