@@ -20,6 +20,7 @@
                         <h4 class="text-center mt-4">Ensure your email for registration</h4>
                         <v-form>
                           <v-text-field
+                              v-model="username"
                               label="Username"
                               name="UserName"
                               prepend-icon="person"
@@ -27,6 +28,7 @@
                               color="teal accent-3"
                           />
                           <v-text-field
+                              v-model="age"
                               label="Age"
                               name="Age"
                               prepend-icon="house"
@@ -80,7 +82,7 @@
                         <h3 class="text-center mt-4">Are you ready?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark @click="singToApp">GO</v-btn>
+                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark  @click="getUser">GO</v-btn>
                       </div>
                     </v-col>
                   </v-row>
@@ -105,7 +107,10 @@ export default {
       step:1,
       interests: [],
       interestSelect:-1,
-      User:null
+      userGet:null,
+      userUpdate:null,
+      age:null,
+      username:null,
     };
   },
   methods:{
@@ -120,39 +125,46 @@ export default {
           });
     },
     selectInterest(idInterest){
-       this.selectInterest =idInterest;
+       this.interestSelect =idInterest;
     },
     getDisplayUser(user){
       return{
-        id:user.id,
-        email:user.email,
-        password:user.password,
-        imgProfile: user.imgProfile(),
+        id: user.id,
+        name: user.name,
+        imgProfile: user.imgProfile,
         age: user.age,
-        InterestId:user.InterestId,
+        interestId: user.interestId,
+        email: user.email,
+        password:user.password,
+        userType: user.userType
       };
     },
     getUser(){
        UsersService.getById(this.userId)
            .then(response=>{
-             this.user=response.data.map(this.getDisplayUser());
+             this.userGet=response.data.map(this.getDisplayUser());
              console.log(response.data)
+             this.userUpdate=this.userGet;
+             this.userUpdate.age=this.age;
+             this.userUpdate.interestId=this.interestSelect;
+             this.userUpdate.username=this.username;
+             this.updateUser(this.userUpdate.id);
            })
            .catch(e=>{
              console.log(e)
            });
      },
-    changeInterestOfUser(){
-      this.user.InterestId=this.interestSelect
+    updateUser(id){
+      UsersService.update(id,this.userUpdate)
+      .then(response=>{
+        console.log("Acrualizo")
+        console.log(response);
+      })
+      .catch(e=>{
+        console.log(e);
+      })
     },
-    updateInterestUser() {
-      this.getUser();
-      this.changeInterestOfUser();
-    },
-    singToApp(){
-      this.updateInterestUser();
-      this.$router.push(`Web/posts${this.userId}`);
-    },
+
 
     getDisplayInterest(interest) {
       return {

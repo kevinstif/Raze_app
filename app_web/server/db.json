@@ -105,7 +105,7 @@
       "imgProfile": "",
       "age": 19,
       "email": "jesu0902@gmail.com",
-      "InterestId": 2,
+      "interestId": 2,
       "password": "goku123",
       "userType": "Advisor"
     },
@@ -114,7 +114,7 @@
       "name": "Miguel Flores",
       "imgProfile": "",
       "age": 21,
-      "InterestId": 1,
+      "interestId": 1,
       "email": "zara1909@gmail.com",
       "password": "hellokitty21",
       "userType": "Advisor"
@@ -128,6 +128,26 @@
       "userType": "Advisor",
       "apiId": "v1",
       "id": 3
+    },
+    {
+      "name": "Jesús Pacheco",
+      "email": "jesu102012@gmail.com",
+      "password": " asdas",
+      "imgProfile": "",
+      "age": 1,
+      "userType": "Advisor",
+      "apiId": "v1",
+      "id": 4
+    },
+    {
+      "name": "Jesús Pacheco",
+      "email": "jesu102012@gmail.com",
+      "password": "axda",
+      "imgProfile": "",
+      "age": 1,
+      "userType": "Advisor",
+      "apiId": "v1",
+      "id": 5
     }
   ]
 }
