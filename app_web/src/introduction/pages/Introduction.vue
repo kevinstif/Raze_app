@@ -10,8 +10,8 @@
                     <v-col cols="12" md="4" class="mold">
                       <v-img :src="img">
                       </v-img>
-                      <input type="file" accept="image/*" id="inputImage" class="hidden" @change="onChange"/>
-                      <label for="inputImage" class="mold label_image">Upload photo</label>
+                      <input type="file" accept="image/*" id="inputImage" class="" @change="onChange"/>
+                      <!--label for="inputImage" class="mold label_image">Upload photo</--label-->
                       <!--v-btn class="mold">Upload photo</v-btn-->
                     </v-col>
 
@@ -47,7 +47,7 @@
                 </v-window-item>
                 <v-window-item :value="2">
                   <v-row>
-                    <v-col cols="12" md="4" class="colum">
+                    <v-col cols="12" md="4" class="column">
                       <iframe class="mold"
                               src="https://www.youtube.com/embed/fIX_Pu2Gw78?start=30&autoplay=1&controls=0&disablekb=1&modestbranding=1&start:1&mute=1&loop=1"
                               title="YouTube video player" frameborder="0"
@@ -66,8 +66,8 @@
                           <div class="mold_interest">
                             <div class="box"    v-for="interest in interests" v-bind:key="interest.id">
                               <a href="#">
-                                <img :src="interest.img">
-                                <div class="capa">
+                                <img alt="interest image" :src="interest.img">
+                                <div class="cap">
                                     {{interest.title}}
                                 </div>
                               </a>
@@ -99,8 +99,8 @@
 </template>
 
 <script>
-import interestDataService from "@/components/interest/services/interest-data-service";
-import UsersService from "@/users/services/users.services";
+import interestDataService from "../../components/interest/services/interest-data-service";
+import UsersService from "../../users/services/users.services";
 import {storage} from "../../main";
 
 export default {
@@ -166,7 +166,7 @@ export default {
     updateUser(id){
       UsersService.update(id,this.userUpdate)
       .then(response=>{
-        console.log("Acrualizo")
+        console.log("update")
         console.log(response);
         this.signToApp(id);
       })
@@ -191,8 +191,9 @@ export default {
     onChange(e) {
       const file = e.target.files[0]
       this.item.image = file
+      this.item.imageUrl = URL.createObjectURL(file)
       this.img = URL.createObjectURL(file)
-      console.log(this.image)
+      console.log(this.item.image)
       this.enableSave=true
     },
     async managerImage(item){
@@ -200,24 +201,27 @@ export default {
       await this.uploadImage();
     },
     async uploadImage(){
-      const refImg=storage.ref().child('usersProfiles/'+ this.item.image.name)
+      const ref=storage.ref();
+      const refImg=ref.child('usersProfiles/'+ this.item.image.name)
       const metadata={contentType:'img/*'}
-      refImg.put(this.image,metadata)
+      refImg.put(this.item.image,metadata)
           .then(response=>{
-            console.log("upload: " + response);
-            this.downloadImage();
+            console.log(response)
+            this.downloadImage()
           })
           .catch(e=>{
             console.log(e)
           })
       this.enableSelect=false;
     },
+    //recupera el url de la imagen cargada
     async downloadImage(){
-      storage.ref().child(`usersProfiles/${this.item.image.name}`).getDownloadURL()
+      const ref=storage.ref();
+      ref.child(`usersProfiles/${this.item.image.name}`).getDownloadURL()
           .then(response=>{
+            console.log(response)
             this.img=response
-            console.log("download: " + response);
-            this.getUser()
+            this.getUser();
           })
       this.enabledConfirm=true;
     }
@@ -260,7 +264,7 @@ export default {
   height: 70%;
   object-fit: cover;
 }
-.capa{
+.cap{
   position: absolute;
   top: 0;
   left: 0;
@@ -274,7 +278,7 @@ export default {
   transform: scale(0);
   transition: .3s ease;
 }
-.box:hover .capa{
+.box:hover .cap{
   transform: scale(1);
 }
 @media only screen and (max-width:900px){

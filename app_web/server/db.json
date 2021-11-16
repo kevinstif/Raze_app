@@ -151,6 +151,17 @@
       "password": "contra",
       "userType": "Advisor",
       "username": "JoseCarlos"
+    },
+    {
+      "id": 6,
+      "name": "bruno",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=8a63a9a1-c94d-4322-b371-6de94aacb7cf",
+      "age": "25",
+      "interestId": 1,
+      "email": " bruno@correo",
+      "password": "bruno1234",
+      "userType": "Advisor",
+      "username": "bruno"
     }
   ],
   "comments": [
