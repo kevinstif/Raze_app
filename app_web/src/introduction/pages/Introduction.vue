@@ -8,9 +8,11 @@
                 <v-window-item :value="1">
                   <v-row class="fill-height">
                     <v-col cols="12" md="4" class="mold">
-                      <v-img src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png">
+                      <v-img :src="img">
                       </v-img>
-                      <v-btn class="mold">Upload photo</v-btn>
+                      <input type="file" accept="image/*" id="inputImage" class="hidden" @change="onChange"/>
+                      <label for="inputImage" class="mold label_image">Upload photo</label>
+                      <!--v-btn class="mold">Upload photo</v-btn-->
                     </v-col>
 
                     <v-col cols="12" md="8">
@@ -82,7 +84,7 @@
                         <h3 class="text-center mt-4">Are you ready?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn  rounded color="teal accent-3" dark  @click="getUser">GO</v-btn>
+                        <v-btn  rounded color="teal accent-3" dark  @click="managerImage">GO</v-btn>
                       </div>
                     </v-col>
                   </v-row>
@@ -99,20 +101,24 @@
 <script>
 import interestDataService from "@/components/interest/services/interest-data-service";
 import UsersService from "@/users/services/users.services";
+import {storage} from "../../main";
 
 export default {
   name: "Introduction",
-  data() {
-    return {
-      step:1,
-      interests: [],
-      interestSelect:-1,
-      userGet:null,
-      userUpdate:null,
-      age:null,
-      username:null,
-    };
-  },
+  data:()=>({
+    step:1,
+    interests: [],
+    interestSelect:-1,
+    userGet:null,
+    userUpdate:null,
+    age:null,
+    username:null,
+    img:"https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png",
+    item:{
+      image : null,
+      imageUrl: null
+    }
+  }),
   methods:{
     retrieveInterests() {
       interestDataService.getAll()
@@ -149,6 +155,7 @@ export default {
              this.userUpdate.age=this.age;
              this.userUpdate.interestId=this.interestSelect;
              this.userUpdate.username=this.username;
+             this.userUpdate.imgProfile=this.img;
              this.updateUser(this.userUpdate.id)
 
            })
@@ -181,9 +188,40 @@ export default {
       };
     },
 
+    onChange(e) {
+      const file = e.target.files[0]
+      this.item.image = file
+      this.img = URL.createObjectURL(file)
+      console.log(this.image)
+      this.enableSave=true
+    },
+    async managerImage(item){
+      item.preventDefault();
+      await this.uploadImage();
+    },
+    async uploadImage(){
+      const refImg=storage.ref().child('usersProfiles/'+ this.item.image.name)
+      const metadata={contentType:'img/*'}
+      refImg.put(this.image,metadata)
+          .then(response=>{
+            console.log("upload: " + response);
+            this.downloadImage();
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+      this.enableSelect=false;
+    },
+    async downloadImage(){
+      storage.ref().child(`usersProfiles/${this.item.image.name}`).getDownloadURL()
+          .then(response=>{
+            this.img=response
+            console.log("download: " + response);
+            this.getUser()
+          })
+      this.enabledConfirm=true;
+    }
   },
-
-
   mounted() {
     this.retrieveInterests();
     this.userId= this.$route.params.id;
@@ -195,6 +233,10 @@ export default {
 .mold{
   width: 100%;
   height: 100%;
+}
+.label_image{
+  background-color: #F7444E;
+  padding: 1rem 16px;
 }
 .mold_interest{
   width: 100%;
@@ -245,6 +287,10 @@ export default {
 
 .btn_select{
   background-color: #78BCC4;
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 

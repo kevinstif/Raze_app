@@ -1,4 +1,3 @@
-import http from '../../core/http-common'
 import axios from "axios";
 
 class  UsersService{

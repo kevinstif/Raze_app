@@ -133,6 +133,15 @@
       "password": "kevin1234",
       "userType": "Advisor",
       "username": "kevin 23"
+    },
+    {
+      "id": 4,
+      "name": "stif",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F1.png?alt=media&token=9f70e2eb-e390-44bc-bc68-db405aebe66c",
+      "age": "21",
+      "email": " stif@cuenta",
+      "password": "stif1234",
+      "userType": "Advisor"
     }
   ],
   "comments": [

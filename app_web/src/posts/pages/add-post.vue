@@ -55,8 +55,8 @@
 <script>
 import PostServices from "@/posts/services/posts.services";
 import TagsManager from "../../tags/pages/tags-manager";
-import {storage} from "../../main";
 import InterestManager from "../../components/interest/pages/interest-manager";
+import {storage} from "../../main";
 const ref=storage.ref()
 
 export default {
