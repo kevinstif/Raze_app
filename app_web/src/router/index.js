@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Register from "@/login/pages/Register";
 import Web from "@/views/Web";
 import PostDetail from '../posts/pages/post-detail'
+import Introduction from "@/introduction/pages/Introduction";
+
 
 Vue.use(VueRouter)
 
@@ -18,12 +20,18 @@ const routes = [
     component: Register
   },
   {
+    path: '/Introduction/:id',
+    name: 'Introduction',
+    component: Introduction
+  },
+
+  {
     path: '/Web/:idUser?',
     name: 'Web',
     component: Web,
     children: [
       {
-        path: '/web/Posts',
+        path: '/web/Posts/:id?',
         name: 'Posts',
         component: () => import('../posts/pages/post-manager.vue')
       },
@@ -37,6 +45,7 @@ const routes = [
         name: '/addPost',
         component: () => import('../posts/pages/add-post')
       },
+
       {
         path: "/interests",
         name: "interests",

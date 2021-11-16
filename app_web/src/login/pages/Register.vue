@@ -1,7 +1,5 @@
 
 <template>
-
-  <v-app class="bak">
     <v-content class="bak">
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -54,6 +52,7 @@
                       </v-card-text>
                       <div class="text-center mt-3">
                         <v-btn @click="validateData" rounded color="teal accent-3" dark >SIGN IN</v-btn>
+                        <v-btn  rounded color="teal accent-3" dark  @click="validateData">SIGN IN</v-btn>
                       </div>
                     </v-col>
                     <v-col cols="12" md="4" class="colum">
@@ -98,6 +97,7 @@
                         <h4 class="text-center mt-4">Ensure your email for registration</h4>
                         <v-form>
                           <v-text-field
+                              v-model="createName"
                               label="Name"
                               name="Name"
                               prepend-icon="person"
@@ -105,6 +105,7 @@
                               color="teal accent-3"
                           />
                           <v-text-field
+                              v-model="createEmail"
                               label="Email"
                               name="Email"
                               prepend-icon="email"
@@ -113,6 +114,7 @@
                           />
 
                           <v-text-field
+                              v-model="createPassword"
                               id="password"
                               label="Password"
                               name="password"
@@ -123,7 +125,7 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5">
-                        <v-btn rounded color="teal accent-3" dark to="/Web/Posts">SIGN UP</v-btn>
+                        <v-btn rounded color="teal accent-3" dark @click="addUser">SIGN UP</v-btn>
                       </div>
                     </v-col>
                   </v-row>
@@ -134,7 +136,6 @@
         </v-row>
       </v-container>
     </v-content>
-  </v-app>
 </template>
 
 
@@ -150,9 +151,12 @@ export default {
     emailResponse:' ',
     passwordResponse:' ',
     signPassword:'',
+
+
+    //
     createName:'',
     createEmail:' ',
-    createPassword:' '
+    createPassword:' ',
   }),
   props: {
     source: String
@@ -160,29 +164,62 @@ export default {
   methods:{
     getDisplayUser(user){
       return{
-        id:user.id,
-        email:user.email,
-        password:user.password
+        id: user.id,
+        name: user.name,
+        imgProfile: user.imgProfile,
+        age: user.age,
+        interestId: user.interestId,
+        email: user.email,
+        password:user.password,
+        userType: user.userType
       };
     },
     validateData(){
       console.log("Ya entro")
       UsersService.findBy(this.signEmail)
           .then(response=>{
-            if(response.data != null){
-              console.log('User: ' + response.data);
-              this.userRetrieved=response.data[0]
-              this.idResponse=this.userRetrieved.id
-              this.signToApp(this.idResponse)
-            }
+            this.userRetrieved=this.getDisplayUser(response.data[0])
+            console.log(response)
+            console.log("iserretrived");
+            console.log(this.userRetrieved)
+            this.idResponse=this.userRetrieved.id
+            this.signToApp(this.idResponse)
           })
           .catch(e => {
             console.log(e);
           })
     },
-    signToApp(){
+    signToApp(id){
+      console.log(id)
+      this.$router.push(`web/posts/${id}`);
+    },
+    signToIntroduction(id){
       console.log(this.idResponse)
-      this.$router.push(`web/${this.idResponse}/Posts`);
+      this.$router.push(`introduction/${id}`);
+    },
+
+
+
+    //register
+    addUser(){
+      const newUser={
+        name:this.createName,
+        email:this.createEmail,
+        password:this.createPassword,
+        imgProfile:"",
+        age: 1,
+        userType: "Advisor"
+      }
+
+     UsersService.create(newUser)
+          .then(response=>{
+            console.log(response.data)
+            console.log(newUser)
+            this.signToIntroduction(response.data.id)
+          })
+          .catch(e=>{
+            console.log(e)
+          })
     }
   }
 };
