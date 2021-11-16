@@ -23,7 +23,7 @@ const routes = [
     component: Web,
     children: [
       {
-        path: '/web/:id/Posts',
+        path: '/web/Posts',
         name: 'Posts',
         component: () => import('../posts/pages/post-manager.vue')
       },
@@ -76,6 +76,11 @@ const routes = [
         path: '/main/:userId/post-detail/:postId',
         name: 'PostDetail',
         component: PostDetail
+      },
+      {
+        path: '/visited/:userId/profile',
+        name: 'visited',
+        component: ()=>import("../components/profile-visited/visited-manager")
       }
 
     ]

@@ -9,11 +9,6 @@
               <v-icon>mdi-home</v-icon>
             </v-btn>
           </li>
-          <li>
-            <v-btn class="white--text transparent"  to="/Chat">
-              <v-icon>mdi-message</v-icon>
-            </v-btn>
-          </li>
           <li><v-btn class="white--text" text to="/interests">Interest</v-btn></li>
           <!--li><v-btn class="white--text" text to="/profile">My Profile</v-btn></li-->
           <li><v-btn icon to="/profile">
