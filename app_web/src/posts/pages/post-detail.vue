@@ -43,7 +43,7 @@
               <v-btn @click="RatePost" class="white--text" rounded width="10%" color="#002C3E" >Rate</v-btn>
             </v-col>
             <v-col class="mx-auto">
-              <router-link :to="{name:'visited', params:{userId: postOwner.id}}" >
+              <router-link :to="{name:'visited', params:{id: postOwner.id}}" >
                 <v-btn v-if="currentUser.id!=postOwner.id" class="white--text" rounded color="#002C3E" >Contact</v-btn>
               </router-link>
               <router-link :to="{name:'profile', params:{id: currentUser.id}}" >

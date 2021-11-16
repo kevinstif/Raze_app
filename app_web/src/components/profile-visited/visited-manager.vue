@@ -15,6 +15,7 @@
       <div class="center">
         <AccessCalendar></AccessCalendar>
       </div>
+      <PostList  v-bind:posts="posts"></PostList>
     </div>
   </div>
 </template>
@@ -22,29 +23,60 @@
 <script>
 import UsersService from "../../users/services/users.services";
 import AccessCalendar from "../calendar/pages/access-calendar";
+import PostList from "../../posts/pages/post-list";
+import PostServices from "../../posts/services/posts.services";
 
 export default {
   name: "visited-manager",
   components:{
+    PostList,
     AccessCalendar
   },
   data:()=>({
+    posts:[],
     currentUser:{}
   }),
   mounted() {
-    this.retrieveCurrentUser()
+    this.retrieveCurrentUser();
   },
   methods: {
 
     retrieveCurrentUser() {
-      UsersService.getById(this.$route.params.userId)
+      UsersService.getById(this.$route.params.id)
           .then(response => {
-            console.log((this.$route.params.userId))
+            console.log((this.$route.params.id))
             this.currentUser = response.data
+            this.retrievePosts()
           })
           .catch(e => {
             console.log(e)
           })
+    },
+    retrievePosts(){
+      PostServices.getAllByUserId(this.currentUser.id)
+          .then(response=>{
+            response.data.sort(this.compareRates);
+            this.posts=response.data.map(this.getDisplayPost);
+            console.log(this.posts)
+          })
+          .catch(e=>{
+            console.log(e)
+          })
+    },
+    compareRates(post1, post2){
+      return post2.rate - post1.rate;
+    },
+    getDisplayPost(post, index){
+      return {
+        id:post.id,
+        title:post.title,
+        img:post.img,
+        description:post.description,
+        status: post.published,
+        rate: post.rate,
+        isMain: (index <= 2),
+        userId: post.userId
+      }
     },
   }
 }

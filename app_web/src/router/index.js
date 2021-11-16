@@ -87,7 +87,7 @@ const routes = [
         component: PostDetail
       },
       {
-        path: '/visited/:userId/profile',
+        path: '/visited/:id/profile',
         name: 'visited',
         component: ()=>import("../components/profile-visited/visited-manager")
       }
