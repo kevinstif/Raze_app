@@ -42,6 +42,11 @@
             <v-col class="mx-auto">
               <v-btn @click="RatePost" class="white--text" rounded width="10%" color="#002C3E" >Rate</v-btn>
             </v-col>
+            <v-col class="mx-auto">
+              <router-link :to="{name:'visited', params:{userId: postOwner.id}}" >
+                <v-btn class="white--text" rounded width="10%" color="#002C3E" >Contact</v-btn>
+              </router-link>
+            </v-col>
           </v-row>
         </v-card-actions>
       </v-card>
