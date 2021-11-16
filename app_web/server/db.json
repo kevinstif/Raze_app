@@ -2,13 +2,12 @@
   "posts": [
     {
       "id": 1,
-      "title": "colors of summer",
-      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2FoufitCar2_2.jpg?alt=media&token=dd9325eb-c16d-4524-9314-d9afa8e33ef5",
-      "description": "the best colors for the summer",
-      "tagId": 2,
-      "userId": 2,
-      "rateNumber": 2,
-      "rate": "3.5"
+      "title": "Colors of summer",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2FoutfitCard1_3.jpg?alt=media&token=740776ac-cc54-4292-8d07-ee114fa29a87",
+      "description": "The best colors for the summer",
+      "rate": "3.5",
+      "isMain": true,
+      "userId": 2
     },
     {
       "id": 2,
@@ -18,7 +17,7 @@
       "rate": 3.7,
       "rateNumber": 1,
       "published": true,
-      "userId": 3
+      "userId": 1
     },
     {
       "id": 3,
@@ -28,17 +27,15 @@
       "rate": 4.1,
       "rateNumber": 1,
       "published": true,
-      "userId": 3
+      "userId": 1
     },
     {
       "id": 4,
       "title": "The best t-shirt",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=611e43a9-8233-4824-8a50-fdc687e7036a",
-      "description": "the t-shirt black is the best",
+      "description": "The t-shirt black is the best",
       "rate": 4.8,
-      "rateNumber": 1,
-      "published": true,
-      "tagId": 2,
+      "isMain": true,
       "userId": 1
     },
     {
@@ -47,8 +44,9 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fpost.jpg?alt=media&token=5aa07022-d24e-48e1-98b0-9090fbb375fc",
       "description": "black jeans",
       "tagId": 2,
-      "rateNumber": 1,
-      "rate": "1.0"
+      "userId": 2,
+      "rateNumber": 2,
+      "rate": "3.0"
     }
   ],
   "tags": [
@@ -156,12 +154,6 @@
       "text": "Looks awesome",
       "userId": 1,
       "postId": 1
-    },
-    {
-      "id": 3,
-      "text": "Great",
-      "userId": 2,
-      "postId": 4
     },
     {
       "text": "A new comment",

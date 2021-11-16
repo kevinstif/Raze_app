@@ -6,18 +6,18 @@
         <PostItem v-bind:post="post"></PostItem>
       </v-col>
     </v-row>
-
   </v-main>
 </template>
 
 <script>
 import PostItem from "./post-item";
+//import UsersService from "../../users/services/users.services";
 export default {
   name: "post-list",
   components: {PostItem},
   props:[
     "posts"
-  ]
+  ],
 }
 </script>
 
