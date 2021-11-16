@@ -12,7 +12,7 @@
           <li><v-btn class="white--text" text to="/interests">Interest</v-btn></li>
           <!--li><v-btn class="white--text" text to="/profile">My Profile</v-btn></li-->
           <li><v-btn icon to="/profile">
-            <img class="profile" src="../img/img.png">
+            <img class="profile" :src="currentUser.imgProfile">
           </v-btn></li>
           <li>
             <v-btn class="white--text transparent"  to="/">
@@ -34,13 +34,32 @@
 
 <script>
 import firebase from "firebase/compat";
+import UserService from "../users/services/users.services"
+
 export default {
   name: 'Web',
   data() {
     return {
+      currentUser: {},
       user: firebase.auth().currentUser
     }
   },
+  mounted() {
+    console.log('Current user id: ' + this.$route.params.id);
+    this.retrieveCurrentUser();
+  },
+  methods: {
+    retrieveCurrentUser(){
+      UserService.getById(this.$route.params.id)
+          .then(response=>{
+            console.log(response.data)
+            this.currentUser=response.data;
+          })
+          .catch(e=>{
+            console.log('Error: ' + e)
+          })
+    }
+  }
 }
 </script>
 
@@ -99,6 +118,8 @@ nav img{
 .profile{
   width: 25%;
   margin: 0;
+  max-width: 15%;
+  border-radius: 50%;
 }
 body {
   background-color: #F7F8F3;

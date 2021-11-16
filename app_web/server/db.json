@@ -140,6 +140,17 @@
       "email": " stif@cuenta",
       "password": "stif1234",
       "userType": "Advisor"
+    },
+    {
+      "id": 5,
+      "name": "Jose",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2FIcon.png?alt=media&token=a4a4dad2-9801-4f1b-a28b-80f872ae3581",
+      "age": "25",
+      "interestId": 2,
+      "email": " jose@gmail.com",
+      "password": "contra",
+      "userType": "Advisor",
+      "username": "JoseCarlos"
     }
   ],
   "comments": [
@@ -160,6 +171,18 @@
       "userId": 1,
       "postId": 1,
       "id": 4
+    },
+    {
+      "text": "Don't like it at all",
+      "userId": 2,
+      "postId": 3,
+      "id": 5
+    },
+    {
+      "text": "Nice",
+      "userId": 5,
+      "postId": 3,
+      "id": 6
     }
   ]
 }
