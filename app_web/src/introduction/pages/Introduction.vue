@@ -175,7 +175,7 @@ export default {
       })
     },
     signToApp(id){
-      this.$router.push({ path: `/web/posts/${id}`});
+      this.$router.push({ path: `/web/${id}/posts`});
     },
 
     getDisplayInterest(interest) {
@@ -228,7 +228,7 @@ export default {
   },
   mounted() {
     this.retrieveInterests();
-    this.userId= this.$route.params.id;
+    this.userId= this.$route.params.userId;
   },
 }
 </script>

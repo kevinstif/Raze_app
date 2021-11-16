@@ -162,6 +162,17 @@
       "password": "bruno1234",
       "userType": "Advisor",
       "username": "bruno"
+    },
+    {
+      "id": 7,
+      "name": "jose luis",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2Fimagen_1.jpg?alt=media&token=6d904bd9-511d-4488-ae9e-dc513a625df4",
+      "age": "25",
+      "interestId": 1,
+      "email": " jose@mail",
+      "password": "jose10203040",
+      "userType": "Advisor",
+      "username": "pepe"
     }
   ],
   "comments": [
