@@ -44,7 +44,10 @@
             </v-col>
             <v-col class="mx-auto">
               <router-link :to="{name:'visited', params:{userId: postOwner.id}}" >
-                <v-btn class="white--text" rounded width="10%" color="#002C3E" >Contact</v-btn>
+                <v-btn v-if="currentUser.id!=postOwner.id" class="white--text" rounded color="#002C3E" >Contact</v-btn>
+              </router-link>
+              <router-link :to="{name:'profile', params:{id: currentUser.id}}" >
+                <v-btn v-if="currentUser.id==postOwner.id" class="white--text" rounded color="#002C3E" >Profile</v-btn>
               </router-link>
             </v-col>
           </v-row>
