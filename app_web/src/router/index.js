@@ -38,11 +38,6 @@ const routes = [
         component: () => import('../posts/pages/add-post')
       },
       {
-        path: '/editPost/:id',
-        name: '/editPost',
-        component: () => import('../posts/pages/edit-post')
-      },
-      {
         path: "/interests",
         name: "interests",
         component: () => import("../components/interest/pages/interests-list")

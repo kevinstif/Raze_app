@@ -33,8 +33,7 @@
       "id": 4,
       "title": "The best t-shirt",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=611e43a9-8233-4824-8a50-fdc687e7036a",
-      "description": "the t-shirt black is the best",
-      "status": true,
+      "description": "The t-shirt black is the best",
       "rate": 4.8,
       "isMain": true,
       "userId": 1

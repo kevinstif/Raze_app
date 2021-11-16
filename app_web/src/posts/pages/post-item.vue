@@ -112,7 +112,12 @@ export default {
   methods: {
     async managerImage(item){
       item.preventDefault();
-      await this.uploadImage();
+      if(this.Image !== this.post.img){
+        await this.uploadImage();
+      }
+      else{
+        await this.updatePost();
+      }
     },
     async uploadImage(){
       const refImg=ref.child('images/'+ this.image.name)
