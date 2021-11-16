@@ -44,7 +44,7 @@ export default {
     retrieveCurrentUser(){
       UsersService.getById(this.$route.params.id)
           .then(response=>{
-            console.log((this.$route.params.id))
+            console.log(response.data.imgProfile)
             this.currentUser=response.data
           })
           .catch(e=>{

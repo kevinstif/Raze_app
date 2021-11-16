@@ -149,14 +149,14 @@ export default {
     signEmail:'',
     idResponse:'',
     emailResponse:' ',
-    passwordResponse:' ',
+    passwordResponse:'',
     signPassword:'',
 
 
     //
     createName:'',
     createEmail:' ',
-    createPassword:' ',
+    createPassword:'',
   }),
   props: {
     source: String
