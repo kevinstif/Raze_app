@@ -82,7 +82,7 @@
                         <h3 class="text-center mt-4">Are you ready?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark  @click="getUser">GO</v-btn>
+                        <v-btn  rounded color="teal accent-3" dark  @click="getUser">GO</v-btn>
                       </div>
                     </v-col>
                   </v-row>
@@ -142,13 +142,15 @@ export default {
     getUser(){
        UsersService.getById(this.userId)
            .then(response=>{
-             this.userGet=response.data.map(this.getDisplayUser());
+             this.userGet=this.getDisplayUser(response.data);
+
              console.log(response.data)
              this.userUpdate=this.userGet;
              this.userUpdate.age=this.age;
              this.userUpdate.interestId=this.interestSelect;
              this.userUpdate.username=this.username;
-             this.updateUser(this.userUpdate.id);
+             this.updateUser(this.userUpdate.id)
+
            })
            .catch(e=>{
              console.log(e)
@@ -159,12 +161,15 @@ export default {
       .then(response=>{
         console.log("Acrualizo")
         console.log(response);
+        this.signToApp(id);
       })
       .catch(e=>{
         console.log(e);
       })
     },
-
+    signToApp(id){
+      this.$router.push({ path: `/web/posts/${id}`});
+    },
 
     getDisplayInterest(interest) {
       return {
@@ -175,7 +180,10 @@ export default {
         status: interest.published ? "Published" : "Pending",
       };
     },
+
   },
+
+
   mounted() {
     this.retrieveInterests();
     this.userId= this.$route.params.id;

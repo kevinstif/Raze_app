@@ -51,7 +51,7 @@
                         <h3 class="text-center mt-4">Forgot your password ?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn to="/Web/Posts" rounded color="teal accent-3" dark >SIGN IN</v-btn>
+                        <v-btn  rounded color="teal accent-3" dark  @click="validateData">SIGN IN</v-btn>
                       </div>
                     </v-col>
                     <v-col cols="12" md="4" class="colum">
@@ -161,25 +161,33 @@ export default {
     source: String
   },
   methods:{
-      getDisplayUser(user){
-        return{
-          id:user.id,
-          email:user.email,
-          password:user.password
-        };
-      },
+    getDisplayUser(user){
+      return{
+        id: user.id,
+        name: user.name,
+        imgProfile: user.imgProfile,
+        age: user.age,
+        interestId: user.interestId,
+        email: user.email,
+        password:user.password,
+        userType: user.userType
+      };
+    },
     validateData(){
       console.log("Ya entro")
       UsersService.findBy(this.signEmail)
           .then(response=>{
-            this.userRetrieved=response.data[0]
+            this.userRetrieved=this.getDisplayUser(response.data[0])
+            console.log(response)
+            console.log("iserretrived");
+            console.log(this.userRetrieved)
             this.idResponse=this.userRetrieved.id
-             this.signToApp(this.idResponse)
+            this.signToApp(this.idResponse)
       })
     },
-    signToApp(){
-      console.log(this.idResponse)
-      this.$router.push(`web/${this.idResponse}`);
+    signToApp(id){
+      console.log(id)
+      this.$router.push(`web/posts/${id}`);
     },
     signToIntroduction(id){
       console.log(this.idResponse)
