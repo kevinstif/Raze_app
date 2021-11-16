@@ -56,6 +56,7 @@
 import PostServices from "@/posts/services/posts.services";
 import TagsManager from "../../tags/pages/tags-manager";
 import InterestManager from "../../components/interest/pages/interest-manager";
+import UserService from "../../users/services/users.services"
 import {storage} from "../../main";
 const ref=storage.ref()
 
@@ -73,12 +74,26 @@ export default {
     enableSelect:true,
     enableSave:false,
     enableMessage:false,
+    currentUser: {},
     item:{
       image : null,
       imageUrl: null
     }
   }),
+  mounted() {
+    this.retrieveCurrentUser();
+  },
   methods:{
+    retrieveCurrentUser(){
+      UserService.getById(this.$route.params.userId)
+      .then(response => {
+        this.currentUser = response.data;
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    },
     async addPost(){
       const newPost={
         title:this.Title,
@@ -86,7 +101,7 @@ export default {
         description:this.Description,
         rate:0,
         rateNumber: 0,
-        userId: 5,
+        userId: this.currentUser.id,
         interestId: this.interestId,
         tagId:this.TagId,
         //tagId:this.Tag.id

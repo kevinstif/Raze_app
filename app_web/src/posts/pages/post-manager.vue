@@ -13,7 +13,7 @@
     </div><br>
 
     <div class="center">
-      <v-btn to="/addPost" icon color="black">
+      <v-btn :to="{name: 'addPost', params: {userId: currentUser.id}}" icon color="black">
         <v-icon>fas fa-plus-circle</v-icon>
       </v-btn>
     </div>
@@ -41,9 +41,9 @@ export default {
   },
   methods:{
     retrieveCurrentUser(){
-      UsersService.getById(this.$route.params.id)
+      UsersService.getById(this.$route.params.userId)
           .then(response=>{
-            console.log('Current id user: ' + this.$route.params.id);
+            console.log('Current id user: ' + this.$route.params.userId);
             this.currentUser=response.data;
             console.log('Current user: ' + response.data.name);
           })
