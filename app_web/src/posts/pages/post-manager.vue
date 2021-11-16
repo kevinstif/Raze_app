@@ -17,7 +17,7 @@
         <v-icon>fas fa-plus-circle</v-icon>
       </v-btn>
     </div>
-    <PostList v-bind:posts="posts" ></PostList>
+    <PostList v-bind:posts="posts"></PostList>
   </v-container>
 </template>
 
@@ -62,7 +62,8 @@ export default {
         description:post.description,
         status: post.published,
         rate: post.rate,
-        isMain: (index <= 2)
+        isMain: (index <= 2),
+        userId: post.userId
       }
     },
     retrievePosts(){

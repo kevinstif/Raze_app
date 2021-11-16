@@ -5,7 +5,7 @@
         v-model="form.avatar"
         default-src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"/>
     <div>
-      <PostList v-bind:posts="posts" ></PostList>
+      <PostList v-bind:posts="posts"></PostList>
     </div>
   </div>
 </template>
@@ -69,7 +69,8 @@ export default {
         description:post.description,
         status: post.published,
         rate: post.rate,
-        isMain: (index <= 2)
+        isMain: (index <= 2),
+        userId: post.userId
       }
     },
   },
