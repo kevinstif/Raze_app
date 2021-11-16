@@ -168,7 +168,7 @@ export default {
       this.enableSave=true
     },
     retrieveCurrentUser(){
-      UsersService.getById(this.$route.params.id)
+      UsersService.getById(this.$route.params.userId)
           .then(response=>{
             this.currentUser=response.data;
             console.log(response.data);

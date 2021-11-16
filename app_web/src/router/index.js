@@ -20,44 +20,44 @@ const routes = [
     component: Register
   },
   {
-    path: '/Introduction/:id',
+    path: '/Introduction/:userId',
     name: 'Introduction',
     component: Introduction
   },
 
   {
-    path: '/Web/:idUser?',
+    path: '/Web/:userId?',
     name: 'Web',
     component: Web,
     children: [
       {
-        path: '/web/Posts/:id?',
+        path: '/web/:userId/posts',
         name: 'Posts',
         component: () => import('../posts/pages/post-manager.vue')
       },
       {
-        path: '/Chat',
+        path: '/web/:userId/Chat',
         name: 'Chat',
         component: () => import('../components/chat/access-chat')
       },
       {
-        path: '/addPost',
-        name: '/addPost',
+        path: '/web/:userId/addPost',
+        name: 'addPost',
         component: () => import('../posts/pages/add-post')
       },
 
       {
-        path: "/interests",
+        path: "/web/:userId/interests",
         name: "interests",
         component: () => import("../components/interest/pages/interests-list")
       },
       {
-        path: "/interests/:id",
+        path: "/interests/:interestId",
         name: "interest-details",
         component: () => import("../components/interest/pages/interest")
       },
       {
-        path: "/add",
+        path: "/addInterest",
         name: "add",
         component: () => import("../components/interest/pages/add-interest")
       },
@@ -67,7 +67,7 @@ const routes = [
         component: () => import("../components/profession/pages/professions-list")
       },
       {
-        path: "/professions/:id",
+        path: "/professions/:professionId",
         name: "profession-details",
         component: () => import("../components/profession/pages/profession")
       },
@@ -77,7 +77,7 @@ const routes = [
         component: () => import("../components/profession/pages/add-profession")
       },
       {
-        path: "/web/:id/profile",
+        path: "/web/:userId/profile",
         name: "profile",
         component: () => import("../components/profile/profile-manager")
       },
@@ -87,11 +87,10 @@ const routes = [
         component: PostDetail
       },
       {
-        path: '/visited/:id/profile',
+        path: '/visited/:userId/profile/:visitedId',
         name: 'visited',
         component: ()=>import("../components/profile-visited/visited-manager")
       }
-
     ]
   }
 ]

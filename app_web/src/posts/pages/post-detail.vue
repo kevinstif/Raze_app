@@ -43,10 +43,10 @@
               <v-btn @click="RatePost" class="white--text" rounded width="10%" color="#002C3E" >Rate</v-btn>
             </v-col>
             <v-col class="mx-auto">
-              <router-link :to="{name:'visited', params:{id: postOwner.id}}" >
+              <router-link :to="{name:'visited', params:{userId: currentUser.id, visitedId:postOwner.id}}" >
                 <v-btn v-if="currentUser.id!=postOwner.id" class="white--text" rounded color="#002C3E" >Contact</v-btn>
               </router-link>
-              <router-link :to="{name:'profile', params:{id: currentUser.id}}" >
+              <router-link :to="{name:'profile', params:{userId: currentUser.id}}" >
                 <v-btn v-if="currentUser.id==postOwner.id" class="white--text" rounded color="#002C3E" >Profile</v-btn>
               </router-link>
             </v-col>
@@ -107,7 +107,7 @@ export default {
   },
   methods:{
     onBack(){
-      this.$router.push('/web/posts');
+      this.$router.push(`/web/${this.currentUser.id}/posts`);
     },
     AddComment(){
       const newComment={

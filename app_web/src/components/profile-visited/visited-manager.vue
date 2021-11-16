@@ -42,7 +42,7 @@ export default {
   methods: {
 
     retrieveCurrentUser() {
-      UsersService.getById(this.$route.params.id)
+      UsersService.getById(this.$route.params.visitedId)
           .then(response => {
             console.log((this.$route.params.id))
             this.currentUser = response.data

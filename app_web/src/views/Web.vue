@@ -5,17 +5,22 @@
       <div class="nav-links" id="navLinks">
         <ul>
           <li>
-            <v-btn class="white--text transparent" to="/web/Posts">
+            <v-btn icon class="white--text transparent btn" :to="{name:'Posts',params:{userId:currentUser.id}}">
               <v-icon>mdi-home</v-icon>
             </v-btn>
           </li>
-          <li><v-btn class="white--text" text to="/interests">Interest</v-btn></li>
-          <!--li><v-btn class="white--text" text to="/profile">My Profile</v-btn></li-->
-          <li><v-btn icon to="/profile">
-            <img class="profile" :src="currentUser.imgProfile">
-          </v-btn></li>
           <li>
-            <v-btn class="white--text transparent"  to="/">
+            <v-btn class="white--text btn" text :to="{name:'interests',params:{userId:currentUser.id}}">
+             Interest
+            </v-btn>
+          </li>
+          <li class="v-size--small">
+            <v-btn icon :to="{name:'profile', params:{userId:currentUser.id}}">
+              <img class="profile" v-bind:src="currentUser.imgProfile" width="10px">
+            </v-btn>
+          </li>
+          <li>
+            <v-btn icon class="white--text transparent"  to="/">
               <v-icon>fas fa-sign-out-alt</v-icon>
             </v-btn>
           </li>
@@ -50,7 +55,7 @@ export default {
   },
   methods: {
     retrieveCurrentUser(){
-      UserService.getById(this.$route.params.id)
+      UserService.getById(this.$route.params.userId)
           .then(response=>{
             console.log(response.data)
             this.currentUser=response.data;
@@ -130,5 +135,9 @@ body {
   width: 100%;
   z-index: 100;
   box-shadow:  0 10px 10px  rgba(0, 0, 0, 0.2);
+}
+
+.btn{
+  z-index: 100;
 }
 </style>
