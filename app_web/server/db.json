@@ -18,7 +18,7 @@
       "rate": 3.7,
       "rateNumber": 1,
       "published": true,
-      "userId": 3
+      "userId": 1
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "rate": 4.1,
       "rateNumber": 1,
       "published": true,
-      "userId": 3
+      "userId": 1
     },
     {
       "id": 4,
@@ -47,8 +47,9 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fpost.jpg?alt=media&token=5aa07022-d24e-48e1-98b0-9090fbb375fc",
       "description": "black jeans",
       "tagId": 2,
-      "rateNumber": 1,
-      "rate": "1.0"
+      "userId": 2,
+      "rateNumber": 2,
+      "rate": "3.0"
     }
   ],
   "tags": [

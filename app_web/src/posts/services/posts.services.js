@@ -7,6 +7,9 @@ class PostsService{
     getAll(){
         return http.get(this.endPoint);
     }
+    getAllByUserId(userId){
+        return http.get(`http://localhost:3000/users/${userId}/posts`);
+    }
     getById(id){
         return http.get(`${this.endPoint}/${id}`);
     }
