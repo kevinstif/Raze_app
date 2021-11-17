@@ -2,51 +2,36 @@
   "posts": [
     {
       "id": 1,
-      "title": "Colors of summer",
-      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2FoutfitCard1_3.jpg?alt=media&token=740776ac-cc54-4292-8d07-ee114fa29a87",
-      "description": "The best colors for the summer",
-      "rate": "3.5",
-      "isMain": true,
-      "userId": 2
-    },
-    {
-      "id": 2,
       "title": "the best t-shirt",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimagen_2.jpg?alt=media&token=945a8f0e-e728-4ef1-ad3b-b5267e8dfad4",
       "description": "the t-shirt black is the best.",
       "rate": 3.7,
       "rateNumber": 1,
-      "published": true,
-      "userId": 1
+      "userId": 1,
+      "interestId": 1,
+      "tagId": 2
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "the best t-shirt",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimg.jpg?alt=media&token=44806756-979d-4b7d-bb96-9c5bb9af09d6",
       "description": "the t-shirt black is the best",
       "rate": 4.1,
       "rateNumber": 1,
-      "published": true,
-      "userId": 1
+      "userId": 2,
+      "interestId": 1,
+      "tagId": 2
     },
     {
-      "id": 4,
-      "title": "The best t-shirt",
-      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2F1.png?alt=media&token=611e43a9-8233-4824-8a50-fdc687e7036a",
-      "description": "The t-shirt black is the best",
-      "rate": 4.8,
-      "isMain": true,
-      "userId": 1
-    },
-    {
-      "id": "25d9ad60-ad5f-4aa2-b3ef-0e16e4821c8f",
+      "id": 3,
       "title": "the best outfit",
       "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fpost.jpg?alt=media&token=5aa07022-d24e-48e1-98b0-9090fbb375fc",
       "description": "black jeans",
+      "rate": "3.0",
+      "rateNumber": 2,
       "tagId": 2,
       "userId": 2,
-      "rateNumber": 2,
-      "rate": "3.0"
+      "interestId": 1
     }
   ],
   "tags": [
@@ -89,90 +74,47 @@
   "professions": [
     {
       "id": 1,
-      "name": "Fashion consultant"
+      "name": "none"
     },
     {
       "id": 2,
+      "name": "Fashion consultant"
+    },
+    {
+      "id": 3,
       "name": "Designer"
     },
     {
       "name": "New profession",
-      "id": 3
+      "id": 4
     }
   ],
   "users": [
     {
       "id": 1,
       "name": "Edward Ticlavilca",
+      "userName": "Ed",
       "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=cbb5a4ca-917b-4da2-9c8a-7420ba3ef4f0",
       "age": 19,
       "email": "jesu0902@gmail.com",
       "interestId": 2,
       "password": "goku123",
-      "userType": "Advisor"
+      "userType": "Advisor",
+      "profession": 2,
+      "premium": true
     },
     {
       "id": 2,
       "name": "Miguel Flores",
+      "userName": "Miguel",
       "imgProfile": "",
       "age": 21,
       "interestId": 1,
       "email": "zara1909@gmail.com",
       "password": "hellokitty21",
-      "userType": "Advisor"
-    },
-    {
-      "id": 3,
-      "name": "kevin",
-      "imgProfile": "",
-      "age": "21",
-      "interestId": 1,
-      "email": " kevin@cuenta",
-      "password": "kevin1234",
-      "userType": "Advisor",
-      "username": "kevin 23"
-    },
-    {
-      "id": 4,
-      "name": "stif",
-      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F1.png?alt=media&token=9f70e2eb-e390-44bc-bc68-db405aebe66c",
-      "age": "21",
-      "email": " stif@cuenta",
-      "password": "stif1234",
-      "userType": "Advisor"
-    },
-    {
-      "id": 5,
-      "name": "Jose",
-      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2FIcon.png?alt=media&token=a4a4dad2-9801-4f1b-a28b-80f872ae3581",
-      "age": "25",
-      "interestId": 2,
-      "email": " jose@gmail.com",
-      "password": "contra",
-      "userType": "Advisor",
-      "username": "JoseCarlos"
-    },
-    {
-      "id": 6,
-      "name": "bruno",
-      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=8a63a9a1-c94d-4322-b371-6de94aacb7cf",
-      "age": "25",
-      "interestId": 1,
-      "email": " bruno@correo",
-      "password": "bruno1234",
-      "userType": "Advisor",
-      "username": "bruno"
-    },
-    {
-      "id": 7,
-      "name": "jose luis",
-      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2Fimagen_1.jpg?alt=media&token=6d904bd9-511d-4488-ae9e-dc513a625df4",
-      "age": "25",
-      "interestId": 1,
-      "email": " jose@mail",
-      "password": "jose10203040",
-      "userType": "Advisor",
-      "username": "pepe"
+      "userType": "Advised",
+      "profession": "1",
+      "premium": true
     }
   ],
   "comments": [
