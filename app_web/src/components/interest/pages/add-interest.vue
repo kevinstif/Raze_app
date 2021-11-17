@@ -75,7 +75,6 @@ export default {
         description: this.interest.description,
         published:true
       };
-
       interestDataService.create(data)
           .then((response) => {
             this.interest.id = response.data.id;
@@ -92,11 +91,9 @@ export default {
       this.item.imageUrl = URL.createObjectURL(file)
       this.interest.img= URL.createObjectURL(file)
       console.log(this.currentUser.imgProfile)
-      this.enableSave=true
     },
     async managerImage(){
       await this.uploadImage();
-      await this.downloadImage();
     },
     //carga de imagen al storage
     async uploadImage(){
@@ -110,7 +107,6 @@ export default {
           .catch(e=>{
             console.log(e)
           })
-      this.enableSelect=false;
     },
     //recupera el url de la imagen cargada
     async downloadImage(){
@@ -120,7 +116,6 @@ export default {
             console.log(response)
             this.saveInterest();
           })
-      this.enabledConfirm=true;
     }
   },
 };
