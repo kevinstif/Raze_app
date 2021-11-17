@@ -36,6 +36,9 @@
                               color="teal accent-3"
                           />
                         </v-form>
+                        <div class="float-right">
+                          <ProfessionManager v-on:save-professions="getProfessionId"></ProfessionManager>
+                        </div>
                       </v-card-text>
                       <div class="text-center mt-n5">
                         <v-btn rounded color="teal accent-3"  @click="step++">Next</v-btn>
@@ -44,6 +47,47 @@
                   </v-row>
                 </v-window-item>
                 <v-window-item :value="2">
+                  <div class="mold_interest">
+                    <v-card class="account-box">
+                      <v-card-title>Free</v-card-title>
+                      <v-img max-height="294px" src="https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimagen_1.jpg?alt=media&token=0d33f5c2-3280-4f4a-96c1-f03127f11062"/>
+                      <v-card-text>
+                        <div style="height: 170px">
+                          <ul>
+                            <li>share your outfits</li>
+                            <li>watch outfits of others users</li>
+                            <li>receive advice and opinions about your outfits with the comment system </li>
+                          </ul>
+                        </div>
+                      </v-card-text>
+                      <v-card-actions>
+                        <v-btn :color="colorFree" @click="setToFree">Select</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                    <v-card class="account-box">
+                      <v-card-title>Premium</v-card-title>
+                      <v-img src="https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fpost.jpg?alt=media&token=5aa07022-d24e-48e1-98b0-9090fbb375fc"/>
+                      <v-card-text>
+                        <ul>
+                          <li>share your outfits</li>
+                          <li>watch outfits of others users</li>
+                          <li>receive advice and opinions about your outfits with the comment system </li>
+                          <li>chat with advisors </li>
+                          <li>program meeting in google meets using google calendar included</li>
+                        </ul>
+                      </v-card-text>
+                      <v-card-actions>
+                        <v-btn :color="colorPremium" @click="setToPremium">Select</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </div>
+                  <br>
+                  <div class="text-center mt-n5">
+                    <v-btn rounded color="teal accent-3"  @click="step++">Next</v-btn>
+                  </div>
+                  <br>
+                </v-window-item>
+                <v-window-item :value="3">
                   <v-row>
                     <v-col cols="12" md="4" class="column">
                       <iframe class="mold"
@@ -100,9 +144,11 @@
 import interestDataService from "../../components/interest/services/interest-data-service";
 import UsersService from "../../users/services/users.services";
 import {storage} from "../../main";
+import ProfessionManager from "../../components/profession/pages/profession-manager";
 
 export default {
   name: "Introduction",
+  components: {ProfessionManager},
   data:()=>({
     step:1,
     interests: [],
@@ -111,6 +157,10 @@ export default {
     userUpdate:null,
     age:null,
     username:null,
+    premium:false,
+    professionId:1,
+    colorFree:"#bababa",
+    colorPremium:"#bababa",
     img:"https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png",
     item:{
       image : null,
@@ -154,6 +204,8 @@ export default {
              this.userUpdate.interestId=this.interestSelect;
              this.userUpdate.username=this.username;
              this.userUpdate.imgProfile=this.img;
+             this.userUpdate.premium=this.premium;
+             this.userUpdate.professionId=this.professionId;
              this.updateUser(this.userUpdate.id)
 
            })
@@ -222,6 +274,20 @@ export default {
             this.getUser();
           })
       this.enabledConfirm=true;
+    },
+    setToPremium(){
+      this.premium=true;
+      this.colorFree="#bababa";
+      this.colorPremium="#db5534";
+    },
+    setToFree(){
+      this.premium=false;
+      this.colorFree="#209302";
+      this.colorPremium="#bababa";
+    },
+    getProfessionId(professionId){
+      console.log(professionId);
+      this.professionId=professionId
     }
   },
   mounted() {
@@ -254,6 +320,13 @@ export default {
   height: 400px;
   position: relative;
   overflow: hidden;
+  margin: 20px;
+  border:3px solid #fff;
+}
+.account-box{
+  width: 300px;
+  height: 620px;
+  position: relative;
   margin: 20px;
   border:3px solid #fff;
 }

@@ -1,5 +1,6 @@
 <template>
-  <div><v-btn class="float-left" to="/professions" text>Back ←</v-btn>
+  <div class="background">
+    <v-btn class="float-left" to="/professions" text>Back ←</v-btn>
     <div class="submit-form mt-3 mx-auto">
       <br><br>
       <p class="headline text-center">Add new profession</p>
@@ -75,5 +76,8 @@ export default {
 }
 .mc{
   height: 120px;
+}
+.background{
+  background-color: white;
 }
 </style>

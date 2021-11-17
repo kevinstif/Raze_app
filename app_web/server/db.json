@@ -94,10 +94,6 @@
     {
       "id": 3,
       "name": "Designer"
-    },
-    {
-      "name": "New profession",
-      "id": 4
     }
   ],
   "users": [
@@ -111,7 +107,7 @@
       "interestId": 2,
       "password": "goku123",
       "userType": "Advisor",
-      "profession": 2,
+      "professionId": 2,
       "premium": true
     },
     {
@@ -124,19 +120,21 @@
       "email": "zara1909@gmail.com",
       "password": "hellokitty21",
       "userType": "Advised",
-      "profession": "1",
+      "professionId": "1",
       "premium": true
     },
     {
       "id": 3,
       "name": "kevin",
-      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=85a4e10a-39dc-406c-9baa-d208caa0715c",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=d5e433f4-286e-4ff0-88da-e4ba34b4476c",
       "age": "21",
       "interestId": 1,
       "email": " kevin@cuenta",
       "password": "1234",
       "userType": "Advisor",
-      "username": "kevin 23"
+      "username": "kevin 23",
+      "premium": false,
+      "professionId": 1
     }
   ],
   "comments": [
