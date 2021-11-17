@@ -32,6 +32,17 @@
       "tagId": 2,
       "userId": 2,
       "interestId": 1
+    },
+    {
+      "id": 4,
+      "title": "black jacket",
+      "img": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/images%2Fimagen_1.jpg?alt=media&token=0d33f5c2-3280-4f4a-96c1-f03127f11062",
+      "description": "black jacket with blue jeans",
+      "tagId": 2,
+      "interestId": 1,
+      "userId": 3,
+      "rateNumber": 2,
+      "rate": "4.0"
     }
   ],
   "tags": [

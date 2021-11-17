@@ -44,10 +44,14 @@
             </v-col>
             <v-col class="mx-auto">
               <router-link :to="{name:'visited', params:{userId: currentUser.id, visitedId:postOwner.id}}" >
-                <v-btn v-if="currentUser.id!=postOwner.id" class="white--text" rounded color="#002C3E" >Contact</v-btn>
+                <v-btn v-if="currentUser.id!=postOwner.id" class="white--text" rounded color="#002C3E" >
+                  Contact
+                </v-btn>
               </router-link>
               <router-link :to="{name:'profile', params:{userId: currentUser.id}}" >
-                <v-btn v-if="currentUser.id==postOwner.id" class="white--text" rounded color="#002C3E" >Profile</v-btn>
+                <v-btn v-if="currentUser.id==postOwner.id" class="white--text" rounded color="#002C3E" >
+                  Profile
+                </v-btn>
               </router-link>
             </v-col>
           </v-row>
@@ -191,7 +195,7 @@ export default {
           .catch(e => {
             console.log(e);
           });
-      this.$router.push('/web/posts');
+      this.onBack();
     }
   }
 }
