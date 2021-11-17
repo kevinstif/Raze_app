@@ -115,6 +115,26 @@
       "userType": "Advised",
       "profession": "1",
       "premium": true
+    },
+    {
+      "id": 3,
+      "name": "kevin",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=85a4e10a-39dc-406c-9baa-d208caa0715c",
+      "age": "21",
+      "interestId": 1,
+      "email": " kevin@cuenta",
+      "password": "1234",
+      "userType": "Advisor",
+      "username": "kevin 23"
+    },
+    {
+      "name": "kevin",
+      "email": " kevin@cuenta",
+      "password": "kevin10203040",
+      "imgProfile": "",
+      "age": 1,
+      "userType": "Advisor",
+      "id": 4
     }
   ],
   "comments": [
@@ -141,12 +161,6 @@
       "userId": 2,
       "postId": 3,
       "id": 5
-    },
-    {
-      "text": "Nice",
-      "userId": 5,
-      "postId": 3,
-      "id": 6
     }
   ]
 }

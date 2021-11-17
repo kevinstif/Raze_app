@@ -9,11 +9,6 @@
               <v-icon>mdi-home</v-icon>
             </v-btn>
           </li>
-          <li>
-            <v-btn class="white--text btn" text :to="{name:'interests',params:{userId:currentUser.id}}">
-             Interest
-            </v-btn>
-          </li>
           <li class="v-size--small">
             <v-btn icon :to="{name:'profile', params:{userId:currentUser.id}}">
               <img class="profile" v-bind:src="currentUser.imgProfile" width="10px">

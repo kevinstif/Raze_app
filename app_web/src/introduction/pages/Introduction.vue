@@ -11,8 +11,6 @@
                       <v-img :src="img">
                       </v-img>
                       <input type="file" accept="image/*" id="inputImage" class="" @change="onChange"/>
-                      <!--label for="inputImage" class="mold label_image">Upload photo</--label-->
-                      <!--v-btn class="mold">Upload photo</v-btn-->
                     </v-col>
 
                     <v-col cols="12" md="8">
@@ -62,20 +60,20 @@
                         <h4 class="text-center mt-4">
                           Please select your interest to help us guide you.
                         </h4>
+                        <v-btn :to="{name:'add',params:{userId:$route.params.userId}}" class="d-inline"
+                               icon color="black">
+                          <v-icon>fas fa-plus-circle</v-icon>
+                        </v-btn>
                         <v-form>
                           <div class="mold_interest">
-                            <div class="box"    v-for="interest in interests" v-bind:key="interest.id">
+                            <div class="box" v-for="interest in interests" v-bind:key="interest.id">
                               <a href="#">
                                 <img alt="interest image" :src="interest.img">
                                 <div class="cap">
                                     {{interest.title}}
                                 </div>
                               </a>
-                              <v-btn
-                                  class="btn_select"
-                                  elevation="2"
-                                  @click="selectInterest(interest.id)"
-                              >
+                              <v-btn class="btn_select" elevation="2" @click="selectInterest(interest.id)">
                                 Select
                               </v-btn>
                             </div>
@@ -244,7 +242,7 @@ export default {
 }
 .mold_interest{
   width: 100%;
-  height: 50vh;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;

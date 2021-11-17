@@ -13,9 +13,9 @@
     <v-col cols="12" sm="12">
       <v-card class="mx-auto" tile>
         <v-card-title>Interests List
-          <v-btn to="/add" class="ml-10" text>Add</v-btn>
-          <!--v-icon dw-->
-          <v-icon to="/add">mdi-plus</v-icon>
+          <v-btn icon :to="{name:'add',params:{userId:userId}}" class="ml-10" text>
+            <v-icon to="/add">mdi-plus</v-icon>
+          </v-btn>
         </v-card-title>
 
         <v-data-table :headers="headers" :items="interests"
@@ -39,6 +39,7 @@ export default {
   name: "interests-list",
   data() {
     return {
+      userId:1,
       interests: [],
       title: "",
       headers: [
@@ -100,6 +101,7 @@ export default {
     },
   },
   mounted() {
+    this.userId=this.$route.params.userId;
     this.retrieveInterests();
   },
 };

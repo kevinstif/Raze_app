@@ -24,7 +24,21 @@ const routes = [
     name: 'Introduction',
     component: Introduction
   },
-
+  {
+    path: "/addInterest/:userId",
+    name: "add",
+    component: () => import("../components/interest/pages/add-interest")
+  },
+  {
+    path: "/interests",
+    name: "interests",
+    component: () => import("../components/interest/pages/interests-list")
+  },
+  {
+    path: "interests/:interestId",
+    name: "interest-details",
+    component: () => import("../components/interest/pages/interest")
+  },
   {
     path: '/Web/:userId?',
     name: 'Web',
@@ -44,22 +58,6 @@ const routes = [
         path: '/web/:userId/addPost',
         name: 'addPost',
         component: () => import('../posts/pages/add-post')
-      },
-
-      {
-        path: "/web/:userId/interests",
-        name: "interests",
-        component: () => import("../components/interest/pages/interests-list")
-      },
-      {
-        path: "/interests/:interestId",
-        name: "interest-details",
-        component: () => import("../components/interest/pages/interest")
-      },
-      {
-        path: "/addInterest",
-        name: "add",
-        component: () => import("../components/interest/pages/add-interest")
       },
       {
         path: "/professions",

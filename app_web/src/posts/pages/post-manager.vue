@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <div class="back">
-      <v-btn>
-        <v-icon @click="retrievePosts">fas fa-arrow-left</v-icon>
+      <v-btn icon>
+        <v-icon @click="retrievePosts">fas fa-sync</v-icon>
       </v-btn>
     </div>
     <div class="search rounded-pill">

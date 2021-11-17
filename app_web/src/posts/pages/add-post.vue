@@ -1,11 +1,11 @@
 <template>
   <v-container>
-    <v-card>
+    <v-card class="center" width="50%">
       <v-card-title>Create Post</v-card-title>
       <v-form @submit="addPost">
         <div>
           <div class="img">
-            <img v-if="item.imageUrl" :src="item.imageUrl" :alt="item.title" height="500px"/>
+            <img v-if="item.imageUrl" :src="item.imageUrl" :alt="item.title" width="600px"/>
           </div>
         </div>
         <v-card-text>
@@ -14,6 +14,8 @@
               <v-col>
                 <input v-if="enableSelect" type="file" accept="image/*" @change="onChange" class="my-10"/>
               </v-col>
+            </v-row>
+            <v-row>
               <v-col>
                 <TagsManager v-on:save-tag="getTagId"></TagsManager>
               </v-col>
@@ -29,7 +31,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn  rounded  color="red"
-                  class="my-4 mx-4" type="cancel" to="/web/posts">Cancel
+                  class="my-4 mx-4" type="cancel" :to="{name:'Posts',params:{userId: this.$route.params.userId}}">Cancel
           </v-btn>
           <v-btn rounded  color="green"
                  class="my-4 mx-4" @click="managerImage">Publish
@@ -43,7 +45,7 @@
           Your post was created successfully!
         </v-card-text>
         <v-card-actions>
-          <v-btn icon color="green" to="/web/Posts">
+          <v-btn icon color="green" :to="{name:'Posts',params:{userId: this.$route.params.userId}}">
             <v-icon>fas fa-check-circle</v-icon>
           </v-btn>
         </v-card-actions>
