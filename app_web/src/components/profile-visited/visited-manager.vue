@@ -1,22 +1,20 @@
 <template>
   <div class="relative inline-block overflow-hidden">
-    <div>
-      <div class="center">
-        <img :src="currentUser.imgProfile" alt="MyProfile" class="v-avatar"/>
-      </div>
-      <div class="center">
-        <v-btn class="" color="#002C3E" icon to="/Chat">
-          <v-icon>mdi-message</v-icon>
-        </v-btn>
-      </div>
-      <div class="center">
-        <h3>{{currentUser.name}}</h3>
-      </div>
-      <div class="center">
-        <AccessCalendar></AccessCalendar>
-      </div>
-      <PostList  v-bind:posts="posts"></PostList>
+    <div class="center">
+      <img :src="currentUser.imgProfile" alt="MyProfile" class="my-avatar"/>
     </div>
+    <div class="center">
+      <v-btn class="" color="#002C3E" icon to="/Chat">
+        <v-icon>mdi-message</v-icon>
+      </v-btn>
+    </div>
+    <div class="center">
+      <h3>{{currentUser.name}}</h3>
+    </div>
+    <div class="center">
+      <AccessCalendar></AccessCalendar>
+    </div>
+    <PostList  v-bind:posts="posts"></PostList>
   </div>
 </template>
 
@@ -85,7 +83,14 @@ export default {
 <style scoped>
 
 .my-avatar{
+  text-align: center;
   height: 170px;
+  width: 170px;
+  border-radius: 100%;
+  left: 50%;
+  margin-top: 40px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .center{

@@ -8,7 +8,7 @@
 
     <div class="center">
       <v-card outlined class="mx-auto">
-        <v-img :src="currentPost.img" class="cardImage white--text align-start" height="600px">
+        <v-img :src="currentPost.img" class="cardImage white--text align-start cardImg">
           <v-card-title class="white--text title">{{currentPost.title}}</v-card-title>
         </v-img>
         <v-card-text class="text--primary black--text">{{currentPost.description}}</v-card-text>
@@ -229,11 +229,17 @@ export default {
   background-image: linear-gradient(rgba(28, 28, 30, 0.7), rgba(35, 35, 37, 0.7));
 }
 .center {
-  width: 90%;
+  width: 50%;
   margin: auto;
 }
 .comment{
   margin-bottom: 5px;
   margin-top: 5px;
+}
+.cardImg{
+  height: 555px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

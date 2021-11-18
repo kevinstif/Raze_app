@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div style="background-color: white">
     <div class="submit-form mt-3 mx-auto">
       <br><br>
       <p class="headline text-center">Add new interest</p>
     <div v-if="!submitted">
       <v-card>
-        <img :src="interest.img" alt="interest image" width="600">
+        <img :src="interest.img" alt="interest image" class="cardImg" width="600">
         <v-card-text>
           <v-form ref="form" lazy-validation>
             <input type="file" accept="image/*" ref="file"  @change="onChange"/>
@@ -44,7 +44,6 @@
 <script>
 import interestDataService from "../services/interest-data-service";
 import {storage} from "../../../main";
-const ref=storage.ref()
 
 export default {
   name: "add-interest",
@@ -97,6 +96,7 @@ export default {
     },
     //carga de imagen al storage
     async uploadImage(){
+      const ref=storage.ref();
       const refImg=ref.child('interests/'+ this.item.image.name)
       const metadata={contentType:'img/*'}
       refImg.put(this.item.image,metadata)
@@ -110,6 +110,7 @@ export default {
     },
     //recupera el url de la imagen cargada
     async downloadImage(){
+      const ref=storage.ref();
       ref.child(`interests/${this.item.image.name}`).getDownloadURL()
           .then(response=>{
             this.interest.img=response
@@ -135,5 +136,11 @@ export default {
 }
 .mc{
   height: 120px;
+}
+.cardImg{
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

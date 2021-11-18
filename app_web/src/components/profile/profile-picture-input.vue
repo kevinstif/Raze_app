@@ -117,10 +117,13 @@ export default {
 .my-avatar{
   text-align: center;
   height: 170px;
-  border-radius: 100px;
+  width: 170px;
+  border-radius: 100%;
   left: 50%;
   transform: translateX(-110%);
   margin-top: 40px;
+  object-fit: cover;
+  object-position: center;
 }
 .s_camera{
   margin-top: 20px;

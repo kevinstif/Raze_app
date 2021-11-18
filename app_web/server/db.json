@@ -126,15 +126,11 @@
     {
       "id": 3,
       "name": "kevin",
-      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=d5e433f4-286e-4ff0-88da-e4ba34b4476c",
+      "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=2396e318-e69f-4bd9-a376-42f94f403e98",
       "age": "21",
-      "interestId": 1,
       "email": " kevin@cuenta",
       "password": "1234",
-      "userType": "Advisor",
-      "username": "kevin 23",
-      "premium": false,
-      "professionId": 1
+      "userType": "Advisor"
     }
   ],
   "comments": [

@@ -116,10 +116,11 @@ nav img{
   width: 100%;
 }
 .profile{
-  width: 25%;
-  margin: 0;
-  max-width: 15%;
-  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 body {
   background-color: #F7F8F3;

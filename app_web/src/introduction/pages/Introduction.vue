@@ -10,7 +10,9 @@
                     <v-col cols="12" md="4" class="mold">
                       <v-img :src="img">
                       </v-img>
-                      <input type="file" accept="image/*" id="inputImage" class="" @change="onChange"/>
+                      <div>
+                        <input type="file" accept="image/*" id="inputImage" class="" @change="onChange"/>
+                      </div>
                     </v-col>
 
                     <v-col cols="12" md="8">
@@ -104,8 +106,7 @@
                         <h4 class="text-center mt-4">
                           Please select your interest to help us guide you.
                         </h4>
-                        <v-btn :to="{name:'add',params:{userId:$route.params.userId}}" class="d-inline"
-                               icon color="black">
+                        <v-btn class="d-inline" icon color="black" @click="addInterest">
                           <v-icon>fas fa-plus-circle</v-icon>
                         </v-btn>
                         <v-form>
@@ -136,6 +137,9 @@
             </v-card>
           </v-col>
         </v-row>
+        <v-dialog v-model="dialog" max-width="500px">
+          <AddInterest></AddInterest>
+        </v-dialog>
       </v-container>
     </v-content>
 </template>
@@ -145,10 +149,11 @@ import interestDataService from "../../components/interest/services/interest-dat
 import UsersService from "../../users/services/users.services";
 import {storage} from "../../main";
 import ProfessionManager from "../../components/profession/pages/profession-manager";
+import AddInterest from "../../components/interest/pages/add-interest";
 
 export default {
   name: "Introduction",
-  components: {ProfessionManager},
+  components: {AddInterest, ProfessionManager},
   data:()=>({
     step:1,
     interests: [],
@@ -165,7 +170,8 @@ export default {
     item:{
       image : null,
       imageUrl: null
-    }
+    },
+    dialog:false
   }),
   methods:{
     retrieveInterests() {
@@ -288,6 +294,9 @@ export default {
     getProfessionId(professionId){
       console.log(professionId);
       this.professionId=professionId
+    },
+    addInterest(){
+      this.dialog=true
     }
   },
   mounted() {
@@ -364,6 +373,10 @@ export default {
   background-color: #78BCC4;
 }
 
+.inputImage{
+  width: 200px;
+  object-fit: cover;
+}
 .hidden{
   visibility: hidden;
 }
