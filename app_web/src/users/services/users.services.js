@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class  UsersService{
-    endpoint='http://localhost:3000/users';
+    endpoint='https://localhost:5001/api/v1/users';
     getById(id){
         return axios.get( `${this.endpoint}/${id}`);
     }

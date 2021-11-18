@@ -16,11 +16,11 @@ class interestDataService {
     }
 
     create(data) {
-        return axios.post(`http://localhost:3000/api/v1${this.I_endPoint}`, data);
+        return axios.post(`https://localhost:5001/api/v1${this.I_endPoint}`, data);
     }
 
     update(id, data) {
-        return axios.put(`http://localhost:3000/api/v1${this.I_endPoint}/${id}`, data);
+        return axios.put(`https://localhost:5001/api/v1${this.I_endPoint}/${id}`, data);
     }
 
     delete(id) {

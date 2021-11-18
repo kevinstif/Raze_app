@@ -53,15 +53,17 @@ export default {
     },
     updateUser(){
       const user = {
-        id: this.currentUser.id,
         name: this.currentUser.name,
+        userName:this.currentUser.userName,
         imgProfile: this.currentUser.imgProfile,
         age: this.currentUser.age,
         email: this.currentUser.email,
         password: this.currentUser.password,
-        userType: this.currentUser.userType
+        userType: this.currentUser.userType,
+        professionId:this.currentUser.professionId,
+        premium:this.currentUser.premium
       };
-      UsersService.update(user.id,user)
+      UsersService.update(this.currentUser.id,user)
       .then(response=>{
         console.log(response.data.imgProfile)
       })

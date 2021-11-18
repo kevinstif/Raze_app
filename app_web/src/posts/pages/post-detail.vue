@@ -8,7 +8,7 @@
 
     <div class="center">
       <v-card outlined class="mx-auto">
-        <v-img :src="currentPost.img" class="cardImage white--text align-start cardImg">
+        <v-img :src="currentPost.image" class="cardImage white--text align-start cardImg">
           <v-card-title class="white--text title">{{currentPost.title}}</v-card-title>
         </v-img>
         <v-card-text class="text--primary black--text">{{currentPost.description}}</v-card-text>
@@ -179,14 +179,14 @@ export default {
       var postUpdated = {
         id: this.currentPost.id,
         title: this.currentPost.title,
-        img: this.currentPost.img,
+        image: this.currentPost.image,
         description: this.currentPost.description,
         published: this.currentPost.status,
         tagId: this.currentPost.tagId,
         interestId: this.currentPost.interestId,
         userId: this.currentPost.userId,
-        rateNumber: this.currentPost.rateNumber + 1,
-        rate: (((this.currentPost.rate * this.currentPost.rateNumber) + this.rated)/(this.currentPost.rateNumber + 1)).toFixed(1)
+        numberOfRates: this.currentPost.numberOfRates + 1,
+        rate: (((this.currentPost.rate * this.currentPost.numberOfRates) + this.rated)/(this.currentPost.numberOfRates + 1)).toFixed(1)
       }
       PostServices.update(this.currentPost.id, postUpdated)
           .then(response => {

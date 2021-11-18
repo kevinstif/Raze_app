@@ -13,11 +13,11 @@ class TagsServices{
     }
 
     create(createTagDto){
-        return axios.post(`http://localhost:3000/api/v1${this.endPoint}`, createTagDto);
+        return axios.post(`https://localhost:5001/api/v1${this.endPoint}`, createTagDto);
     }
 
     update(id,updateTagDto){
-        return axios.put(`http://localhost:3000/api/v1${this.endPoint}/${id}`, updateTagDto);
+        return axios.put(`https://localhost:5001/api/v1${this.endPoint}/${id}`, updateTagDto);
     }
 
     delete(id){

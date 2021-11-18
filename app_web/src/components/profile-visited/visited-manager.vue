@@ -4,7 +4,7 @@
       <img :src="currentUser.imgProfile" alt="MyProfile" class="my-avatar"/>
     </div>
     <div class="center">
-      <v-btn class="" color="#002C3E" icon to="/Chat">
+      <v-btn class="" color="#002C3E" icon :to="{name:'Chat', params:{userId:this.$route.params.userId}}">
         <v-icon>mdi-message</v-icon>
       </v-btn>
     </div>
@@ -68,7 +68,7 @@ export default {
       return {
         id:post.id,
         title:post.title,
-        img:post.img,
+        img:post.image,
         description:post.description,
         status: post.published,
         rate: post.rate,
@@ -87,7 +87,6 @@ export default {
   height: 170px;
   width: 170px;
   border-radius: 100%;
-  left: 50%;
   margin-top: 40px;
   object-fit: cover;
   object-position: center;

@@ -141,7 +141,7 @@ export default {
           })
     },
     async updatePost(){
-      this.post.img = this.Image;
+      this.post.image = this.Image;
 
       PostServices.update(this.post.id, this.post)
           .then(response=>{

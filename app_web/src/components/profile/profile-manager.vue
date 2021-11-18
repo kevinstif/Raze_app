@@ -65,7 +65,7 @@ export default {
       return {
         id:post.id,
         title:post.title,
-        img:post.img,
+        img:post.image,
         description:post.description,
         status: post.published,
         rate: post.rate,

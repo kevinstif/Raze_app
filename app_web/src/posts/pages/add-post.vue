@@ -99,14 +99,13 @@ export default {
     async addPost(){
       const newPost={
         title:this.Title,
-        img:this.Image,
+        image:this.Image,
         description:this.Description,
         rate:0,
-        rateNumber: 0,
+        numberOfRates: 0,
         userId: this.currentUser.id,
         interestId: this.interestId,
         tagId:this.TagId,
-        //tagId:this.Tag.id
       }
       PostServices.create(newPost)
           .then(response=>{

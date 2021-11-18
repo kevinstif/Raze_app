@@ -204,13 +204,16 @@ export default {
     addUser(){
       const newUser={
         name:this.createName,
+        imgProfile: "image",
+        userName: "Pepe",
         email:this.createEmail,
-        password:this.createPassword,
-        imgProfile:"",
-        age: 1,
-        userType: "Advisor"
+        password: this.createPassword,
+        premium:true,
+        age:18,
+        professionId: 1,
+        userType:"advisor"
       }
-
+      console.log(newUser);
      UsersService.create(newUser)
           .then(response=>{
             console.log(response.data)

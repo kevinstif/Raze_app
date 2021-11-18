@@ -8,7 +8,7 @@ class CommentsService{
         return http.get(`/posts/${id}${this.endPoint}`);
     }
     create(createPostDto){
-        return axios.post(`http://localhost:3000/api/v1/comments`, createPostDto);
+        return axios.post(`https://localhost:5001/api/v1/comments`, createPostDto);
     }
 }
 
