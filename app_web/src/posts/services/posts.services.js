@@ -1,11 +1,12 @@
 import http from '../../core/http-common'
 import axios from "axios";
+import authHeader from "../../security/services/auth-header";
 
 class PostsService{
     endPoint='/posts';
 
     getAll(){
-        return http.get(this.endPoint);
+        return http.get(this.endPoint,{ headers: authHeader()});
     }
     getAllByUserId(userId){
         return http.get(`https://localhost:5001/api/v1/user/${userId}/posts`);

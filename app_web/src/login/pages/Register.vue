@@ -51,8 +51,7 @@
                         <h3 class="text-center mt-4">Forgot your password ?</h3>
                       </v-card-text>
                       <div class="text-center mt-3">
-                        <v-btn @click="validateData" rounded color="teal accent-3" dark >SIGN IN</v-btn>
-                        <v-btn  rounded color="teal accent-3" dark  @click="validateData">SIGN IN</v-btn>
+                        <v-btn @click="Login" rounded color="teal accent-3" dark >SIGN IN</v-btn>
                       </div>
                     </v-col>
                     <v-col cols="12" md="4" class="colum">
@@ -141,6 +140,7 @@
 
 <script>
 import UsersService from '../../users/services/users.services'
+import AuthService from '../../security/services/auth.service'
 export default {
   name:'register',
   data: () => ({
@@ -200,30 +200,49 @@ export default {
 
 
 
+    Login(){
+      const user={
+        email:this.signEmail,
+        password:this.signPassword
+      }
+      console.log(user);
+      AuthService.login(user)
+          .then(response=>{
+            console.log("id:" + response.data.id);
+            this.$router.push(`web/${response.data.id}/posts`);
+          })
+      .catch(e=>{
+        console.log(e);
+      })
+    },
+
     //register
     addUser(){
       const newUser={
         name:this.createName,
         imgProfile: "image",
-        userName: "Pepe",
+        userName: "userName",
         email:this.createEmail,
         password: this.createPassword,
         premium:true,
         age:18,
         professionId: 1,
+        interestId:1,
         userType:"advisor"
       }
       console.log(newUser);
-     UsersService.create(newUser)
+      AuthService.register(newUser)
           .then(response=>{
             console.log(response.data)
             console.log(newUser)
+            this.Login(newUser)
             this.signToIntroduction(response.data.id)
           })
           .catch(e=>{
             console.log(e)
-          })
+          });
     }
+
   }
 };
 </script>
