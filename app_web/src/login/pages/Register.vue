@@ -157,10 +157,20 @@ export default {
     createName:'',
     createEmail:' ',
     createPassword:'',
+
+    //
+    user: {},
+    loading: false,
+    message: ''
   }),
   props: {
     source: String
   },
+  computed: {
+    loggedIn(){
+      return this.$
+    }
+  }
   methods:{
     getDisplayUser(user){
       return{
@@ -205,7 +215,7 @@ export default {
       const newUser={
         name:this.createName,
         imgProfile: "image",
-        userName: "Pepe",
+        username: "Pepe",
         email:this.createEmail,
         password: this.createPassword,
         premium:true,

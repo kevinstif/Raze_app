@@ -54,7 +54,7 @@ export default {
     updateUser(){
       const user = {
         name: this.currentUser.name,
-        userName:this.currentUser.userName,
+        username:this.currentUser.username,
         imgProfile: this.currentUser.imgProfile,
         age: this.currentUser.age,
         email: this.currentUser.email,

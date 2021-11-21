@@ -100,7 +100,7 @@
     {
       "id": 1,
       "name": "Edward Ticlavilca",
-      "userName": "Ed",
+      "username": "Ed",
       "imgProfile": "https://firebasestorage.googleapis.com/v0/b/raze-chat-37c27.appspot.com/o/usersProfiles%2F2.png?alt=media&token=cbb5a4ca-917b-4da2-9c8a-7420ba3ef4f0",
       "age": 19,
       "email": "jesu0902@gmail.com",
@@ -113,7 +113,7 @@
     {
       "id": 2,
       "name": "Miguel Flores",
-      "userName": "Miguel",
+      "username": "Miguel",
       "imgProfile": "",
       "age": 21,
       "interestId": 1,
