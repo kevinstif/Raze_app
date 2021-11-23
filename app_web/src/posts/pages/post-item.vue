@@ -166,7 +166,6 @@ export default {
     openEditDialog(){
       this.dialogEdit = true;
       this.item.imageUrl = this.post.img;
-      this.Image = this.post.img;
     },
     openDialogDelete(){
       this.dialogDelete = true;

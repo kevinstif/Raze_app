@@ -61,6 +61,9 @@ export default {
         img:post.image,
         description:post.description,
         status: post.published,
+        numberOfRates: post.numberOfRates,
+        interestId: post.interestId,
+        tagId: post.tagId,
         rate: post.rate,
         isMain: (index <= 2),
         userId: post.userId
