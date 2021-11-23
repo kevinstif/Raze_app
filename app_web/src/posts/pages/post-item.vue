@@ -141,9 +141,20 @@ export default {
           })
     },
     async updatePost(){
+      const newPost = {
+        Title: this.post.title,
+        Image: this.Image,
+        Description: this.post.description,
+        Rate: this.post.rate,
+        NumberOfRates: this.post.numberOfRates,
+        UserId: this.post.userId,
+        InterestId: this.post.interestId,
+        TagId: this.post.tagId,
+      }
+
       this.post.image = this.Image;
 
-      PostServices.update(this.post.id, this.post)
+      PostServices.update(this.post.id, newPost)
           .then(response=>{
             console.log(response.data);
             this.$router.go(0);
