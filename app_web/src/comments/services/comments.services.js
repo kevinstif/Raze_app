@@ -9,7 +9,7 @@ class CommentsService{
         return http.get(`/posts/${id}${this.endPoint}`,{ headers: authHeader()});
     }
     create(createPostDto){
-        return axios.post(`https://localhost:5001/api/v1/comments`, createPostDto,{ headers: authHeader()});
+        return axios.post(`https://razeapp-v1.azurewebsites.net/api/v1/comments`, createPostDto,{ headers: authHeader()});
     }
 }
 

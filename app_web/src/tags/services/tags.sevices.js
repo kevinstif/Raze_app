@@ -14,11 +14,11 @@ class TagsServices{
     }
 
     create(createTagDto){
-        return axios.post(`https://localhost:5001/api/v1${this.endPoint}`, createTagDto,{ headers: authHeader()});
+        return axios.post(`https://razeapp-v1.azurewebsites.net/api/v1${this.endPoint}`, createTagDto,{ headers: authHeader()});
     }
 
     update(id,updateTagDto){
-        return axios.put(`https://localhost:5001/api/v1${this.endPoint}/${id}`, updateTagDto,{ headers: authHeader()});
+        return axios.put(`https://razeapp-v1.azurewebsites.net/api/v1${this.endPoint}/${id}`, updateTagDto,{ headers: authHeader()});
     }
 
     delete(id){

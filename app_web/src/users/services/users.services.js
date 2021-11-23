@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "../../security/services/auth-header";
 
 class  UsersService{
-    endpoint='https://localhost:5001/api/v1/users';
+    endpoint='https://razeapp-v1.azurewebsites.net/api/v1/users';
     getById(id){
         return axios.get( `${this.endpoint}/${id}`,{ headers: authHeader()});
     }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'https://localhost:5001/api/v1/users/auth/';
+const API_URL = 'https://razeapp-v1.azurewebsites.net/api/v1/users/auth/';
 class AuthService {
     login(user) {
         return axios.post(API_URL + 'sign-in', user)

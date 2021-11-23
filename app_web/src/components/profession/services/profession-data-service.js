@@ -16,11 +16,11 @@ class professionDataService {
     }
 
     create(data) {
-        return axios.post(`https://localhost:5001/api/v1${this.endPoint}`, data);
+        return axios.post(`https://razeapp-v1.azurewebsites.net//api/v1${this.endPoint}`, data);
     }
 
     update(id, data) {
-        return axios.put(`https://localhost:5001/api/v1${this.endPoint}/${id}`, data);
+        return axios.put(`https://razeapp-v1.azurewebsites.net//api/v1${this.endPoint}/${id}`, data);
     }
 
     delete(id) {

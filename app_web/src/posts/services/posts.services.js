@@ -9,17 +9,17 @@ class PostsService{
         return http.get(this.endPoint,{ headers: authHeader()});
     }
     getAllByUserId(userId){
-        return http.get(`https://localhost:5001/api/v1/user/${userId}/posts`,{ headers: authHeader()});
+        return http.get(`https://razeapp-v1.azurewebsites.net/api/v1/user/${userId}/posts`,{ headers: authHeader()});
     }
     getById(id){
         return http.get(`${this.endPoint}/${id}`,{ headers: authHeader()});
     }
     create(createPostDto){
-        return axios.post(`https://localhost:5001/api/v1${this.endPoint}`, createPostDto,{ headers: authHeader()});
+        return axios.post(`https://razeapp-v1.azurewebsites.net/api/v1${this.endPoint}`, createPostDto,{ headers: authHeader()});
     }
 
     update(id,updatePostDto){
-        return axios.put(`https://localhost:5001/api/v1${this.endPoint}/${id}`, updatePostDto,{ headers: authHeader()});
+        return axios.put(`https://razeapp-v1.azurewebsites.net/api/v1${this.endPoint}/${id}`, updatePostDto,{ headers: authHeader()});
     }
 
     delete(id){

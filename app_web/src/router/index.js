@@ -89,7 +89,8 @@ const routes = [
         name: 'visited',
         component: ()=>import("../components/profile-visited/visited-manager")
       }
-    ]
+    ],
+    meta:{protectedRoute: true}
   }
 ]
 
@@ -97,6 +98,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next)=>{
+  const routeIsProtected=to.matched.some(item=>item.meta.protectedRoute)
+
+  if (routeIsProtected && JSON.parse(localStorage.getItem('user')).token ===null){
+    next('/')
+  }else {
+    next()
+  }
 })
 
 export default router
