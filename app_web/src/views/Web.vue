@@ -15,7 +15,7 @@
             </v-btn>
           </li>
           <li>
-            <v-btn icon class="white--text transparent"  to="/">
+            <v-btn icon class="white--text transparent" @click="logOut">
               <v-icon>fas fa-sign-out-alt</v-icon>
             </v-btn>
           </li>
@@ -35,6 +35,8 @@
 <script>
 import firebase from "firebase/compat";
 import UserService from "../users/services/users.services"
+import AuthService  from "../security/services/auth.service"
+import router from "../router";
 
 export default {
   name: 'Web',
@@ -58,6 +60,10 @@ export default {
           .catch(e=>{
             console.log('Error: ' + e)
           })
+    },
+    logOut(){
+      AuthService.logout()
+      router.push('/');
     }
   }
 }

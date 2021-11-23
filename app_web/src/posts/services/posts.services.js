@@ -9,25 +9,25 @@ class PostsService{
         return http.get(this.endPoint,{ headers: authHeader()});
     }
     getAllByUserId(userId){
-        return http.get(`https://localhost:5001/api/v1/user/${userId}/posts`);
+        return http.get(`https://localhost:5001/api/v1/user/${userId}/posts`,{ headers: authHeader()});
     }
     getById(id){
-        return http.get(`${this.endPoint}/${id}`);
+        return http.get(`${this.endPoint}/${id}`,{ headers: authHeader()});
     }
     create(createPostDto){
-        return axios.post(`https://localhost:5001/api/v1${this.endPoint}`, createPostDto);
+        return axios.post(`https://localhost:5001/api/v1${this.endPoint}`, createPostDto,{ headers: authHeader()});
     }
 
     update(id,updatePostDto){
-        return axios.put(`https://localhost:5001/api/v1${this.endPoint}/${id}`, updatePostDto);
+        return axios.put(`https://localhost:5001/api/v1${this.endPoint}/${id}`, updatePostDto,{ headers: authHeader()});
     }
 
     delete(id){
-        return http.delete(`${this.endPoint}/${id}`)
+        return http.delete(`${this.endPoint}/${id}`,{ headers: authHeader()})
     }
 
     findByTitle(title){
-        return http.get(`${this.endPoint}?title=${title}`);
+        return http.get(`${this.endPoint}?title=${title}`,{ headers: authHeader()});
     }
 }
 

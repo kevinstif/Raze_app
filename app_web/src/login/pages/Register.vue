@@ -216,6 +216,21 @@ export default {
       })
     },
 
+    registerLogin(newUser){
+      const user={
+        email:newUser.email,
+        password:newUser.password
+      }
+      console.log(user);
+      AuthService.login(user)
+          .then(response=>{
+            console.log("id:" + response.data.id);
+          })
+          .catch(e=>{
+            console.log(e);
+          })
+    },
+
     //register
     addUser(){
       const newUser={
@@ -227,7 +242,7 @@ export default {
         premium:true,
         age:18,
         professionId: 1,
-        interestId:1,
+        interestId:2,
         userType:"advisor"
       }
       console.log(newUser);
@@ -235,7 +250,7 @@ export default {
           .then(response=>{
             console.log(response.data)
             console.log(newUser)
-            this.Login(newUser)
+            this.registerLogin(newUser)
             this.signToIntroduction(response.data.id)
           })
           .catch(e=>{
